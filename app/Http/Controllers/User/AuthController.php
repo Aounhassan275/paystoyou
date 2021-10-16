@@ -86,15 +86,15 @@ class AuthController extends Controller
             ]+$request->all());
             
         }
-          Message::send($request->phone,'Dear ' 
-          .$request->fname. 
-            'Thanks for registering at Advertfox. We are glad that 
-            you have choosen to ba a part of our.
-            Advertfox is a worldwide investment company who is committied 
-            to the principle of revenew maximization and reduction of financial risk.
-            For further details: 03442200408
-            Visit: https://advertfoxx.com/
-            ');
+        //   Message::send($request->phone,'Dear ' 
+        //   .$request->fname. 
+        //     'Thanks for registering at Advertfox. We are glad that 
+        //     you have choosen to ba a part of our.
+        //     Advertfox is a worldwide investment company who is committied 
+        //     to the principle of revenew maximization and reduction of financial risk.
+        //     For further details: 03442200408
+        //     Visit: https://advertfoxx.com/
+        //     ');
         toastr()->success('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
         return redirect(route('user.login'));
     }

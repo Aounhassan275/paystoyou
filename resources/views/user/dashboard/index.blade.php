@@ -3,7 +3,7 @@
 @section('meta')
 
     
-<title>USER PANEL | ADVERT FOXX</title>
+<title>USER PANEL | PAYS TO YOU</title>
 
 <meta name="description" content="Multipurpose HTML template.">
 

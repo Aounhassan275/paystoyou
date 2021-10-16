@@ -25,10 +25,10 @@ class DepositController extends Controller
         $deposit->update([
             'status' => 'old'
         ]);
-        Message::send($user->phone,'Dear '.$user->fname.
-        ',
-        Your Deposit Request is Accepted Now. You are Active User of Our Site. Now, You can visit Our Site And Earn Money.
-        ADVERT FOXX');
+        // Message::send($user->phone,'Dear '.$user->fname.
+        // ',
+        // Your Deposit Request is Accepted Now. You are Active User of Our Site. Now, You can visit Our Site And Earn Money.
+        // PAYS TO YOU');
         toastr()->success('User is Active Successfully');
         return redirect()->back();
     }

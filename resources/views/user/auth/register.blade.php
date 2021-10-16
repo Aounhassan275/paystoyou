@@ -5,11 +5,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 	<meta name="author" content="Bootlab">
 
 
-    <title>SIGN UP | ADVERT FOXX</title>   
+    <title>SIGN UP | PAYS TO YOU</title>   
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">
 
@@ -568,7 +568,7 @@
                                         <div>
                                             <label class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" required>
-                                            <span class="custom-control-label">I Agree ADVERT FOXX <a href="{{url('terms_&_condition')}}">Terms & Conditions</a></span>
+                                            <span class="custom-control-label">I Agree PAYS TO YOU <a href="{{url('terms_&_condition')}}">Terms & Conditions</a></span>
                                               </label>
 										</div> 
                                         <div class="form-group g-recaptcha"

@@ -1,8 +1,8 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>PACKAGES | ADVERT FOXX</title>
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+<title>PACKAGES | PAYS TO YOU</title>
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 @endsection
 
 @section('content')

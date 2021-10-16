@@ -1,8 +1,8 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>HOME | ADVERT FOXX </title>
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+<title>HOME | PAYS TO YOU </title>
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 @endsection
 
 @section('content')
@@ -18,8 +18,8 @@
                             <div class="container-inner text-left text-center-sm">
                                 <div class="row vertical-row">
                                     <div class="col-md-12">
-                                        <h1 class="text-light text-xl anima text-center">Welcome to ADVERT FOXX</h1>
-                                        <p class="text-light anima text-center">ADVERT FOXX is here to help those who seek easy ways to earn money online. It is a platform that pays you on each ad you view. Simply sign up now and start making money!</p>
+                                        <h1 class="text-light text-xl anima text-center">Welcome to PAYS TO YOU</h1>
+                                        <p class="text-light anima text-center">PAYS TO YOU is here to help those who seek easy ways to earn money online. It is a platform that pays you on each ad you view. Simply sign up now and start making money!</p>
                                         <hr class="space xs" />
                                         <hr class="space visible-sm" />
                                     </div>
@@ -300,10 +300,10 @@
             <div class="col-md-6">
                 <div class="list-group accordion-list">
                     <div class="list-group-item">
-                        <a href="#">What is advertfoxx.com?</a>
+                        <a href="#">What is paystoyou.online?</a>
                         <div class="panel">
                             <div class="inner">
-                                Advert Foxx is a registered online platform for those who want to earn money online. Simply sign up make a deposit to view ads and earn money.
+                                It is a registered online platform for those who want to earn money online. Simply sign up make a deposit to view ads and earn money.
                             </div>
                         </div>
                     </div>
@@ -365,7 +365,7 @@
                 <h4>Contact us now</h4>
                 <hr class="space s" />
                 <ul class="fa-ul text-center">
-                    <li><i class="fa-li im-headset"></i>Visit our Facebook Page: <a href="https://www.facebook.com/groups/cashpayearnofficial?_rdc=1&_rdr">ADVERT FOXX Official</a></li>
+                    <li><i class="fa-li im-headset"></i>Visit our Facebook Page: <a href="https://www.facebook.com/groups/cashpayearnofficial?_rdc=1&_rdr">PAYS TO YOU Official</a></li>
                 </ul>
                 <hr class="space m" />
                 <form action="{{route('admin.message.store')}}"  method="post">

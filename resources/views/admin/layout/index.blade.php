@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 	<meta name="author" content="Bootlab">
-    <title>ADMIN PANEL | ADVERT FOXX</title> 	
+    <title>ADMIN PANEL | PAYS TO YOU</title> 	
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}" crossorigin="">
 
@@ -44,7 +44,7 @@
 			<div class="sidebar-content ">
 				<a class="sidebar-brand" href="{{url('/')}}">
           			<i class="align-middle" data-feather="box"></i>
-          			<span class="align-middle"> ADVERT FOXX</span>
+          			<span class="align-middle"> PAYS TO YOU</span>
         		</a>
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
@@ -146,7 +146,7 @@
 					<div class="media">
 						<img class="rounded-circle mr-3" src="{{asset('img\avatars\avatar.jpg')}}" alt="Chris Wood" width="40" height="40">
 						<div class="media-body">
-							<h5 class="mb-1"> ADVERT FOXX</h5>
+							<h5 class="mb-1"> PAYS TO YOU</h5>
 							<div>
 								<i class="fas fa-circle text-success"></i> Online
 							</div>
@@ -208,7 +208,7 @@
 						</div>
 						<div class="col-6 text-right">
 							<p class="mb-0">
-								&copy; 2020 - <a href="{{url('/')}}" class="text-muted">ADVERT FOXX</a>
+								&copy; 2020 - <a href="{{url('/')}}" class="text-muted">PAYS TO YOU</a>
 							</p>
 						</div>
 					</div>

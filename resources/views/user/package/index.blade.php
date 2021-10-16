@@ -3,7 +3,7 @@
 
 <div class="row mb-2 mb-xl-4">
     <div class="col-auto d-none d-sm-block">
-    <h3>PACKAGE SUBSRIPTION | ADVERT FOXX</h3>
+    <h3>PACKAGE SUBSRIPTION | PAYS TO YOU</h3>
     </div>
 </div>
 <div class="tab-content">

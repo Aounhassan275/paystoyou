@@ -8,8 +8,8 @@
 	<meta name="author" content="Bootlab">
 
 
-    <title>USER VERIFICATION | ADVERT FOXX</title>  
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+    <title>USER VERIFICATION | PAYS TO YOU</title>  
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
  
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">
@@ -50,7 +50,7 @@
                     <div class="d-table-cell align-middle">
     
                         <div class="text-center mt-4">
-                            <h1 class="h2">Reset Password, ADVERT FOXX</h1>
+                            <h1 class="h2">Reset Password, PAYS TO YOU</h1>
                         </div>
     
                         <div class="card">

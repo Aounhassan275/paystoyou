@@ -8,8 +8,8 @@
 	<meta name="author" content="Bootlab">
 
 
-    <title>VIEW AD | ADVERT FOXX</title>   
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+    <title>VIEW AD | PAYS TO YOU</title>   
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">

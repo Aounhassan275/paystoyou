@@ -9,8 +9,8 @@
 	<meta name="author" content="Bootlab">
 
 
-    <title>TERMS & CONDITIONS | ADVERT FOXX</title>   
-<meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE.">
+    <title>TERMS & CONDITIONS | PAYS TO YOU</title>   
+<meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE.">
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">
 
@@ -50,24 +50,24 @@
                     <div class="d-table-cell align-middle">
     
                         <div class="text-center mt-4">
-                            <h1 class="h2">TERMS & CONDITIONS, ADVERT FOXX</h1>
-                            <p>You must read, agree with and accept all of the policies and terms below (the "Rules") to join advertfoxx.com. "You" or "you" means the party listed on the account. You must have the authority to agree to these Rules for that party. "www.advertfoxx.com" means ADVERT FOXX. By creating an account, you accept and acknowledge the following rules.</p><br>
+                            <h1 class="h2">TERMS & CONDITIONS, PAYS TO YOU</h1>
+                            <p>You must read, agree with and accept all of the policies and terms below (the "Rules") to join advertfoxx.com. "You" or "you" means the party listed on the account. You must have the authority to agree to these Rules for that party. "www.advertfoxx.com" means PAYS TO YOU. By creating an account, you accept and acknowledge the following rules.</p><br>
 
-                            <p>ADVERT FOXX may modify or terminate the following rules of use at any time for any reason.</p>
+                            <p>PAYS TO YOU may modify or terminate the following rules of use at any time for any reason.</p>
                             <br>
                             <p>We periodically update our terms to ensure their consistency with our policies and allow for addition of new features and continued improvement of our advertising solution.</p>
                             <br>
                             <p>As always, we welcome any feedback you might have to help us make our advertising and publishing products as effective and useful as possible.</p>
         
-                            <br><strong>“Company”</strong> refers to ADVERT FOXX
-                            <br><strong>“Member”</strong> refers to every individual who creates an account at the ADVERT FOXX
+                            <br><strong>“Company”</strong> refers to PAYS TO YOU
+                            <br><strong>“Member”</strong> refers to every individual who creates an account at the PAYS TO YOU
                             <br><strong>“Account Rates” </strong>refers to price of package purchased by member from the company.
                             <br><strong>“Per Cash Rates”</strong> refers to the amount company will pay to member on each Cash.
                             <br>
                             <br>
-                            Members who create account at ADVERT FOXX accept following terms and conditions:
+                            Members who create account at PAYS TO YOU accept following terms and conditions:
                             <ul class="terms" style="list-style: inherit !important;">
-                                <li>Member will deposit the amount as per their package before approval of Account on ADVERT FOXX.</li>
+                                <li>Member will deposit the amount as per their package before approval of Account on PAYS TO YOU.</li>
                                 <li>Company has the right to change the account rates and per Cash rates without any notice.</li>
                                 <li>Company has the right to control all the advertisements. Company can change advertisements quantity, repeat them, and even delete them when the company wants.</li>
                                 <li>Company has the right to shut the website down with or without any prior notice.</li>
@@ -76,7 +76,7 @@
                                 <li>No payout/balance is send if the Publisher account is closed or suspended.</li>
                                 <li>Company may terminate an account with or without prior notice if the member fails to comply with the terms. Any use of offensive and nasty languages when contacting support staff will be subject to immediate account termination without any notice.</li>
                                 <li>Every amount paid by the member is non-refundable.</li>
-                                <li>Any attempt to misuse ADVERT FOXX will result in immediate account closure</li>
+                                <li>Any attempt to misuse PAYS TO YOU will result in immediate account closure</li>
                                 <li>The rate of profit paid by the company to the account holder is subjected to the current fiscal policy or ongoing rate that would be changed with or without notice.</li>
                                 <li>Company has the right initiate legal proceding against misusers.</li>
                                 <li>Member/ Account holder could not demand or sue against company for any illegal claim of increasement of profit rate that beyond the terms and conditions.</li>

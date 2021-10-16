@@ -1,8 +1,8 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>CONTACT US | PAY EARN CASH</title>
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+<title>CONTACT US | PAYS TO YOU</title>
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
             <div class="col-md-8 col-center text-center">
                 <hr class="space s" />
                 <ul class="fa-ul text-center">
-                    <li><i class="fa-li im-headset"></i>Visit our Facebook Page: <a href="https://web.facebook.com/groups/advertfoxxofficial/">Advert Foxx Official</a></li>
+                    <li><i class="fa-li im-headset"></i>Visit our Facebook Page: <a href="https://web.facebook.com">Pays To You Official</a></li>
                 </ul>
                 <hr class="space m" />
                 <form action="{{route('admin.message.store')}}"  method="post">

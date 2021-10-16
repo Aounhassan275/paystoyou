@@ -77,7 +77,7 @@
                                     <a href="{{route('user.login')}}">Sign In<span class="caret"></span></a>
                                 </li>
 								 <li >
-                                    <a href="{{url('https://web.facebook.com/groups/advertfoxxofficial/')}}">Follow Us On Facebook<span class="caret"></span></a>
+                                    <a href="{{url('https://web.facebook.com/groups/')}}">Follow Us On Facebook<span class="caret"></span></a>
                                 </li>
                             </ul>
                         </div>
@@ -115,7 +115,7 @@
                     <div class="col-md-4 footer-center text-left">
                         <h3>Mission Statement</h3>
                         <p class="text-s" style="color:white!important;">
-                            ADVERT FOXX is a registered and recognized platform for those who want to earn money online. Simply sign up to view ads and earn money or if you’re a business and want to publish your ad, contact us today.
+                            PAYS TO YOU is a registered and recognized platform for those who want to earn money online. Simply sign up to view ads and earn money or if you’re a business and want to publish your ad, contact us today.
                         </p>
                     </div>
                     <div class="col-md-4 footer-right text-left">
@@ -123,7 +123,7 @@
                         {{-- <hr class="space m" /> --}}
                         {{-- <p class="text-s" style="color:white!important;">Famous Tower, B 153, Block H North Nazimabad Town,Karachi City, Sindh.</p> --}}
                         {{-- <div class="tag-row text-s">
-                            <span style="color:white!important;">contact@advertfox.com</span>
+                            <span style="color:white!important;">contact@paystoyou.online</span>
                             <span style="color:white!important;">+02 3205550678</span>
                         </div> --}}
                         {{-- <hr class="space m" /> --}}
@@ -132,7 +132,7 @@
             </div>
             <div class="row copy-row">
                 <div class="col-md-12 copy-text">
-                    © 2020 ALL RIGHTS RESERVED BY <a href="{{url('/')}}" style="color:white!important;">advertfoxx.com</a>
+                    © 2020 ALL RIGHTS RESERVED BY <a href="{{url('/')}}" style="color:white!important;">paystoyou.online</a>
                 </div>
             </div>
         </div>

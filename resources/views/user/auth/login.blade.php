@@ -5,11 +5,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="ADVERT FOXX | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 	<meta name="author" content="Bootlab">
 
 
-    <title>SIGN IN | ADVERT FOXX</title>   
+    <title>SIGN IN | PAYS TO YOU</title>   
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">
 
@@ -49,7 +49,7 @@
                     <div class="d-table-cell align-middle">
     
                         <div class="text-center mt-4">
-                            <h1 class="h2">Welcome back, ADVERT FOXX</h1>
+                            <h1 class="h2">Welcome back, PAYS TO YOU</h1>
                             <p class="lead">
                                 Sign in to your account to continue
                             </p>
