@@ -71,7 +71,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR {{number_format(Auth::user()->balance, 2)}}</h3>
+                        <h3 class="mb-2">$ {{number_format(Auth::user()->balance, 2)}}</h3>
 
                         <div class="mb-0">Available Balance</div>
 
@@ -263,7 +263,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR {{Auth::user()->totalEarning()}}</h3>
+                        <h3 class="mb-2">$ {{Auth::user()->totalEarning()}}</h3>
 
                         <div class="mb-0">Total Ad Earning</div>
 
@@ -297,7 +297,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR {{Auth::user()->totalWithdraw()}}</h3>
+                        <h3 class="mb-2">$ {{Auth::user()->totalWithdraw()}}</h3>
 
                         <div class="mb-0">Total Withdraw</div>
 
@@ -332,7 +332,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR {{number_format(Auth::user()->balance, 2)}}</h3>
+                        <h3 class="mb-2">$ {{number_format(Auth::user()->balance, 2)}}</h3>
 
                         <div class="mb-0">Available Balance</div>
 
@@ -366,7 +366,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR 0</h3>
+                        <h3 class="mb-2">$ 0</h3>
 
                         <div class="mb-0">Total Withdraw</div>
 
@@ -401,7 +401,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR {{Auth::user()->r_earning}}</h3>
+                        <h3 class="mb-2">$ {{Auth::user()->r_earning}}</h3>
 
                         <div class="mb-0">Total Referal Earning</div>
 
@@ -575,7 +575,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR {{Auth::user()->totalWithdraw()}}</h3>
+                        <h3 class="mb-2">$ {{Auth::user()->totalWithdraw()}}</h3>
 
                         <div class="mb-0">Total Withdraw</div>
 
@@ -610,7 +610,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">PKR {{Auth::user()->r_earning}}</h3>
+                        <h3 class="mb-2">$ {{Auth::user()->r_earning}}</h3>
 
                         <div class="mb-0">Total Referal Earning</div>
 

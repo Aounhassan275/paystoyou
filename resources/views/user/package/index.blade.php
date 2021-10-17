@@ -16,24 +16,24 @@
                         <div class="mb-4">
                             <h5>{{$package->name}}</h5>
                             @if ($package->discount == 0)
-                            <span class="display-4">PKR {{$package->price}} /-</span><br>
+                            <span class="display-4">$ {{$package->price}} /-</span><br>
                             @else
-                            <span class="display-4">PKR <strike>{{$package->price}}</strike> /-</span>
-                            <h1>PKR {{$package->price - $package->discount}} /-</h1>
+                            <span class="display-4">$ <strike>{{$package->price}}</strike> /-</span>
+                            <h1>$ {{$package->price - $package->discount}} /-</h1>
                             @endif
                             <span>FOR {{$package->package_validity }} /Days</span>
                         </div>
                         <h6>Includes:</h6>
                         <ul class="list-unstyled">
                             <li class="mb-2">
-                                Total Earning : PKR {{$package->t_earning}} /-
+                                Total Earning : $ {{$package->t_earning}} /-
                             </li>
                             <li class="mb-2">
-                                Earning Per Day : PKR {{$package->day}} /-
+                                Earning Per Day : $ {{$package->day}} /-
                             </li>
-                            <li class="mb-2">
+                            {{-- <li class="mb-2">
                                 Referral Click Earning : {{$package->click}} %
-                            </li>
+                            </li> --}}
                             <li class="mb-2">
                                 Daily Ads : {{$package->ads}}
                             </li>

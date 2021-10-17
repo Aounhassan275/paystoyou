@@ -26,25 +26,26 @@
                         </div>
                    </div>
                    <div class="row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label class="form-label">Total Earning</label>
                             <input type="number" class="form-control" name="t_earning"  placeholder="Total Earning" value="">
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label class="form-label">Earning Per Day</label>
                             <input type="number" step="0.00001" class="form-control" name="day"  placeholder="Earning Per Day" value="">
                         </div>
+                        <div class="form-group col-4">
+                            <label class="form-label">Daily Ads</label>
+                            <input type="number" class="form-control" name="ads"  placeholder="Daily Ads" value="">
+                        </div>
                     </div>
-                   <div class="row">
+                   {{-- <div class="row">
                         <div class="form-group col-6">
                             <label class="form-label">Referral Click</label>
                             <input type="number" step="0.00001" class="form-control" name="click"  placeholder="Referral Click" value="">
                         </div>
-                        <div class="form-group col-6">
-                            <label class="form-label">Daily Ads</label>
-                            <input type="number" class="form-control" name="ads"  placeholder="Daily Ads" value="">
-                        </div>
-                   </div>
+                        
+                   </div> --}}
                    <div class="row">
                         <div class="form-group col-6">
                             <label class="form-label">Package Validity in Days</label>

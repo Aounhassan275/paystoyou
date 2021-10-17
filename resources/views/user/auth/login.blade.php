@@ -1,100 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
-	<meta name="author" content="Bootlab">
-
-
-    <title>SIGN IN | PAYS TO YOU</title>   
-
-	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">
-
-	<!-- PICK ONE OF THE STYLES BELOW -->
-    <link href="{{asset('css/classic.css')}}" rel="stylesheet">	
-    <link href="{{asset('css/toastr.css')}}" rel="stylesheet">	
-    <!-- <link href="css/corporate.css" rel="stylesheet"> -->
-	<!-- <link href="css/modern.css" rel="stylesheet"> -->
-
-	<!-- BEGIN SETTINGS -->
-	<!-- You can remove this after picking a style -->
-	<style>
-		body {
-			opacity: 0;
-		}
-	</style>
-	<script src="{{asset('js\settings.js')}}"></script>
-    <!-- END SETTINGS -->
-    <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1685936,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
-    	@toastr_css
-</head>
-
-<body>
-    <main class="main d-flex justify-content-center w-100" style="background:wheat">
-        <div class="container d-flex flex-column">
-            <div class="row h-100">
-                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-                    <div class="d-table-cell align-middle">
+@extends('front.layout.index')
+@section('meta')
     
-                        <div class="text-center mt-4">
-                            <h1 class="h2">Welcome back, PAYS TO YOU</h1>
-                            <p class="lead">
-                                Sign in to your account to continue
-                            </p>
-                            <small>
-                                If You dont have account?
-                                <a href="{{route('user.register')}}">Sign Up</a>
-                              </small>
-                        </div>
-    
-                        <div class="card">
-                            <div class="card-body">
-                                 <div class="text-center">
-                                    <img src="{{asset('1.png')}}" alt="" />
-                                </div>
-                                <div class="m-sm-4">
-                                <form method="POST" action="{{route('user.login')}}">
-                                    @csrf
-                                        <div class="form-group">
-                                            <label>Username</label>
-                                            <input class="form-control form-control-lg" type="name" name="name" placeholder="Enter Username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password">
-                                            <small>
-                                                <a href="{{route('user.verification')}}">Forgot password?</a>
-                                              </small>
-                                        </div>
-                                        <div class="text-center mt-3">
-                                            <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
-                                        </div>
-                                    </form>
-                                </div>
+<title>LOGIN | PAYS TO YOU</title>
+<meta name="description" content="Multipurpose HTML template.">
+@endsection
+
+@section('content')
+  <!--=======Banner-Section Starts Here=======-->
+  <section class="bg_img hero-section-2 left-bottom-lg-max" data-background="{{asset('front/assets/images/about/hero-bg5.png')}}">
+    <div class="container">
+        <div class="hero-content text-white">
+            <h1 class="title">Sign In</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="{{url('/')}}">Home</a>
+                </li>
+                <li>
+                    Sign In
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--=======Banner-Section Ends Here=======-->
+
+        <!--=======Contact-Section Starts Here=======-->
+        <section class="contact-section padding-bottom padding-top">
+            <div class="container">
+                <div class="contact-wrapper padding-top">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5 col-xl-4 offset-xl-1">
+                            <div class="contact-header">
+                                <h2 class="title">Sign In</h2>
+                            </div>
+                            <div class="contact-content">
+                                <p>
+                                    If You have any issue in Login.Contact Support.
+                                </p>
                             </div>
                         </div>
-    
+                        <div class="col-lg-5 offset-xl-1">
+                            <form action="{{route('user.login')}}" method="POST" class="contact-form" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">UserName</label>
+                                    <input type="text" id="name" placeholder="username" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input  id="password" class="form-control"  type="password" name="password" placeholder="Enter password" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <a href="{{route('user.verification')}}">Forget Password ?</a>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Login">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </section>
+        <!--=======Contact-Section Ends Here=======-->
 
-	<script src="{{asset('js\app.js')}}"></script>
-	@toastr_js
-	@toastr_render
-</body>
-
-</html>
+@endsection

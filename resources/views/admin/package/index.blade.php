@@ -18,7 +18,7 @@
                     <th style="width:auto;">Package Price</th>
                     <th style="width:auto;">Total Earning</th>
                     <th style="width:auto;">Earning Per Day</th>
-                    <th style="width:auto;">Referral Click</th>
+                    {{-- <th style="width:auto;">Referral Click</th> --}}
                     <th style="width:auto;">Daily Ads</th>
                     <th style="width:auto;">Package Validity in Days</th>
                     <th style="width:auto;">Package Discount</th>
@@ -34,7 +34,7 @@
                     <td>{{$package->price}}</td>
                     <td>{{$package->t_earning}}</td>
                     <td>{{$package->day}}</td>
-                    <td>{{$package->click}}</td>
+                    {{-- <td>{{$package->click}}</td> --}}
                     <td>{{$package->ads}}</td>
                     <td>{{$package->package_validity}}</td>
                     <td>{{$package->discount}}</td>

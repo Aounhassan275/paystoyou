@@ -2,32 +2,84 @@
 @section('meta')
     
 <title>ABOUT US | PAYS TO YOU</title>
-    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+<meta name="description" content="Multipurpose HTML template.">
 @endsection
 
 @section('content')
-<div class="header-title white" data-parallax="scroll" data-position="top" data-natural-height="650"        data-natural-width="1920" data-image-src="{{asset('front/banner1.jpg')}}">
+<!--=======Banner-Section Starts Here=======-->
+<section class="hero-section bg_img" data-background="front/assets/images/about/hero-bg.png">
     <div class="container">
-        <div class="title-base">
-            <hr class="anima" />
-            <h1>ABOUT US | <a href="{{url('/')}}">HOME</a></h1> 
+        <div class="hero-content">
+            <h1 class="title">About US</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="{{url('/')}}">Home</a>
+                </li>
+                <li>
+                    About Us
+                </li>
+            </ul>
         </div>
     </div>
-</div>
-<div class="section-empty section-border">
-    <div class="container content">
-        <div class="row vertical-row">
-            <div class="col-md-12 col-sm-12">
-                <h4>
-                    ABOUT PAYS TO YOU
-                </h4>
-                <p class="justify-content-center">
-                    Pays to you is a registered online platform for those who want to earn money online. Simply sign up make a deposit to view ads and earn money. Pays to you has been dreaming of devoting all its energies to the welfare of the poor in our country. Pays to you has also felt the pain and sorrow that people suffer from poverty, particularly women and children who are unable to go to school and obtain proper medical care. This is the online 100% secure method to earn money from home.So lets started work with us and start handsome earning from home.
+</section>
+<!--=======Banner-Section Ends Here=======-->
+
+<!--=======About-Section Starts Here=======-->
+<section class="about-section padding-top padding-bottom" id="about">
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-6 d-none d-lg-block rtl">
+            <img src="front/assets/images/about/about.png" alt="about">
+        </div>
+        <div class="col-lg-6">
+            <div class="section-header left-style">
+                <span class="cate">WELCOME TO PAYS TO YOU</span>
+                <h2 class="title">About PAYS TO YOU</h2>
+                <p>
+                    Paystoyou is a registered online platform for those who want to earn money online. Simply sign up make a deposit to view ads and earn money. Paystoyou has been dreaming of devoting all its energies to the welfare of the poor in our country. Paystoyou has also felt the pain and sorrow that people suffer from poverty, particularly women and children who are unable to go to school and obtain proper medical care. This is the online 100% secure method to earn money from home.So lets started work with us and start handsome earning from home.
                 </p>
-                <hr class="space s" />
+            </div>
+            <div class="about--content">
+                <div class="about-item">
+                    <div class="about-thumb">
+                        <img src="front/assets/images/about/about01.png" alt="about">
+                    </div>
+                    <div class="about-content">
+                        <h5 class="title">Secure & Reliable</h5>
+                        <p>
+                            Secure assets fund for users
+                        </p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-thumb">
+                        <img src="front/assets/images/about/about02.png" alt="about">
+                    </div>
+                    <div class="about-content">
+                        <h5 class="title">Fast Withdrawals</h5>
+                        <p>
+                            Quick money withdrawals for users
+                        </p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-thumb">
+                        <img src="front/assets/images/about/about03.png" alt="about">
+                    </div>
+                    <div class="about-content">
+                        <h5 class="title">Guaranteed</h5>
+                        <p>
+                            Your return on investment is guaranteed
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <hr class="space" />
     </div>
 </div>
+</section>
+<!--=======About-Section Ends Here=======-->
+
+
+
 @endsection

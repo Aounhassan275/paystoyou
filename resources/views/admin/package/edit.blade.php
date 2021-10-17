@@ -37,11 +37,7 @@
                         </div>
                     </div>
                    <div class="row">
-                        <div class="form-group col-6">
-                            <label class="form-label">Referral Click</label>
-                            <input type="number" step="0.00001" class="form-control" name="click"  placeholder="Referral Click" value="{{$package->click}}">
-                        </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-12">
                             <label class="form-label">Daily Ads</label>
                             <input type="number" class="form-control" name="ads"  placeholder="Daily Ads" value="{{$package->ads}}">
                         </div>

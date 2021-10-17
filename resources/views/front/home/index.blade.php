@@ -2,400 +2,458 @@
 @section('meta')
     
 <title>HOME | PAYS TO YOU </title>
-    <meta name="description" content="PAYS TO YOU | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+<meta name="description" content="Multipurpose HTML template.">
 @endsection
 
 @section('content')
-<div class="section-slider row-20">
-    <div class="flexslider advanced-slider slider white" data-options="animation:fade">
-        <ul class="slides">
-            <li data-slider-anima="fade-left">
-                <div class="section-slide">
-                    <div class="bg-cover" style="background-image:url('front/banner1.jpg')">
+
+        <!--=======Banner-Section Starts Here=======-->
+        <section class="banner-section" id="home">
+            <div class="banner-bg d-lg-none">
+                <img src="front/assets/images/banner/banner-bg2.jpg" alt="banner">
+            </div>
+            <div class="banner-bg d-none d-lg-block bg_img" data-background="front/assets/images/banner/banner.jpg">
+                <div class="chart-1 wow fadeInLeft" data-wow-delay=".5s" data-wow-duration=".7s">
+                    <img src="front/assets/images/banner/chart1.png" alt="banner">
+                </div>
+                <div class="chart-2 wow fadeInDown" data-wow-delay="1s" data-wow-duration=".7s">
+                    <img src="front/assets/images/banner/chart2.png" alt="banner">
+                </div>
+                <div class="chart-3 wow fadeInRight" data-wow-delay="1.5s" data-wow-duration=".7s">
+                    <img src="front/assets/images/banner/chart3.png" alt="banner">
+                </div>
+                <div class="chart-4 wow fadeInUp" data-wow-delay="2s" data-wow-duration=".7s">
+                    <img src="front/assets/images/banner/clock.png" alt="banner">
+                </div>
+            </div>
+            <div class="animation-area d-none d-lg-block">
+                <div class="plot">
+                    <img src="front/assets/images/banner/plot.png" alt="banner">
+                </div>
+                <div class="element-1 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/light.png" alt="banner">
+                </div>
+                <div class="element-2 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/coin1.png" alt="banner">
+                </div>
+                <div class="element-3 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/coin2.png" alt="banner">
+                </div>
+                <div class="element-4 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/coin3.png" alt="banner">
+                </div>
+                <div class="element-5 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/coin4.png" alt="banner">
+                </div>
+                <div class="element-6 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/coin5.png" alt="banner">
+                </div>
+                <div class="element-7 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/coin6.png" alt="banner">
+                </div>
+                <div class="element-8 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/sheild.png" alt="banner">
+                </div>
+                <div class="element-9 wow fadeIn" data-wow-delay="1s">
+                    <img src="front/assets/images/banner/coin7.png" alt="banner">
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6 offset-lg-6 offset-xl-7">
+                        <div class="banner-content">
+                            <h1 class="title">Simply <span>Profitably </span> Conveniently</h1>
+                            <p>
+                                A Profitable platform for high-margin investment
+                            </p>
+                            <div class="button-group">
+                                <a href="#0" class="custom-button">Get Started Now!</a>
+                                <a href="https://www.youtube.com/watch?v=GT6-H4BRyqQ" class="popup video-button"><i class="flaticon-play"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="container">
-                        <div class="container-middle">
-                            <div class="container-inner text-left text-center-sm">
-                                <div class="row vertical-row">
-                                    <div class="col-md-12">
-                                        <h1 class="text-light text-xl anima text-center">Welcome to PAYS TO YOU</h1>
-                                        <p class="text-light anima text-center">PAYS TO YOU is here to help those who seek easy ways to earn money online. It is a platform that pays you on each ad you view. Simply sign up now and start making money!</p>
-                                        <hr class="space xs" />
-                                        <hr class="space visible-sm" />
+                </div>
+            </div>
+        </section>
+        <!--=======Banner-Section Ends Here=======-->
+
+
+        <!--=======Counter-Section Starts Here=======-->
+        <div class="counter-section">
+            <div class="container">
+                <div class="row align-items-center mb-30-none justify-content-center">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="counter-item">
+                            <div class="counter-thumb">
+                                <img src="front/assets/images/counter/counter01.png" alt="counter">
+                            </div>
+                            <div class="counter-content">
+                                <div class="counter-header">
+                                    <h3 class="title odometer" data-odometer-final="{{App\Models\User::active()->count()}}">{{App\Models\User::active()->count()}}</h3>
+                                </div>
+                                <p>Registered users</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="counter-item">
+                            <div class="counter-thumb">
+                                <img src="front/assets/images/counter/counter02.png" alt="counter">
+                            </div>
+                            <div class="counter-content">
+                                <div class="counter-header">
+                                    <h3 class="title odometer" data-odometer-final="{{App\Models\User::pending()->count()}}">{{App\Models\User::pending()->count()}}</h3>
+                                </div>
+                                <p>Pending User</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="counter-item">
+                            <div class="counter-thumb">
+                                <img src="front/assets/images/counter/counter03.png" alt="counter">
+                            </div>
+                            <div class="counter-content">
+                                <div class="counter-header">
+                                    <h3 class="title">PKR</h3><h3 class="odometer title" data-odometer-final="{{App\Models\Withdraw::sum('payment')}}"> {{App\Models\Withdraw::sum('payment')}}</h3>
+                                </div>
+                                <p>Total Withdraw</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--=======Counter-Section Ends Here=======-->
+
+
+        <!--=======About-Section Starts Here=======-->
+        <section class="about-section padding-top padding-bottom" id="about">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 d-none d-lg-block rtl">
+                        <img src="front/assets/images/about/about.png" alt="about">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="section-header left-style">
+                            <span class="cate">WELCOME TO PAYS TO YOU</span>
+                            <h2 class="title">About PAYS TO YOU</h2>
+                            <p>
+                                Paystoyou is a registered online platform for those who want to earn money online. Simply sign up make a deposit to view ads and earn money. Paystoyou has been dreaming of devoting all its energies to the welfare of the poor in our country. Paystoyou has also felt the pain and sorrow that people suffer from poverty, particularly women and children who are unable to go to school and obtain proper medical care. This is the online 100% secure method to earn money from home.So lets started work with us and start handsome earning from home.
+                            </p>
+                        </div>
+                        <div class="about--content">
+                            <div class="about-item">
+                                <div class="about-thumb">
+                                    <img src="front/assets/images/about/about01.png" alt="about">
+                                </div>
+                                <div class="about-content">
+                                    <h5 class="title">Secure & Reliable</h5>
+                                    <p>
+                                        Secure assets fund for users
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="about-item">
+                                <div class="about-thumb">
+                                    <img src="front/assets/images/about/about02.png" alt="about">
+                                </div>
+                                <div class="about-content">
+                                    <h5 class="title">Fast Withdrawals</h5>
+                                    <p>
+                                        Quick money withdrawals for users
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="about-item">
+                                <div class="about-thumb">
+                                    <img src="front/assets/images/about/about03.png" alt="about">
+                                </div>
+                                <div class="about-content">
+                                    <h5 class="title">Guaranteed</h5>
+                                    <p>
+                                        Your return on investment is guaranteed
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=======About-Section Ends Here=======-->
+
+
+        <!--=======Feature-Section Starts Here=======-->
+        <section class="feature-section padding-top padding-bottom bg_img" data-background="./front/assets/images/feature/feature-bg.png" id="feature">
+            <div class="ball-1" data-paroller-factor="-0.30" data-paroller-factor-lg="0.60"
+            data-paroller-type="foreground" data-paroller-direction="horizontal">
+                <img src="front/assets/images/balls/ball1.png" alt="balls">
+            </div>
+            <div class="ball-2" data-paroller-factor="-0.30" data-paroller-factor-lg="0.60"
+            data-paroller-type="foreground" data-paroller-direction="horizontal">
+                <img src="front/assets/images/balls/ball2.png" alt="balls">
+            </div>
+            <div class="ball-3" data-paroller-factor="0.30" data-paroller-factor-lg="-0.30"
+            data-paroller-type="foreground" data-paroller-direction="horizontal">
+                <img src="front/assets/images/balls/ball3.png" alt="balls">
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="section-header">
+                            <span class="cate">Our Amazing Features</span>
+                            <h2 class="title">
+                                why should you invest
+                            </h2>
+                            <p class="mw-100">
+                                We are worldwide investment company who are committed to the principle of revenue  
+                                maximization and reduction of the financial risks at investing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center feature-wrapper">
+                    <div class="col-md-6 col-sm-10 col-lg-4">
+                        <div class="feature-item">
+                            <div class="feature-thumb">
+                                <img src="front/assets/images/feature/feature01.png" alt="feature">
+                            </div>
+                            <div class="feature-content">
+                                <h5 class="title">Profitable Investment</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-10 col-lg-4">
+                        <div class="feature-item">
+                            <div class="feature-thumb">
+                                <img src="front/assets/images/feature/feature02.png" alt="feature">
+                            </div>
+                            <div class="feature-content">
+                                <h5 class="title">DDS Protection</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-10 col-lg-4">
+                        <div class="feature-item">
+                            <div class="feature-thumb">
+                                <img src="front/assets/images/feature/feature03.png" alt="feature">
+                            </div>
+                            <div class="feature-content">
+                                <h5 class="title">24/7 Support Center</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=======Feature-Section Ends Here=======-->
+
+
+        <!--=======How-Section Starts Here=======-->
+        <section class="get-section padding-top padding-bottom">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8">
+                        <div class="section-header">
+                            <span class="cate">get to know</span>
+                            <h2 class="title">how we work?</h2>
+                            <p>
+                                Follow these simple steps and make profit!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hover-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 d-lg-block d-none">
+                            <div class="hover-tab-area">
+                                <div class="tab-area">
+                                    <div class="tab-item active first">
+                                        <img src="front/assets/images/how/how01.png" alt="how">
+                                    </div>
+                                    <div class="tab-item second">
+                                        <img src="front/assets/images/how/how02.png" alt="how">
+                                    </div>
+                                    <div class="tab-item third">
+                                        <img src="front/assets/images/how/how03.png" alt="how">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-9">
+                            <div class="hover-tab-menu">
+                                <ul class="tab-menu">
+                                    <li class="active">
+                                        <div class="menu-thumb">
+                                            <span>
+                                                01
+                                            </span>
+                                        </div>
+                                        <div class="menu-content">
+                                            <h5 class="title">Instant  registration</h5>
+                                            <p>
+                                                Click <a href="{{route('user.register')}}">Sign Up</a> to fill the blank, our 256 SSL will Protect your privacy.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="menu-thumb">
+                                            <span>
+                                                02
+                                            </span>
+                                        </div>
+                                        <div class="menu-content">
+                                            <h5 class="title">MAKE AN INVEST</h5>
+                                            <p>
+                                                <a href="{{route('user.login')}}">Login</a> your account to click invest to start to earn the profit.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="menu-thumb">
+                                            <span>
+                                                03
+                                            </span>
+                                        </div>
+                                        <div class="menu-content">
+                                            <h5 class="title">get profit</h5>
+                                            <p>
+                                                You will get your profit on your profile, also you will get Instant Payment
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </li>
-        </ul>
-    </div>
+            </div>
+        </section>
+        <!--=======How-Section Ends Here=======-->
 
 
-</div>
-<div class="section-bg-image parallax-window" data-natural-height="750" data-natural-width="1920" data-parallax="scroll" data-image-src="{{asset('front/images/bg-13.jpg')}}">
-    <div class="container content">
-        <div class="row">
-            
-                      <marquee behavior="move" direction="left">   @foreach (App\Models\Ticker::all() as $ticker)
-                    {{$ticker->message}} .
-                        @endforeach
-    </marquee>
-            <div class="col-md-4">
-                <div class="icon-box icon-box-top-bottom">
-                    <div class="icon-box-cell">
-                        <i class="im-cool-guy text-xl"></i>
+        <!--=======Check-Section Starts Here=======-->
+        <section class="call-section call-overlay bg_img" data-background="front/assets/images/call/call-bg.jpg">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="call--item">
+                            <span class="cate">Why We are always ready</span>
+                            <h3 class="title">Request a call back</h3>
+                        </div>
                     </div>
-                    <div class="icon-box-cell">
-                        <b><label class="text-l" data-to="{{App\Models\User::active()->count()}}">{{App\Models\User::active()->count()}}</label></b>
-                        <p>Registered users</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="icon-box icon-box-top-bottom">
-                    <div class="icon-box-cell">
-                        <i class="im-business-manwoman text-xl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <b><label class=" text-l" data-to="{{App\Models\User::pending()->count()}}">{{App\Models\User::pending()->count()}}</label></b>
-                        <p>Pending users</p>
+                    <div class="col-lg-5">
+                        <div class="call-button">
+                            <a href="Tel:0939303" class="call">
+                                <img src="front/assets/images/call/icon02.png" alt="call">
+                            </a>
+                            <a href="{{url('contact_us')}}" class="custom-button"> Contact Support</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="icon-box icon-box-top-bottom">
-                    <div class="icon-box-cell">
-                        <i class="im-coins text-xl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <b><label class=" text-l"  data-to="{{App\Models\Withdraw::all()->sum('payment')}}">{{App\Models\Withdraw::all()->sum('payment')}}</label></b>
-                        <p>Total Withdraw</p>
-                    </div>
-                </div>
+        </section>
+        <!--=======Check-Section Ends Here=======-->
+
+
+
+        <!--=======Latest-Transaction-Section Starts Here=======-->
+        <section class="latest-transaction padding-top padding-bottom" id="transaction">
+            <div class="transaction-bg bg_img" data-background="front/assets/images/transaction/transaction-bg.png">
+                <span class="d-none">Image</span>
             </div>
-        </div>
-    </div>
-</div>
-<div class="section-empty section-border">
-    <div class="container content">
-        <div class="row vertical-row">
-                <div class="col-md-12 text-center">
-                    <h4>LATEST WITHDRAWS</h4>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-7">
+                        <div class="section-header">
+                            <h2 class="title">OUR PACKAGES OFFER</h2>
+                        </div>
+                    </div>
                 </div>
-            </div>  
-              <div class="row">
-                              @foreach (App\Models\Withdraw::orderBy('created_at','DESC')->get()->take(16)  as $key => $withdraw)
-@if($withdraw->status=="Completed")
-@if (($key+1)%2==0)
-                <div class="col-md-6">
-                    <div class="list-items text-left">
-                        <div class="list-item list-item-img">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <i class="onlycover circle icon" style="background-image:url({{asset('verify.png')}})"></i>
-                                    <h3>{{$withdraw->user->fname}}</h3>
-                                    <p>
-                                    {{Carbon\Carbon::parse($withdraw->updated_at)->diffForHumans()}}
-                                    </p>
-                                     <p>
-                                     <button class="btn btn-success">{{$withdraw->status}}</button>
-                                    </p>
+                <div class="tab transaction-tab d-flex flex-wrap justify-content-center">
+                  
+                    <div class="tab-area">
+                        <div class="tab-item active">
+                            <div class="row justify-content-center mb-30-none">
+                                @foreach (App\Models\Package::all()->take(8) as $package)
+                                <div class="col-lg-4 col-xl-3 col-sm-6">
+                                    <div class="transaction-item">
+                                        <div class="transaction-header">
+                                            <h5 class="title">{{$package->name}}</h5>
+                                            <span class="date">FOR {{$package->package_validity}} Days</span>
+                                        </div>
+                                        <div class="transaction-thumb">
+                                            <img src="front/assets/images/transaction/transaction02.png" alt="transaction">
+                                        </div>
+                                        <div class="transaction-footer">
+                                            <span class="amount">Total Earning: PKR {{$package->t_earning}}</span>
+                                            <span class="amount">Earning Per Day: PKR {{$package->day}}</span>
+                                            {{-- <span class="amount">Earning Per Referral : {{$package->click}} % </span> --}}
+                                            <span class="amount">Daily Ads: {{$package->ads}}</span>
+                                            <span class="amount">Package Amount</span>
+                                            <h5 class="sub-title">PKR {{$package->price}}</h5>
+                                            <a href="{{route('user.login')}}" class="custom-button">Invest now</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <span>RS {{$withdraw->payment}} /-</span>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=======Latest-Transaction-Section Ends Here=======-->
+
+
+     
+     
+
+        <!--=======Check-Section Starts Here=======-->
+        <section class="client-section padding-bottom padding-top">
+            <div class="background-map">
+                <img src="front/assets/images/client/client-bg.png" alt="client">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="section-header left-style">
+                            <h2 class="title">HAPPY CLIENTS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-9">
+                        <div class="m--30">
+                            <div class="client-slider owl-carousel owl-theme">
+                                @foreach (App\Models\Review::all() as $key => $review)
+                                <div class="client-item">
+                                    <div class="client-content">
+                                        <p>
+                                            {{$review->message}}
+                                        </p>
+                                        <div class="rating">
+                                            @for ($i = 1; $i <= $review->star; $i++)
+                                            <span>
+                                                <i class="fas fa-star"></i>
+                                            </span>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                    <div class="client-thumb">
+                                        <a href="#0">
+                                            <img src="{{asset($review->image)}}" alt="client">
+                                        </a>
+                                    </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                @else
+            </div>
+        </section>
+        <!--=======Check-Section Ends Here=======-->
 
-                <div class="col-md-6">
-                    <div class="list-items text-left">
-                        <div class="list-item list-item-img">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <i class="onlycover circle icon" style="background-image:url({{asset('verify.png')}})"></i>
-                                   <h3>{{$withdraw->user->fname}}</h3>
-                                    <p>
-                                    {{Carbon\Carbon::parse($withdraw->updated_at)->diffForHumans()}}
-                                    </p>
-                                     <p>
-                                     <button class="btn btn-success">{{$withdraw->status}}</button>
-                                    </p>
-                                </div>
-                                <div class="col-md-3">
-                                    <span>RS {{$withdraw->payment}} /-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-@endif
-@endforeach
-               
-            </div>          
-        </div>
-        <hr class="space" />
-    </div>
-</div>
-
-<div class="section-bg-color">
-    <div class="container content">
-        <div class="row vertical-row">
-            <div class="col-md-12 text-center">
-                <h4>WHY CHOOSE US?
-                </h4>
-            </div>
-        </div>
-        <div class="flexslider carousel outer-navs" data-options="minWidth:230,itemMargin:30,numItems:4,directionNav:true">
-            <ul class="slides">
-                <li>
-                    <div class="advs-box advs-box-top-icon boxed-inverse" data-anima="rotate-20" data-trigger="hover">
-                        <i class="im-dna-2 icon circle anima"></i>
-                        <h3>DAILY INCOME</h3>
-                    </div>
-                </li>
-                <li>
-                    <div class="advs-box advs-box-top-icon boxed-inverse" data-anima="rotate-20" data-trigger="hover">
-                        <i class="im-double-tap icon circle anima"></i>
-                        <h3>EASY TO USE</h3>
-                    </div>
-                </li>
-                <li>
-                    <div class="advs-box advs-box-top-icon boxed-inverse" data-anima="rotate-20" data-trigger="hover">
-                        <i class="im-dropbox icon circle anima"></i>
-                        <h3>24/7 SUPPORT</h3>
-                    </div>
-                </li>
-                <li>
-                    <div class="advs-box advs-box-top-icon boxed-inverse" data-anima="rotate-20" data-trigger="hover">
-                        <i class="im-pen-3 icon circle anima"></i>
-                        <h3>REGISTER COMPANY</h3>
-                    </div>
-                </li>
-                <li>
-                    <div class="advs-box advs-box-top-icon boxed-inverse" data-anima="rotate-20" data-trigger="hover">
-                        <i class="im-compass icon circle anima"></i>
-                        <h3>SIMPLE & CLEAN</h3>
-                    </div>
-                </li>
-                <li>
-                    <div class="advs-box advs-box-top-icon boxed-inverse" data-anima="rotate-20" data-trigger="hover">
-                        <i class="im-checked-user icon circle anima"></i>
-                        <h3>HAPPY CLIENTS</h3>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="section-bg-image parallax-window" data-natural-height="750" data-natural-width="1920" data-parallax="scroll" data-image-src="{{asset('front/images/bg-13.jpg')}}">
-    <div class="container content">
-      <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center"><b>OUR PACKAGES</b></h1>
-            </div>
-        </div>
-        <div class="row vertical-row">
-            @foreach (App\Models\Package::all()->take(8) as $package)
-            <div class="col-md-3">
-                <div class="advs-box advs-box-side-icon boxed-inverse">
-                    <div class="caption-box text-center">
-                        <h3><span>PKR</span>{{$package->price}}</h3>
-                        <h3>{{$package->name}}</h3>
-                        <p class="text-center">
-                            Total Earning: PKR {{$package->t_earning}}
-                        </p>
-                        <p class="text-center">
-                            Earning Per Day: PKR {{$package->day}}
-                        </p> 
-                        <p class="text-center">
-                            Earning Per Referral : {{$package->click}} % 
-                        </p> 
-                        <p class="text-center">
-                            Daily Ads: {{$package->ads}}
-                        </p>  
-                        <p class="text-center">
-                            Package Validity in Days: {{$package->package_validity}} Days
-                        </p>
-                        <a href="{{route('user.login')}}" class="btn-text text-center">Deposit now</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-{{-- 
-<div class="section-empty">
-    <div class="container content">
-        <div class="row">
-            <div class="col-md-12 text-center-sm">
-                <h4 class="no-margins text-center">OUR CUSTOMER REVIEW VIDEOS</h4>
-                <hr class="space xs" />
-            </div>
-        </div>
-        <hr class="space m" />
-        <div class="grid-list">
-            <div class="grid-box small-margins row">
-                @foreach (App\Models\Video::all() as $video)
-                <div class="grid-item col-md-4">
-                    <div class="advs-box niche-box-team" data-anima="scale-up" data-trigger="hover">
-                        <a class="img-box">
-                            <video width="345" height="400" controls>
-                                <source src="{{asset($video->video)}}" type="video/mp4">
-                            </video>                        
-                        </a>
-                        <div class="content-box">
-                        <h2>{{$video->name}}</h2>
-                            <hr class="e" />
-                        </div>
-                    </div>
-                    <hr class="space s" />
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section-empty">
-    <div class="container content">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center"><b>OUR CUSTOMER REVIEW</b></h1>
-            </div>
-        </div>
-        <div class="flexslider carousel outer-navs" data-options="numItems:3,itemMargin:15,controlNav:true,directionNav:true">
-            <ul class="slides">
-                @foreach (App\Models\Review::all() as $key => $review)
-                <li>
-                    <div class="advs-box niche-box-testimonails-cloud">
-                        <p>
-                            “{{ $review->message }}’’
-                        </p>
-                        <div class="name-box vertical-row">
-                            <i class="vertical-col fa text-l circle onlycover" style="background-image:url('{{asset($review->image)}}')"></i>
-                            <h5 class="vertical-col subtitle">{{$review->name}} 
-                                <span class="subtxt">Customer Package Name: {{$review->p_name}}</span>
-                                <span class="subtxt">Customer Package Amount: {{$review->amount}}</span>
-                            </h5>
-                        </div>
-                    </div>
-                </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-</div> --}}
-
-<div class="section-empty">
-    <div class="container content">
-        <h4 class="text-center">Frequntly asked questions</h4>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="list-group accordion-list">
-                    <div class="list-group-item">
-                        <a href="#">What is paystoyou.online?</a>
-                        <div class="panel">
-                            <div class="inner">
-                                It is a registered online platform for those who want to earn money online. Simply sign up make a deposit to view ads and earn money.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <a href="#">How many accounts can I open on the site?</a>
-                        <div class="panel">
-                            <div class="inner">
-                               You can open multiple accounts at a time.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <a href="#"> How secure user accounts and personal data?</a>
-                        <div class="panel">
-                            <div class="inner">
-                                This is an online 100 percent secure method of earning money from home by watching adz that we provide you and secure payment with a secure payment method instantly to your account without any fees or charges, so let's get started working with us and start making comfortable home earnings.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="list-group accordion-list">
-                    <div class="list-group-item">
-                        <a href="#"> What is the minimum withdraw you can?</a>
-                        <div class="panel">
-                            <div class="inner">
-                                The Minimum withdrawal limit depends upon the subscribed package.
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <a href="#">What is refferal program?</a>
-                        <div class="panel">
-                            <div class="inner">
-                             One can make as many refferals as can by sharing his unique refferal link. He get paid on every earning of his refferal.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <a href="#"> What's our withdrawal method?</a>
-                        <div class="panel">
-                            <div class="inner">
-                               Our payment methods are Jazzcash, Easypaisa, Cashmaal, Skrill and Bank transfer.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="space" />
-    </div>
-</div>
-{{-- <div class="section-empty">
-    <div class="container content">
-        <div class="row">
-            <div class="col-md-8 col-center text-center">
-                <h4>Contact us now</h4>
-                <hr class="space s" />
-                <ul class="fa-ul text-center">
-                    <li><i class="fa-li im-headset"></i>Visit our Facebook Page: <a href="https://www.facebook.com/groups/cashpayearnofficial?_rdc=1&_rdr">PAYS TO YOU Official</a></li>
-                </ul>
-                <hr class="space m" />
-                <form action="{{route('admin.message.store')}}"  method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <input id="name" name="name" placeholder="Name" type="text" class="form-control form-value" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input id="email" name="email" placeholder="Email" type="email" class="form-control form-value" required>
-                        </div>
-                    </div>  
-                    <hr class="space xs" />
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input id="subject" name="subject" placeholder="Subject" type="text" class="form-control form-value" required>
-                        </div>
-                    </div>
-                    <hr class="space xs" />
-                    <div class="row">
-                        <div class="col-md-12">
-                            <textarea id="message" name="message" placeholder="Type here your message" class="form-control form-value" required></textarea>
-                            <hr class="space s" />
-                            <button class="btn btn-primary" type="submit"><i class="im-mail-send"></i>Send Message</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <hr class="space" />
-    </div>
-</div> --}}
 @endsection

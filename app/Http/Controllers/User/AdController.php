@@ -31,14 +31,14 @@ class AdController extends Controller
           toastr()->success('You reached Dashboard Successfully,Dont try to cheat us');
          return redirect(route('user.dashboard.index'));
        }
+      //Per Click Earning
+      // $user1 = User::find($user->refer_by);
 
-      $user1 = User::find($user->refer_by);
-
-      if($user1){
-          $user1->r_earning += (($user1->package->click/100)*($package->day/$package->ads));
-          $user1->balance += (($user1->package->click/100)*($package->day/$package->ads));
-          $user1->save();
-      }
+      // if($user1){
+      //     $user1->r_earning += (($user1->package->click/100)*($package->day/$package->ads));
+      //     $user1->balance += (($user1->package->click/100)*($package->day/$package->ads));
+      //     $user1->save();
+      // }
 
       $ad= Ad::find($id);
       $user = Auth::user();
