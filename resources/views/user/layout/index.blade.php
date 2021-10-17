@@ -114,6 +114,24 @@
 						</ul>
 
 					</li>
+					<li class="sidebar-item {{Request::is('user.balance_transfer.index')?'active':''}}">
+
+						<a class="sidebar-link" href="{{route('user.balance_transfer.index')}}">
+
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Balance Transfer</span>
+
+						</a>
+
+					</li>					
+					<li class="sidebar-item {{Request::is('user.transcation.index')?'active':''}}">
+
+						<a class="sidebar-link" href="{{route('user.transcation.index')}}">
+
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Transcations</span>
+
+						</a>
+
+					</li>
 
 					<li class="sidebar-item {{Request::is('user.refer.index')?'active':''}}">
 
@@ -245,7 +263,6 @@
 						</ul>
 
 					</li>
-
 
 					<li class="sidebar-item {{Request::is('user.refer.index')?'active':''}}">
 

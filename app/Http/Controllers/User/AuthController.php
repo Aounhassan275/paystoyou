@@ -54,11 +54,12 @@ class AuthController extends Controller
         if($request->code)
         { 
          
-            $user= User::where('code',$request->code)->first();
-            
+            $user= User::where('left',$request->code)
+            ->orWhere('right',$request->code)->first();
             if($user){
             //     $user->balance+= (($user->package->r_earning/100)*$user->package->price);
             //     $user->save();
+           
              $validator = Validator::make($request->all(),[
                 'name' => 'required|unique:users'
             ]);
@@ -67,10 +68,24 @@ class AuthController extends Controller
                 toastr()->error('Username  already exists');
                 return redirect()->back();
             }
+         
+            if($user->left == $request->code)
+            {
                 User::create([
-                    'code' => uniqid(),
-                    'refer_by' => $user->id
+                    'left' => uniqid(),
+                    'right' => uniqid(),
+                    'refer_by' => $user->id,
+                    'refer_type' => 'Left',
                 ]+$request->all());
+            }else{
+                User::create([
+                    'left' => uniqid(),
+                    'right' => uniqid(),
+                    'refer_by' => $user->id,
+                    'refer_type' => 'Right',
+                ]+$request->all());
+            }
+              
             }
         }else{
            $validator = Validator::make($request->all(),[
@@ -82,7 +97,8 @@ class AuthController extends Controller
                 return redirect()->back();
             }
             User::create([
-                'code' => uniqid()
+                'left' => uniqid(),
+                'right' => uniqid(),
             ]+$request->all());
             
         }

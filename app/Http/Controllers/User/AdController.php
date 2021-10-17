@@ -44,7 +44,8 @@ class AdController extends Controller
       $user = Auth::user();
       $earning =Earning::create([
         "user_id" => $user->id,
-        "price" => $package->day/$package->ads
+        "price" => $package->day/$package->ads,
+        "type" => 'ad_earning'
       ]);
       $play = Play::create([
         "user_id" => $user->id,

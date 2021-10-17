@@ -110,7 +110,10 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
        Route::view('referral', 'user.ad.referral')->name('ad.referral');
         /*******************Video ROUTES*************/
     Route::view('video', 'user.video.index')->name('video.index');
-
+    /*******************Balance Transfer ROUTES*************/
+    Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
+    /******************TRANSCATIONS  ROUTES****************/
+    Route::resource('transcation', 'TranscationController'); 
 });
 
 

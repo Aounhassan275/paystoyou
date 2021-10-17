@@ -44,12 +44,12 @@
                     </div>
                     <div class="how-content">
                         <h5 class="title">{{$package->name}}</h5>
-                        <span class="amount">Total Earning: PKR {{$package->t_earning}}</span><br>
-                        <span class="amount">Earning Per Day: PKR {{$package->day}}</span><br>
+                        <span class="amount">Total Earning: $ {{$package->t_earning}}</span><br>
+                        <span class="amount">Earning Per Day: $ {{$package->day}}</span><br>
                         {{-- <span class="amount">Earning Per Referral : {{$package->click}} % </span><br> --}}
                         <span class="amount">Daily Ads: {{$package->ads}}</span><br>
                         <span class="amount">Package Amount</span><br>
-                        <h5 class="sub-title">PKR {{$package->price}}</h5>
+                        <h5 class="sub-title">$ {{$package->price}}</h5>
                         <a href="{{route('user.login')}}">Start Now <i class="flaticon-right"></i></a>
                     </div>
                 </div>

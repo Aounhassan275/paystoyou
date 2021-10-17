@@ -20,7 +20,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','fname','phone', 'email', 'password','city','status','code','balance','refer_by','ad_view','cnic','address','r_earning','package_id','a_date','image', 'verification'
+        'name','fname','phone', 'email', 'password','city','status','left','right','left_refferal',
+        'right_refferal','left_amount','right_amount','refer_type','balance','refer_by','ad_view','cnic',
+        'address','r_earning','package_id', 'a_date','image', 'verification'
     ];
 
     /**
@@ -173,5 +175,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\User','refer_by');
     }
-    
+    public function transcations()
+    {
+        return $this->hasMany('App\Models\Transcation');
+    }
 }

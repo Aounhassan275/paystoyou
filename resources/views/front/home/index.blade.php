@@ -115,7 +115,7 @@
                             </div>
                             <div class="counter-content">
                                 <div class="counter-header">
-                                    <h3 class="title">PKR</h3><h3 class="odometer title" data-odometer-final="{{App\Models\Withdraw::sum('payment')}}"> {{App\Models\Withdraw::sum('payment')}}</h3>
+                                    <h3 class="title">$ </h3><h3 class="odometer title" data-odometer-final="{{App\Models\Withdraw::sum('payment')}}"> {{App\Models\Withdraw::sum('payment')}}</h3>
                                 </div>
                                 <p>Total Withdraw</p>
                             </div>
@@ -387,12 +387,12 @@
                                             <img src="front/assets/images/transaction/transaction02.png" alt="transaction">
                                         </div>
                                         <div class="transaction-footer">
-                                            <span class="amount">Total Earning: PKR {{$package->t_earning}}</span>
-                                            <span class="amount">Earning Per Day: PKR {{$package->day}}</span>
+                                            <span class="amount">Total Earning: $ {{$package->t_earning}}</span>
+                                            <span class="amount">Earning Per Day: $ {{$package->day}}</span>
                                             {{-- <span class="amount">Earning Per Referral : {{$package->click}} % </span> --}}
                                             <span class="amount">Daily Ads: {{$package->ads}}</span>
                                             <span class="amount">Package Amount</span>
-                                            <h5 class="sub-title">PKR {{$package->price}}</h5>
+                                            <h5 class="sub-title">$ {{$package->price}}</h5>
                                             <a href="{{route('user.login')}}" class="custom-button">Invest now</a>
                                         </div>
                                     </div>

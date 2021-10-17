@@ -56,10 +56,8 @@
                         </div>
     
                         <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{asset('1.png')}}" alt="" />
-                                </div>                                <div class="m-sm-4">
+                            <div class="card-body"> 
+                                <div class="m-sm-4">
                                 <form method="POST" action="{{route('admin.login')}}">
                                     @csrf
                                         <div class="form-group">

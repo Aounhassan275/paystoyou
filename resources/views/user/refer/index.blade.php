@@ -16,9 +16,13 @@
                 <form >
                    <div class="row">
                        
-                        <div class="form-group col-12">
-                            <label class="form-label">Copy Link</label>
-                            <input type="text" class="form-control" name="" value="{{url('user/register',$user->code)}}" readonly>                       
+                        <div class="form-group col-6">
+                            <label class="form-label">Copy Link For Left Pair</label>
+                            <input type="text" class="form-control" name="" value="{{url('user/register',$user->left)}}" readonly>                       
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="form-label">Copy Link For Right Pair</label>
+                            <input type="text" class="form-control" name="" value="{{url('user/register',$user->right)}}" readonly>                       
                         </div>
                    </div>
                 </form>

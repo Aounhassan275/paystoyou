@@ -38,7 +38,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('1234'),
             'city' => 'Sargodha',
             'address' => 'Farooq Colony',
-            'code' => uniqid(),
+            'left' => uniqid(),
+            'right' => uniqid(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],
             
@@ -50,7 +51,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('1234'),
             'city' => 'Sargodha',
             'address' => 'Farooq Colony',
-            'code' => uniqid(),
+            'left' => uniqid(),
+            'right' => uniqid(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],
         ]);

@@ -53,7 +53,7 @@
                     </div>
                     <div class="investor-content">
                         <h5 class="title"><a href="#0">{{$withdraw->user->name}}</a></h5>
-                    <h3 class="amount">PKR {{$withdraw->payment}}</h3>
+                    <h3 class="amount">$ {{$withdraw->payment}}</h3>
                     </div>
                 </div>
                 @endforeach
