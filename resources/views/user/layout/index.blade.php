@@ -416,11 +416,6 @@
           			<i class="hamburger align-self-center"></i>
 
        			</a>
-				<a class="sidebar-toggle d-flex mr-2">
-
-					<a href="https://web.facebook.com/groups/advertfoxxofficial/" class="btn btn-primary">Follow Us On Facebook</a>
-       			</a>
-				   
 				<div class="navbar-collapse collapse">
 
 					<ul class="navbar-nav ml-auto">

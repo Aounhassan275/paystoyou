@@ -38,6 +38,31 @@ class DepositController extends Controller
                         "price" => $direct_income,
                         "type" => 'direct_income'
                     ]);
+                    if($refer_by->left_refferal != null &&  $refer_by->right_refferal != null )
+                    {
+                        if($refer_by->left_amount > $refer_by->right_amount)
+                        {
+                            $refer_by->update([
+                                'balance' => $refer_by->balance += $refer_by->right_amount,
+                                'r_earning' => $refer_by->r_earning += $refer_by->right_amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $refer_by->id,
+                                "price" => $refer_by->right_amount,
+                                "type" => 'matching_income'
+                            ]);
+                        }else{
+                            $refer_by->update([
+                                'balance' => $refer_by->balance += $refer_by->left_amount,
+                                'r_earning' => $refer_by->r_earning += $refer_by->left_amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $refer_by->id,
+                                "price" => $refer_by->left_amount,
+                                "type" => 'matching_income'
+                            ]);
+                        }
+                    }
                 }else{
                     $owner_left_refer = User::where('refer_by',$refer_by->id)->where('left_refferal',null)->first();
                     $refer_by->update([
@@ -77,7 +102,6 @@ class DepositController extends Controller
                                 "type" => 'matching_income'
                             ]);
                         }
-                        
                     }
                 }
             }else{
@@ -94,6 +118,31 @@ class DepositController extends Controller
                         "price" => $direct_income,
                         "type" => 'direct_income'
                     ]);
+                    if($refer_by->left_refferal != null &&  $refer_by->right_refferal != null )
+                    {
+                        if($refer_by->left_amount > $refer_by->right_amount)
+                        {
+                            $refer_by->update([
+                                'balance' => $refer_by->balance += $refer_by->right_amount,
+                                'r_earning' => $refer_by->r_earning += $refer_by->right_amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $refer_by->id,
+                                "price" => $refer_by->right_amount,
+                                "type" => 'matching_income'
+                            ]);
+                        }else{
+                            $refer_by->update([
+                                'balance' => $refer_by->balance += $refer_by->left_amount,
+                                'r_earning' => $refer_by->r_earning += $refer_by->left_amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $refer_by->id,
+                                "price" => $refer_by->left_amount,
+                                "type" => 'matching_income'
+                            ]);
+                        }
+                    }
                 }else{
                     $owner_right_refer = User::where('refer_by',$refer_by->id)->where('right_refferal',null)->first();
                     $refer_by->update([
@@ -137,7 +186,7 @@ class DepositController extends Controller
                 }
             }
             $main_owner = User::find($user->main_owner);
-            if($main_owner->main_owner_referral->count() > 0)
+            if($main_owner->main_owner_referral->count() > 0 && $user->refer_by != $main_owner->id)
             {
                 if($main_owner->main_owner_referral->where('refer_type','Left')->count() == $main_owner->main_owner_referral->where('refer_type','Left')->count())
                 {

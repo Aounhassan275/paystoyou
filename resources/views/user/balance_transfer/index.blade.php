@@ -17,7 +17,7 @@
                    @csrf
                    <div class="row">
                         <div class="form-group col-6">
-                            <label class="form-label">Amount Payment</label>
+                            <label class="form-label">Transfer Payment</label>
                             <input type="number"    name="amount" class="form-control"  required>                        
                             <input type="hidden"  name="sender_id" class="form-control" value="{{Auth::user()->id}}" required>                        
                         </div>
