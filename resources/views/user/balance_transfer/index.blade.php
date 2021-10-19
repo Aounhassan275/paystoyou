@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group col-6">
                             <label class="form-label">Members</label>
-                            <select name="receiver_id" class="form-control" required>
+                            <select name="receiver_id" class="form-control select2" required>
                                 <option selected disabled>Select</option>
                                 @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
@@ -40,4 +40,19 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    $(function() {
+        // Select2
+        $(".select2").each(function() {
+            $(this)
+                .wrap("<div class=\"position-relative\"></div>")
+                .select2({
+                    placeholder: "Select value",
+                    dropdownParent: $(this).parent()
+                });
+        })
+    });
+</script>
 @endsection

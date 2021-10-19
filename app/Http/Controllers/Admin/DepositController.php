@@ -144,7 +144,7 @@ class DepositController extends Controller
                         }
                     }
                 }else{
-                    $owner_right_refer = User::where('refer_by',$refer_by->id)->where('right_refferal',null)->first();
+                    $owner_right_refer = User::where('refer_by',$refer_by->id)->orWhere('main_owner',$refer_by->id)->where('right_refferal',null)->first();
                     $refer_by->update([
                         'balance' => $refer_by->balance += $direct_income,
                         'r_earning' => $refer_by->r_earning += $direct_income,
@@ -188,16 +188,18 @@ class DepositController extends Controller
             $main_owner = User::find($user->main_owner);
             if($main_owner->main_owner_referral->count() > 0 && $user->refer_by != $main_owner->id)
             {
-                if($main_owner->main_owner_referral->where('refer_type','Left')->count() == $main_owner->main_owner_referral->where('refer_type','Left')->count())
+                $total_left = $main_owner->main_owner_referral->where('refer_type','Left')->count();
+                $total_right = $main_owner->main_owner_referral->where('refer_type','Right')->count();
+                if($total_left == $total_right)
                 {
-                    $last_left_refferal = $main_owner->main_owner_referral->where('refer_type','Left')->orderBy('id', 'DESC')->first();
+                    $last_left_refferal = $main_owner->main_owner_referral->where('refer_type','Left')->last();
                     if($last_left_refferal->left_amount > $last_left_refferal->right_amount)
                     {
                         $referral_left_amount = $last_left_refferal->right_amount; 
                     }else{
                         $referral_left_amount = $last_left_refferal->left_amount; 
                     }
-                    $last_right_refferal = $main_owner->main_owner_referral->where('refer_type','Right')->orderBy('id', 'DESC')->first();
+                    $last_right_refferal = $main_owner->main_owner_referral->where('refer_type','Right')->last();
                     if($last_right_refferal->left_amount > $last_right_refferal->right_amount)
                     {
                         $referral_right_amount = $last_right_refferal->right_amount; 
