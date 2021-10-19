@@ -187,6 +187,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\User','main_owner')->where('right_refferal','!=',null)->where('left_refferal','!=',null);
     }
+	public function main_owner_right()
+    {
+        return $this->hasMany('App\Models\User','main_owner')->where('right_refferal','!=',null);
+    }
+	public function main_owner_left()
+    {
+        return $this->hasMany('App\Models\User','main_owner')->where('left_refferal','!=',null);
+    }
 	public function refer_by_name($id)
     {
         $user = User::find($id);

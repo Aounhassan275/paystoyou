@@ -93,12 +93,12 @@ class DepositController extends Controller
                             ]);
                         }else{
                             $owner_left_refer->update([
-                                'balance' => $owner_left_refer->balance += $owner_left_refer->left_amount,
-                                'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->left_amount,
+                                'balance' => $owner_left_refer->balance += $owner_left_refer->left_amount*2,
+                                'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->left_amount*2,
                             ]);
                             Earning::create([
                                 "user_id" => $owner_left_refer->id,
-                                "price" => $owner_left_refer->left_amount,
+                                "price" => $owner_left_refer->left_amount*2,
                                 "type" => 'matching_income'
                             ]);
                         }
@@ -123,22 +123,22 @@ class DepositController extends Controller
                         if($refer_by->left_amount > $refer_by->right_amount)
                         {
                             $refer_by->update([
-                                'balance' => $refer_by->balance += $refer_by->right_amount,
-                                'r_earning' => $refer_by->r_earning += $refer_by->right_amount,
+                                'balance' => $refer_by->balance += $refer_by->right_amount*2,
+                                'r_earning' => $refer_by->r_earning += $refer_by->right_amount*2,
                             ]);
                             Earning::create([
                                 "user_id" => $refer_by->id,
-                                "price" => $refer_by->right_amount,
+                                "price" => $refer_by->right_amount*2,
                                 "type" => 'matching_income'
                             ]);
                         }else{
                             $refer_by->update([
-                                'balance' => $refer_by->balance += $refer_by->left_amount,
-                                'r_earning' => $refer_by->r_earning += $refer_by->left_amount,
+                                'balance' => $refer_by->balance += $refer_by->left_amount*2,
+                                'r_earning' => $refer_by->r_earning += $refer_by->left_amount*2,
                             ]);
                             Earning::create([
                                 "user_id" => $refer_by->id,
-                                "price" => $refer_by->left_amount,
+                                "price" => $refer_by->left_amount*2,
                                 "type" => 'matching_income'
                             ]);
                         }
@@ -163,22 +163,22 @@ class DepositController extends Controller
                         if($owner_right_refer->left_amount > $owner_right_refer->right_amount)
                         {
                             $owner_right_refer->update([
-                                'balance' => $owner_right_refer->balance += $owner_right_refer->right_amount,
-                                'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->right_amount,
+                                'balance' => $owner_right_refer->balance += $owner_right_refer->right_amount*2,
+                                'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->right_amount*2,
                             ]);
                             Earning::create([
                                 "user_id" => $owner_right_refer->id,
-                                "price" => $owner_right_refer->right_amount,
+                                "price" => $owner_right_refer->right_amount*2,
                                 "type" => 'matching_income'
                             ]);
                         }else{
                             $owner_right_refer->update([
-                                'balance' => $owner_right_refer->balance += $owner_right_refer->left_amount,
-                                'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->left_amount,
+                                'balance' => $owner_right_refer->balance += $owner_right_refer->left_amount*2,
+                                'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->left_amount*2,
                             ]);
                             Earning::create([
                                 "user_id" => $owner_right_refer->id,
-                                "price" => $owner_right_refer->left_amount,
+                                "price" => $owner_right_refer->left_amount*2,
                                 "type" => 'matching_income'
                             ]);
                         }
@@ -206,17 +206,42 @@ class DepositController extends Controller
                     }else{
                         $referral_right_amount = $last_right_refferal->left_amount; 
                     }
-                    $total_amount = $referral_right_amount + $referral_left_amount;
+                    if($referral_right_amount > $referral_left_amount)
+                    {
+                        $total_amount = $referral_left_amount; 
+                    }else{
+                        $total_amount = $referral_right_amount; 
+                    }
                     $main_owner->update([
-                        'balance' => $main_owner->balance += $total_amount,
-                        'r_earning' => $main_owner->r_earning += $total_amount,
+                        'balance' => $main_owner->balance += $total_amount*2,
+                        'r_earning' => $main_owner->r_earning += $total_amount*2,
                     ]);
                     Earning::create([
                         "user_id" => $main_owner->id,
-                        "price" => $total_amount,
+                        "price" => $total_amount*2,
                         "type" => 'matching_income'
                     ]);
                 }
+            }
+            if($main_owner->main_owner_left->where('refer_type','Left')->count() == $main_owner->main_owner_right->where('refer_type','Right')->count())
+            {
+                $last_left_ = $main_owner->main_owner_right->where('refer_type','Left')->last();
+                $last_right= $main_owner->main_owner_left->where('refer_type','Right')->last();
+                if($last_left_->left_amount > $last_right_refferal->right_amount)
+                {
+                    $total_amounts = $last_left_->right_amount; 
+                }else{
+                    $total_amounts = $last_right->left_amount; 
+                }
+                $main_owner->update([
+                    'balance' => $main_owner->balance += $total_amounts*2,
+                    'r_earning' => $main_owner->r_earning += $total_amounts*2,
+                ]);
+                Earning::create([
+                    "user_id" => $main_owner->id,
+                    "price" => $total_amounts*2,
+                    "type" => 'matching_income'
+                ]);
             }
                 
         }
