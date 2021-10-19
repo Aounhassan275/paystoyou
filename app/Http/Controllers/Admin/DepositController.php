@@ -225,13 +225,13 @@ class DepositController extends Controller
             }
             if($main_owner->main_owner_left->where('refer_type','Left')->count() == $main_owner->main_owner_right->where('refer_type','Right')->count())
             {
-                $last_left_ = $main_owner->main_owner_right->where('refer_type','Left')->last();
-                $last_right= $main_owner->main_owner_left->where('refer_type','Right')->last();
-                if($last_left_->left_amount > $last_right_refferal->right_amount)
+                $last_left_ = $main_owner->main_owner_left->where('refer_type','Left')->last();
+                $last_right= $main_owner->main_owner_right->where('refer_type','Right')->last();
+                if($last_left_->left_amount > $last_right->right_amount)
                 {
-                    $total_amounts = $last_left_->right_amount; 
+                    $total_amounts = $last_right->right_amount; 
                 }else{
-                    $total_amounts = $last_right->left_amount; 
+                    $total_amounts = $last_left_->left_amount; 
                 }
                 $main_owner->update([
                     'balance' => $main_owner->balance += $total_amounts*2,
@@ -243,7 +243,6 @@ class DepositController extends Controller
                     "type" => 'matching_income'
                 ]);
             }
-                
         }
         // dd($deposit);
         $user->update([
