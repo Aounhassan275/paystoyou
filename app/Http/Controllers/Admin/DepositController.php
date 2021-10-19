@@ -64,7 +64,7 @@ class DepositController extends Controller
                         }
                     }
                 }else{
-                    $owner_left_refer = User::where('refer_by',$refer_by->id)->where('left_refferal',null)->first();
+                    $owner_left_refer = User::where('refer_by',$refer_by->id)->orWhere('main_owner',$refer_by->id)->where('refer_type','Left')->where('left_refferal',null)->first();
                     $refer_by->update([
                         'balance' => $refer_by->balance += $direct_income,
                         'r_earning' => $refer_by->r_earning += $direct_income,
@@ -144,7 +144,7 @@ class DepositController extends Controller
                         }
                     }
                 }else{
-                    $owner_right_refer = User::where('refer_by',$refer_by->id)->orWhere('main_owner',$refer_by->id)->where('right_refferal',null)->first();
+                    $owner_right_refer = User::where('refer_by',$refer_by->id)->orWhere('main_owner',$refer_by->id)->where('right_refferal',null)->where('refer_type','Right')->first();
                     $refer_by->update([
                         'balance' => $refer_by->balance += $direct_income,
                         'r_earning' => $refer_by->r_earning += $direct_income,
