@@ -153,24 +153,24 @@
                             </form>
                         </div>
                         <div class="newslater-thumb">
-                            <img src="front/assets/images/footer/footer.png" alt="footer">
+                            <img src="{{asset('front/assets/images/footer/footer.png')}}" alt="footer">
                             <div class="coin-1">
-                                <img src="front/assets/images/footer/Coin_01.png" alt="footer">
+                                <img src="{{asset('front/assets/images/footer/Coin_01.png')}}" alt="footer">
                             </div>
                             <div class="coin-2">
-                                <img src="front/assets/images/footer/Coin_02.png" alt="footer">
+                                <img src="{{asset('front/assets/images/footer/Coin_02.png')}}" alt="footer">
                             </div>
                             <div class="coin-3">
-                                <img src="front/assets/images/footer/Coin_03.png" alt="footer">
+                                <img src="{{asset('front/assets/images/footer/Coin_03.png')}}" alt="footer">
                             </div>
                             <div class="coin-4">
-                                <img src="front/assets/images/footer/Coin_04.png" alt="footer">
+                                <img src="{{asset('front/assets/images/footer/Coin_04.png')}}" alt="footer">
                             </div>
                             <div class="coin-5">
-                                <img src="front/assets/images/footer/Coin_05.png" alt="footer">
+                                <img src="{{asset('front/assets/images/footer/Coin_05.png')}}" alt="footer">
                             </div>
                             <div class="coin-6">
-                                <img src="front/assets/images/footer/Coin_06.png" alt="footer">
+                                <img src="{{asset('front/assets/images/footer/Coin_06.png')}}" alt="footer">
                             </div>
                         </div>
                     </div>

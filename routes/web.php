@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::get('logout','AuthController@logout')->name('logout');
     /*******************Dashoard ROUTES*************/
     Route::view('dashboard', 'admin.dashboard.index')->name('dashboard.index');
+    Route::view('messages', 'admin.message.index')->name('messages.index');
     /******************ADMIN ROUTES****************/
       Route::resource('admin', 'AdminController');    
     /*******************Profile ROUTES*************/
@@ -137,5 +138,9 @@ Route::get('/cd', function() {
     Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
     Artisan::call('view:clear');
     return 'DONE';
+});
+Route::get('/migrate', function() {
+    Artisan::call('migrate');
+    return 'Migration done';
 });
 

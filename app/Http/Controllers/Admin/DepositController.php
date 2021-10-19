@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Helpers\Message;
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Deposit;
 use App\Models\Earning;
 use App\Models\Package;
@@ -177,6 +178,15 @@ class DepositController extends Controller
         ]);
         $deposit->update([
             'status' => 'old'
+        ]);
+        $employee = Admin::where('email','admin@pty.com')->first();
+        $admin = Admin::where('email','admin1@pty.com')->first();
+        $admin_amount = $deposit->amount/100 * 10; 
+        $admin->update([
+            'balance' => $admin->balance += $admin_amount
+        ]);
+        $employee->update([
+            'balance' => $admin->balance += $admin_amount
         ]);
         // Message::send($user->phone,'Dear '.$user->fname.
         // ',

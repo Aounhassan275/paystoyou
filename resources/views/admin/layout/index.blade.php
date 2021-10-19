@@ -57,6 +57,15 @@
 
 						</ul>
 					</li>
+					<li class="sidebar-item">
+						<a href="{{url('#deposit')}}" data-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Packages Deposit</span>
+						</a>
+						<ul id="deposit" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.deposit.index')}}">Deposit Request</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.deposit.show')}}">Deposit History</a></li>
+						</ul>
+					</li>
 					@else
 					<li class="sidebar-item">
 						<a href="{{url('#layouts')}}" data-toggle="collapse" class="sidebar-link collapsed">
@@ -67,8 +76,8 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.package.index')}}">View Package</a></li>
 						</ul>
 					</li>
-					<li class="sidebar-item {{Request::is('admin.message.index')?'active':''}}">
-						<a class="sidebar-link" href="{{route('admin.message.index')}}">
+					<li class="sidebar-item {{Request::is('admin.messages.index')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.messages.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Message</span>
 						</a>
 					</li>	

@@ -6,7 +6,39 @@
     <h3>DASHBOARD | PAYS TO YOU</h3>
     </div>
 </div>
-@if(Auth::user()->type == 1) 
+<div class="row">
+
+    <div class="col-12 col-sm-6 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">$ {{number_format(Auth::user()->balance, 2)}}</h3>
+
+                        <div class="mb-0">Available Balance</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="w-100">
@@ -291,6 +323,5 @@
         </div>
     </div>
 </div>
-@endif
 
 @endsection

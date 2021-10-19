@@ -26,12 +26,16 @@
                 @if ($user->status == 'block')
                 <div>
                     <a class="btn btn-success btn-sm" href="{{route('admin.user.activation',$user->id)}}">Active</a>
+                    @if(Auth::user()->type == 1)
                     <a class="btn btn-danger btn-sm" href="{{route('admin.user.delete',$user->id)}}">Delete</a>
+                    @endif
                 </div>
                 @else
                 <div>
                     <a class="btn btn-danger btn-sm" href="{{route('admin.user.block',$user->id)}}">Block</a>
+                    @if(Auth::user()->type == 1)
                     <a class="btn btn-danger btn-sm" href="{{route('admin.user.delete',$user->id)}}">Delete</a>
+                    @endif
                 </div>
                 @endif
             </div>
