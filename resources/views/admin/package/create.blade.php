@@ -58,11 +58,11 @@
                    </div>
                     <div class="row">
                         <div class="form-group col-6">
-                            <label class="form-label">Package Maximum </label>
+                            <label class="form-label">Package Maximum Withdraw </label>
                             <input type="number" class="form-control" name="max"  placeholder="Package Max" value="">
                         </div>
                         <div class="form-group col-6">
-                            <label class="form-label">Package Minimum</label>
+                            <label class="form-label">Package Minimum Withdraw</label>
                             <input type="number" class="form-control" name="min"  placeholder="Package Min" value="">
                         </div>
                    </div>

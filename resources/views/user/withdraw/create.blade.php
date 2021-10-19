@@ -36,9 +36,10 @@
                             <label class="form-label">Payment Method</label>
                             <select name="method" class="form-control" required>
                                 <option value="opt1">Select</option>
-                                <option value="jazzcash">Jazzcash</option>
+                                <option value="Perfect Money">Perfect Money</option>
+                                {{-- <option value="jazzcash">Jazzcash</option>
                                 <option value="easypiasa">Easypiasa</option>
-                                <option value="bank">Bank Account</option>
+                                <option value="bank">Bank Account</option> --}}
                             </select>
               
                         </div>

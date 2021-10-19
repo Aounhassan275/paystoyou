@@ -60,32 +60,45 @@ class AuthController extends Controller
             //     $user->balance+= (($user->package->r_earning/100)*$user->package->price);
             //     $user->save();
            
-             $validator = Validator::make($request->all(),[
-                'name' => 'required|unique:users'
-            ]);
-
-            if($validator->fails()){
-                toastr()->error('Username  already exists');
-                return redirect()->back();
-            }
-         
-            if($user->left == $request->code)
-            {
-                User::create([
-                    'left' => uniqid(),
-                    'right' => uniqid(),
-                    'refer_by' => $user->id,
-                    'refer_type' => 'Left',
-                ]+$request->all());
-            }else{
-                User::create([
-                    'left' => uniqid(),
-                    'right' => uniqid(),
-                    'refer_by' => $user->id,
-                    'refer_type' => 'Right',
-                ]+$request->all());
-            }
-              
+                $validator = Validator::make($request->all(),[
+                    'name' => 'required|unique:users'
+                ]);
+                
+                if($validator->fails()){
+                    toastr()->error('Username  already exists');
+                    return redirect()->back();
+                }
+                if($user->main_owner == null)
+                {
+                    $request->merge([
+                        'main_owner' => $user->id
+                    ]);
+                }
+                else{
+                    $request->merge([
+                        'main_owner' => $user->main_owner
+                    ]);
+                }
+                if($user->left == $request->code)
+                {
+                
+                    User::create([
+                        'left' => uniqid(),
+                        'right' => uniqid(),
+                        'refer_by' => $user->id,
+                        'refer_type' => 'Left',
+                        'main_owner' => $request->main_owner,
+                    ]+$request->all());
+                }else{
+                    User::create([
+                        'left' => uniqid(),
+                        'right' => uniqid(),
+                        'refer_by' => $user->id,
+                        'refer_type' => 'Right',
+                        'main_owner' => $request->main_owner,
+                    ]+$request->all());
+                }
+                
             }
         }else{
            $validator = Validator::make($request->all(),[

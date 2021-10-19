@@ -263,7 +263,8 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">$ {{Auth::user()->totalEarning()}}</h3>
+                        {{-- <h3 class="mb-2">$ {{Auth::user()->totalEarning()}}</h3> --}}
+                        <h3 class="mb-2">$ {{Auth::user()->earnings()->where('type','ad_earning')->sum('price')}}</h3>
 
                         <div class="mb-0">Total Ad Earning</div>
 

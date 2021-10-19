@@ -81,7 +81,7 @@
                         <div class="logo">
                             <a href="{{url('/')}}">
                                 {{-- <img src="front/assets/images/logo/logo.png" alt="logo"> --}}
-                                <img src="{{asset('front/assets/images/logo/footer-logo.png')}}" alt="logo">
+                                <img src="{{asset('front/assets/images/favicon.png')}}" alt="logo">
                             </a>
                         </div>
                         <ul class="menu">
@@ -179,8 +179,8 @@
             <div class="container">
                 <div class="footer-top">
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="front/assets/images/logo/footer-logo.png" alt="logo">
+                        <a href="{{url('/')}}">
+                            <img src="{{asset('front/assets/images/favicon.png')}}" alt="logo">
                         </a>
                     </div>
                     <ul class="links">
@@ -194,7 +194,7 @@
                 <div class="footer-bottom">
                     <div class="footer-bottom-area">
                         <div class="left">
-                            <p>&copy; 2020 <a href="#0">Hyipland</a> | All right reserved</p>
+                            <p>&copy; 2020 <a href="{{url('/')}}">PAYSTOYOU</a> | All right reserved</p>
                         </div>
                         <ul class="social-icons">
                             <li>

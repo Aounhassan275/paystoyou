@@ -6,6 +6,7 @@
     <h3>DASHBOARD | PAYS TO YOU</h3>
     </div>
 </div>
+@if(Auth::user()->type == 1) 
 <div class="row">
     <div class="col-lg-12">
         <div class="w-100">
@@ -160,6 +161,50 @@
                     <div class="card flex-fill">
                         <div class="card-header">
                             <span class="badge badge-success float-right">All</span>
+                            <h5 class="card-title mb-0">Total Complete Withdraw</h5>
+                        </div>
+                        <div class="card-body my-2">
+                            <div class="row d-flex align-items-center mb-4">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0 font-weight-light">
+                                        {{App\Models\Withdraw::completed()->sum('payment')}}
+
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="progress progress-sm shadow-sm mb-1">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-sm-6">
+                    <div class="card flex-fill">
+                        <div class="card-header">
+                            <span class="badge badge-success float-right">All</span>
+                            <h5 class="card-title mb-0">Total Pending Withdraw</h5>
+                        </div>
+                        <div class="card-body my-2">
+                            <div class="row d-flex align-items-center mb-4">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0 font-weight-light">
+                                        {{App\Models\Withdraw::process()->sum('payment')}}
+
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="progress progress-sm shadow-sm mb-1">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card flex-fill">
+                        <div class="card-header">
+                            <span class="badge badge-success float-right">All</span>
                             <h5 class="card-title mb-0">Total OnHold Withdraw</h5>
                         </div>
                         <div class="card-body my-2">
@@ -241,31 +286,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="card flex-fill">
-                        <div class="card-header">
-                            <span class="badge badge-success float-right">All</span>
-                            <h5 class="card-title mb-0">Total OnHold Withdraw</h5>
-                        </div>
-                        <div class="card-body my-2">
-                            <div class="row d-flex align-items-center mb-4">
-                                <div class="col-8">
-                                    <h2 class="d-flex align-items-center mb-0 font-weight-light">
-                                        {{App\Models\Withdraw::hold()->sum('payment')}}
-
-                                    </h2>
-                                </div>
-                            </div>
-                            <div class="progress progress-sm shadow-sm mb-1">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             
         </div>
     </div>
 </div>
+@endif
 
 @endsection

@@ -33,6 +33,7 @@
                                 <option value="Bank Account">Bank Account</option>
                                 <option value="EasyPiasa">EasyPiasa</option>
                                 <option value="Jazzcash">Jazzcash</option>
+                                <option value="PerfectMoney">PerfectMoney</option>
                             </select>                    
                         </div>
                         <div class="form-group col-6">
@@ -129,6 +130,7 @@
                                 <option value="Bank Account">Bank Account</option>
                                 <option value="EasyPiasa">EasyPiasa</option>
                                 <option value="Jazzcash">Jazzcash</option>
+                                <option value="Perfect Money">Perfect Money</option>
                         </select>
                     </div>
                     <div class="form-group">

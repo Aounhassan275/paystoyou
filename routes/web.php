@@ -95,6 +95,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('{payment}/deposit/{package}', 'DepositController@deposit')->name('deposits.index');    
     /******************REFRRAK ROUTES****************/
     Route::get('refer', 'UserController@refer')->name('refer.index');
+    Route::get('tree/{id}','UserController@showTree')->name('tree.show');
     /******************Deposit  ROUTES****************/
        Route::resource('deposit', 'DepositController');
        /******************Withdraw  ROUTES****************/
@@ -127,6 +128,7 @@ Route::view('contact_us', 'front.contact.index');
 Route::view('packages', 'front.package.index'); 
 Route::view('about_us', 'front.about.index'); 
 Route::view('videos', 'front.video.index'); 
+Route::view('withdraw', 'front.withdraw.index'); 
 Route::view('terms_&_condition', 'front.term.index'); 
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('/cd', function() {

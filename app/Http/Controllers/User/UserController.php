@@ -92,5 +92,21 @@ class UserController extends Controller
         $user = Auth::user();
         return view('user.refer.index')->with('user',$user);
     }
+    public function showTree($id)
+    {
+        $user = User::find($id);
+        $left = null;
+        $right = null;
+        if($user->left_refferal)
+        {
+            $left = User::find($user->left_refferal);
+        }
+        if($user->right_refferal)
+        {
+            $right = User::find($user->right_refferal);
+        }
+        // dd($user);
+        return view('user.refer.tree')->with('user',$user)->with('left',$left)->with('right',$right);
+    }
     
 }

@@ -22,7 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name','fname','phone', 'email', 'password','city','status','left','right','left_refferal',
         'right_refferal','left_amount','right_amount','refer_type','balance','refer_by','ad_view','cnic',
-        'address','r_earning','package_id', 'a_date','image', 'verification'
+        'address','r_earning','package_id', 'a_date','image', 'verification','main_owner'
     ];
 
     /**
@@ -54,6 +54,14 @@ class User extends Authenticatable
     public function refers()
     {
         return $this->hasMany('App\Models\User','refer_by')->where('status','active');
+    }
+    public function active_refer()
+    {
+        return User::where('refer_by',$this->id)->orWhere('main_owner',$this->id)->where('status','active')->get();
+    }
+    public function all_refer()
+    {
+        return User::where('refer_by',$this->id)->orWhere('main_owner',$this->id)->get();
     }
     public static function status(){
         return (new static)::where('status','active')->get();
@@ -175,8 +183,21 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\User','refer_by');
     }
+	public function main_owner_referral()
+    {
+        return $this->hasMany('App\Models\User','main_owner')->where('right_refferal','!=',null)->where('left_refferal','!=',null);
+    }
+	public function refer_by_name($id)
+    {
+        $user = User::find($id);
+        return $user->name;
+    }
     public function transcations()
     {
         return $this->hasMany('App\Models\Transcation');
+    }
+    public function earnings()
+    {
+        return $this->hasMany(Earning::class,'user_id');
     }
 }

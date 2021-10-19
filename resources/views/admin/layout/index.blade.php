@@ -15,7 +15,7 @@
     <link href="{{asset('css/classic.css')}}" rel="stylesheet"> 
 	<!-- <link href="{{asset('css/corporate.css')}}" rel="stylesheet"> -->
 	<!-- <link href="{{asset('css/modern.css')}}" rel="stylesheet"> -->
-	<script src="{{asset('js/settings.js')}}"></script>
+	{{-- <script src="{{asset('js/settings.js')}}"></script> --}}
 
 	<!-- BEGIN SETTINGS -->
 	<!-- You can remove this after picking a style -->
@@ -25,16 +25,6 @@
 		}
 	</style>
 	<!-- END SETTINGS -->
-	<script>
-		(function(h,o,t,j,a,r){
-			h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-			h._hjSettings={hjid:1685936,hjsv:6};
-			a=o.getElementsByTagName('head')[0];
-			r=o.createElement('script');r.async=1;
-			r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-			a.appendChild(r);
-		})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-	</script>
 	@toastr_css
 </head>
 
@@ -55,6 +45,19 @@
 							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Dashboard</span>
 						</a>
 					</li>
+					@if(Auth::user()->type == 2) 
+					<li class="sidebar-item">
+						<a href="{{url('#users')}}" data-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">User</span>
+						</a>
+						<ul id="users" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.index')}}">All User</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.actives')}}">Active User</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.pendings')}}">Pending User</a></li>
+
+						</ul>
+					</li>
+					@else
 					<li class="sidebar-item">
 						<a href="{{url('#layouts')}}" data-toggle="collapse" class="sidebar-link collapsed">
 							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Packages</span>
@@ -90,7 +93,7 @@
 
 						</ul>
 					</li>
-							<li class="sidebar-item {{Request::is('admin.donation.index')?'active':''}}">
+					<li class="sidebar-item {{Request::is('admin.donation.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.donation.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Donation</span>
 						</a>
@@ -135,6 +138,7 @@
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Add Employee</span>
 						</a>
 					</li>	
+					@endif
 					<li class="sidebar-item {{Request::is('admin.profile.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.profile.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Profile</span>
