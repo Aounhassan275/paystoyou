@@ -47,15 +47,15 @@
                                 <div class="form-group">
                                     <label for="name">UserName</label>
                                     <input type="hidden" value="{{$code ?? ''}}" name="code">
-                                    <input type="text" id="name" placeholder="username" name="name">
+                                    <input type="text" id="name" placeholder="username" name="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="surename">Phone</label>
-                                    <input id="mPhone" name="phone" type="number" maxlength="12" minlength="12" class="form-control phone" placeholder="923111178786" value="923" required>
+                                    <input  name="phone" type="number"   placeholder="Enter You Phone Number"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email address</label>
-                                    <input type="text" id="email" placeholder="Enter your email" name="email">
+                                    <input type="text" id="email" placeholder="Enter your email" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Password</label>
@@ -81,24 +81,24 @@
                 e.preventDefault();
         });
     });  
-    $('.phone').keyup(function(e) {
-        // alert(this.value.length);
-        if (this.value.length < 3) {
-        this.value = '923';
-        } else if (this.value.indexOf('923') !== 0) {
-        this.value = '923' + String.fromCharCode(e.which);
-        }
+    // $('.phone').keyup(function(e) {
+    //     // alert(this.value.length);
+    //     if (this.value.length < 3) {
+    //     this.value = '923';
+    //     } else if (this.value.indexOf('923') !== 0) {
+    //     this.value = '923' + String.fromCharCode(e.which);
+    //     }
         
         
         
-    });
+    // });
     
-    $('form').on('submit', function(e) {
-        if($('#mPhone').val().length < 12 || $('#mPhone').val().length > 12){
-            e.preventDefault();
-            alert('Please enter correct phone number');
-        }
-    });
+    // $('form').on('submit', function(e) {
+    //     if($('#mPhone').val().length < 12 || $('#mPhone').val().length > 12){
+    //         e.preventDefault();
+    //         alert('Please enter correct phone number');
+    //     }
+    // });
  </script>
  <script>
      

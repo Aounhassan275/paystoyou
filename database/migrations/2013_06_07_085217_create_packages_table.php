@@ -20,7 +20,7 @@ class CreatePackagesTable extends Migration
             $table->float('t_earning');
             $table->integer('ads');
             $table->double('click')->nullable();
-            $table->integer('day');
+            $table->double('day');
             $table->string('w_day');
             $table->float('package_validity');
             $table->float('discount')->nullable();
