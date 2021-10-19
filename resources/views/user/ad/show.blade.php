@@ -71,7 +71,7 @@ position: absolute;
                         </legend>
                         <div class="card-body pt-0">
                             <div class="embed-responsive embed-responsive-21by9">
-                                <iframe class="ytplayer" width="100%" height="400" src="{{$ad->link}}?autoplay=1&controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                            
+                                <iframe class="ytplayer" width="100%" height="400" src="{!! $ad->link !!}?autoplay=1&controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                            
                             </div>
                         </div>
                       
