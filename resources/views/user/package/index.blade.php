@@ -10,7 +10,7 @@
     <div class="tab-pane fade show active" id="monthly">
         <div class="row py-4">
             @foreach (App\Models\Package::orderBy('price', 'ASC')->get()->all() as $package)
-            <div class="col-sm-4 mb-3 mb-md-0">
+            <div class="col-sm-4 mb-3 mb-md-0" style="margin-top:10px;">
                 <div class="card text-center h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="mb-4">
@@ -42,7 +42,13 @@
                             </li>
                         </ul>
                         <div class="mt-auto">
-                            <a href="{{route('user.package.payment',$package->id)}}" class="btn btn-lg btn-primary">Purchase</a>
+                            <a href="{{route('user.package.payment',$package->id)}}" class="btn btn-lg btn-primary">Purchase By Deposit</a>
+                            @if(Auth::user()->balance > $package->price || Auth::user()->balance > $package->price - $package->discount )
+                            <br>
+                            or 
+                            <br>
+                            <a href="{{route('user.package.direct_deposit',$package->id)}}" class="btn btn-lg btn-secondary" onclick="$('.btn').text('Please Wait!!!').attr('disabled',true)">Purchase Through Your Balance</a>
+                            @endif
                         </div>
                     </div>
                 </div>

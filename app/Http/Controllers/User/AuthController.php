@@ -129,7 +129,9 @@ class AuthController extends Controller
     }
     public function code($code)
     {
-        return view('user.auth.register')->with('code',$code);
+        $user= User::where('left',$code)
+        ->orWhere('right',$code)->first();
+        return view('user.auth.register')->with('code',$code)->with('user',$user);
     }
     public function logout()
     {

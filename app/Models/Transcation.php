@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transcation extends Model
 {
     protected $fillable = [
-        'sender_id','receiver_id','amount','detail'
+        'sender_id','receiver_id','amount','detail','admin_id'
     ];
     public function sender()
     {
@@ -16,5 +16,9 @@ class Transcation extends Model
     public function receiver()
     {
         return $this->belongsTo('App\Models\User','receiver_id');
+    }
+    public function admin()
+    {
+        return $this->belongsTo('App\Models\User','admin_id');
     }
 }

@@ -45,4 +45,8 @@ class Admin extends Authenticatable
     public static function employee(){
         return (new static)::where('type','2')->get();
     }
+    public function transcations()
+    {
+        return $this->hasMany('App\Models\Transcation');
+    }
 }

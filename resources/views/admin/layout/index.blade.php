@@ -50,7 +50,7 @@
 						<a href="{{url('#users')}}" data-toggle="collapse" class="sidebar-link collapsed">
 							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">User</span>
 						</a>
-						<ul id="users" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+						<ul id="users" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar"> 
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.index')}}">All User</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.actives')}}">Active User</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.pendings')}}">Pending User</a></li>
@@ -127,6 +127,25 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.withdraw.complete')}}">Withdraw History</a></li>
 						</ul>
 					</li>
+					<li class="sidebar-item {{Request::is('admin.balance_transfer.index')?'active':''}}">
+
+						<a class="sidebar-link" href="{{route('admin.balance_transfer.index')}}">
+
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Balance Transfer</span>
+
+						</a>
+
+					</li>	
+					<li class="sidebar-item">
+						<a href="{{url('#transcation')}}" data-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Trancations</span>
+						</a>
+						<ul id="transcation" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.index')}}">Your Transcations</a></li>
+							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.all')}}">All User Trancations</a></li>
+						</ul>
+					</li>		
+
 					<li class="sidebar-item {{Request::is('admin.ad.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.ad.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Ads</span>

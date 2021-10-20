@@ -69,6 +69,11 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
        Route::get('withdraw/delete/{id}', 'WithdrawController@delete')->name('withdraw.delete');   
 	/******************Donation ROUTES****************/
        Route::view('donation', 'admin.donation.index')->name('donation.index');
+    /*******************Balance Transfer ROUTES*************/
+    Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
+    /******************TRANSCATIONS  ROUTES****************/
+    Route::get('transcation/all', 'TranscationController@allTranscations')->name('transcation.all');
+    Route::resource('transcation', 'TranscationController'); 
 });
 });
 /******************USER PANELS ROUTES****************/
@@ -94,6 +99,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::view('package', 'user.package.index')->name('package.index');
     Route::get('select_payment/{id}', 'PackageController@payment')->name('package.payment');
     Route::get('{payment}/deposit/{package}', 'DepositController@deposit')->name('deposits.index');    
+    Route::get('package/direct_deposit/{package}', 'DepositController@directDeposit')->name('package.direct_deposit');    
     /******************REFRRAK ROUTES****************/
     Route::get('refer', 'UserController@refer')->name('refer.index');
     Route::get('tree/{id}','UserController@showTree')->name('tree.show');

@@ -34,7 +34,9 @@
                                 <h2 class="title">Register YourSelf</h2>
                             </div>
                             <div class="contact-content">
-                                {{-- <h3 class="title">Have questions?</h3> --}}
+                                @if(@$user)
+                                <h3 class="title">Refer By : {{$user->name}}</h3>
+                                @endif
                                 <p>
                                     Have questions about payments or price plans? We have answers!
                                 </p>

@@ -65,6 +65,9 @@ class TranscationController extends Controller
             'balance' => $user->balance - $request->amount
         ]);
         $receiver = User::Find($request->receiver_id);
+        $receiver->update([
+            'balance' => $receiver->balance + $request->amount
+        ]);
         Transcation::create([
             'detail' => 'Amount Transfer from '.$user->name.' to '.$receiver->name.' account.'
         ]+$request->all());
