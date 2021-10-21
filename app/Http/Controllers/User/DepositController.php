@@ -94,9 +94,12 @@ class DepositController extends Controller
             't_id' => uniqid(),
             'payment' => $payment->method,
             'package_id' => $package->id,
-            'amount' => $package->id,
+            'amount' => $package->price,
         ]);
         $success = $this->active($deposit->id);
+        Auth::user()->update([
+            'balance' => $user->balance -= $package->price,    
+        ]);
         toastr()->success('Your Package Active Successfully.');
         return redirect(route('user.dashboard.index'));
     }

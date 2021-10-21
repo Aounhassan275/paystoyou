@@ -23,7 +23,11 @@
             <tbody>
                 @foreach ($transcations as $transcation)
                 <tr>
+                    @if($transcation->sender)
                     <td>{{$transcation->sender->name}}</td>
+                    @else 
+                    <td>Admin</td>
+                    @endif
                     <td>{{$transcation->receiver->name}}</td>
                     <td>{{$transcation->amount}}</td>
                     <td>{{$transcation->detail}}</td>
