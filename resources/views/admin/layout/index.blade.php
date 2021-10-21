@@ -57,7 +57,16 @@
 
 						</ul>
 					</li>
-					<li class="sidebar-item">
+					<li class="sidebar-item {{Request::is('admin.balance_transfer.index')?'active':''}}">
+
+						<a class="sidebar-link" href="{{route('admin.balance_transfer.index')}}">
+
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Balance Transfer</span>
+
+						</a>
+
+					</li>	
+					{{-- <li class="sidebar-item">
 						<a href="{{url('#deposit')}}" data-toggle="collapse" class="sidebar-link collapsed">
 							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Packages Deposit</span>
 						</a>
@@ -65,7 +74,7 @@
 							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.deposit.index')}}">Deposit Request</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.deposit.show')}}">Deposit History</a></li>
 						</ul>
-					</li>
+					</li> --}}
 					@else
 					<li class="sidebar-item">
 						<a href="{{url('#layouts')}}" data-toggle="collapse" class="sidebar-link collapsed">

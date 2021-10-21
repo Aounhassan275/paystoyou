@@ -43,7 +43,7 @@
                         </ul>
                         <div class="mt-auto">
                             <a href="{{route('user.package.payment',$package->id)}}" class="btn btn-lg btn-primary">Purchase By Deposit</a>
-                            @if(Auth::user()->balance > $package->price || Auth::user()->balance > $package->price - $package->discount )
+                            @if(Auth::user()->balance >= $package->price || Auth::user()->balance >= $package->price - $package->discount )
                             <br>
                             or 
                             <br>
