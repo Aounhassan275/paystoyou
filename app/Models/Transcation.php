@@ -19,6 +19,6 @@ class Transcation extends Model
     }
     public function admin()
     {
-        return $this->belongsTo('App\Models\User','admin_id');
+        return $this->belongsTo('App\Models\Admin','admin_id');
     }
 }

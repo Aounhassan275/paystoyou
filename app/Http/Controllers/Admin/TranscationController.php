@@ -22,7 +22,8 @@ class TranscationController extends Controller
     }
     public function allTranscations()
     {
-        $transcations = Transcation::where('admin_id','!=',Auth::user()->id)->get();
+        $transcations = Transcation::all();
+        // dd($transcations);
         return view('admin.transcation.all')->with('transcations',$transcations);
     }
 
