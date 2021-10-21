@@ -14,6 +14,7 @@
         <table class="table" id="datatables-reponsive">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Sender Name</th>
                     <th>Receiver Name</th>
                     <th>Amount</th>
@@ -21,8 +22,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($transcations as $transcation)
+                @foreach ($transcations as $key => $transcation)
                 <tr>
+                    <td>{{$key+1}}</td>
                     @if($transcation->sender)
                     <td>{{$transcation->sender->name}}</td>
                     @else 

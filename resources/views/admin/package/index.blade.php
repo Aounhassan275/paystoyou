@@ -14,6 +14,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th style="width:auto;">Sr#</th>
                     <th style="width:auto;">Package Name</th>
                     <th style="width:auto;">Package Price</th>
                     <th style="width:auto;">Total Earning</th>
@@ -30,6 +31,7 @@
             <tbody>
                 @foreach (App\Models\Package::all() as $key => $package)
                 <tr> 
+                    <td>{{$key+1}}</td>
                     <td>{{$package->name}}</td>
                     <td>{{$package->price}}</td>
                     <td>{{$package->t_earning}}</td>

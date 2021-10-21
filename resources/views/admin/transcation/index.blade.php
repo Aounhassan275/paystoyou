@@ -14,14 +14,16 @@
         <table class="table" id="datatables-reponsive">
             <thead>
                 <tr>
+                    <th>Sr No.</th>
                     <th>Receiver Name</th>
                     <th>Amount</th>
                     <th>Detail</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (Auth::user()->transcations as $transcation)
+                @foreach (Auth::user()->transcations as $key => $transcation)
                 <tr>
+                    <td>{{$key+1}}</td>
                     <td>{{$transcation->receiver->name}}</td>
                     <td>{{$transcation->amount}}</td>
                     <td>{{$transcation->detail}}</td>

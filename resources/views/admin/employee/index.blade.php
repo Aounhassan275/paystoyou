@@ -48,6 +48,7 @@
         <table class="table" id="datatables-reponsive">
             <thead>
                 <tr>
+                    <th style="width:auto;">Sr#</th>
                     <th style="width:auto;">Employee Name</th>
                     <th style="width:auto;">Employee Email</th>
                     <th style="width:auto;">Action</th>
@@ -57,6 +58,7 @@
             <tbody>
                 @foreach (App\Models\Admin::employee() as $key => $admin)
                 <tr> 
+                    <td>{{$key+1}}</td>
                     <td>{{$admin->name}}</td>
                     <td>{{$admin->email}}</td>
                     <td class="table-action">

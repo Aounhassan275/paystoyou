@@ -14,6 +14,7 @@
         <table class="table" id="datatables-reponsive">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>User Name</th>
                     <th>User Email</th>
                     <th>User Balance</th>
@@ -27,8 +28,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Auth::user()->withdraws as $withdraw)
+                @foreach (Auth::user()->withdraws as $key => $withdraw)
                 <tr>
+                    <td>{{$key+1}}</td>
                     <td>{{$withdraw->user->name}}</td>
                     <td>{{$withdraw->user->email}}</td>
                     <td>{{$withdraw->user->balance}}</td>

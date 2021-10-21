@@ -14,6 +14,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th style="width:auto;">Sr#</th>
                     <th style="width:auto;">Sender Name</th>
                     <th style="width:auto;">Sender Email</th>
                     <th style="width:auto;">Subject</th>
@@ -24,6 +25,7 @@
             <tbody>
                 @foreach (App\Models\Message::all() as $key => $message)
                 <tr> 
+                    <td>{{$key+1}}</td>
                     <td>{{$message->name}}</td>
                     <td>{{$message->email}}</td>
                     <td>{{$message->subject}}</td>

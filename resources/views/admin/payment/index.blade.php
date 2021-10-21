@@ -63,6 +63,7 @@
         <table class="table" id="datatables-reponsive">
             <thead>
                 <tr>
+                    <th style="width:auto;">Sr#</th>
                     <th style="width:auto;">Account Holder Name</th>
                     <th style="width:auto;">Account Number</th>
                     <th style="width:auto;">Payment Method</th>
@@ -75,6 +76,7 @@
             <tbody>
                 @foreach (App\Models\Payment::all() as $key => $payment)
                 <tr> 
+                    <td>{{$key+1}}</td>
                     <td>{{$payment->name}}</td>
                     <td>{{$payment->number}}</td>
                     <td>{{$payment->method}}</td>

@@ -55,6 +55,7 @@
         <table class="table" id="datatables-reponsive">
             <thead>
                 <tr>
+                    <th style="width:auto;">Sr No.</th>
                     <th style="width:auto;">Ad Name</th>
                     <th style="width:auto;">Ad Link</th>
                     <th style="width:auto;">Ad Page</th>
@@ -65,6 +66,7 @@
             <tbody>
                 @foreach (App\Models\Ad::all() as $key => $ad)
                 <tr> 
+                    <td>{{$key+1}}</td>
                     <td>{{$ad->name}}</td>
                     <td>{{$ad->link}}</td>
                     <td>{{$ad->page}}</td>

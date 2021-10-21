@@ -14,6 +14,7 @@
         <table id="datatables-buttons" class="table table-striped">
             <thead>
                 <tr>
+                    <th style="width:auto;">Sr No.</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email</th>
                     <th style="width:auto;">User Package</th>
@@ -27,6 +28,7 @@
             <tbody>
                 @foreach (App\Models\Deposit::old()->all() as $key => $deposit)
                 <tr> 
+                <td>{{$key+1}}</td>
                 <td>{{$deposit->user->name}}</td>
                 <td>{{$deposit->user->email}}</td>
                 <td>{{$deposit->package->name}}</td>

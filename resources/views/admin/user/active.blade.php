@@ -14,6 +14,7 @@
         <table id="datatables-buttons" class="table table-striped">
             <thead>
                 <tr>
+                    <th style="width:auto;">#</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email </th>
                     <th style="width:auto;">User Package </th>
@@ -27,6 +28,7 @@
             <tbody>
                 @foreach (App\Models\User::active() as $key => $user)
                 <tr> 
+                    <td>{{$key+1}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     @if ($user->package)

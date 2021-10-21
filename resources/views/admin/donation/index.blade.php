@@ -14,6 +14,7 @@
         <table class="table" id="datatables-reponsive">
             <thead>
                 <tr>
+                    <th style="width:auto;">Sr#</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email</th>
                     <th style="width:auto;">Donation Amount</th>
@@ -23,6 +24,7 @@
             <tbody>
                 @foreach (App\Models\Donation::all() as $key => $donation)
                 <tr> 
+                    <td>{{$key+1}}</td>
                 <td>{{$donation->user->name}}</td>
                 <td>{{$donation->user->email}}</td>
                 <td>{{$donation->amount}}</td>
