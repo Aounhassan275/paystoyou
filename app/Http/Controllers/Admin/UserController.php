@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -43,4 +44,10 @@ class UserController extends Controller
       toastr()->success('User is Updated Successfully');
       return redirect()->back();
   }
+  public function fakeLogin(User $user)
+    {
+        // Auth::logout();
+        Auth::guard('user')->login($user);
+        return redirect()->route('user.dashboard.index');
+    }
 }

@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::get('admin/user/delete/{id}','UserController@delete')->name('user.delete');
     Route::get('admin/user/block/{id}','UserController@block')->name('user.block');
     Route::post('admin/user/update','UserController@update')->name('user.update');
+    Route::get('user/{user}/fake/login', 'UserController@fakeLogin')->name('login.fake');
     /******************Deposit ROUTES****************/
     Route::view('deposit', 'admin.deposit.index')->name('deposit.index');
     Route::view('deposit/show', 'admin.deposit.show')->name('deposit.show');
