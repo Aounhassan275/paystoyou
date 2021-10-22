@@ -52,9 +52,9 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">{{Auth::user()->active_refer()->where('refer_type','Left')->count()}}</h3>
+                        <h3 class="mb-2">{{Auth::user()->active_refer()->where('refer_type','Left')->where('status','active')->count()}}</h3>
 
-                        <div class="mb-0">Left Referrals</div>
+                        <div class="mb-0">Active Left Referrals</div>
 
                     </div>
 
@@ -82,9 +82,68 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">{{Auth::user()->active_refer()->where('refer_type','Right')->count()}}</h3>
+                        <h3 class="mb-2">{{Auth::user()->active_refer()->where('status','active')->where('refer_type','Right')->count()}}</h3>
 
-                        <div class="mb-0">Right Referrals</div>
+                        <div class="mb-0">Active Right Referrals</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-12 col-sm-6 col-xl d-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-warning" data-feather="package"></i>
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">{{Auth::user()->pending_refer()->where('status','pending')->where('refer_type','Left')->count()}}</h3>
+
+                        <div class="mb-0">Left Referrals Pending</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl d-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-success" data-feather="airplay"></i>
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">{{Auth::user()->pending_refer()->where('status','pending')->where('refer_type','Right')->count()}}</h3>
+
+                        <div class="mb-0">Right Referrals Pending</div>
 
                     </div>
 
@@ -109,8 +168,9 @@
                         <th>#</th>
                         <th>User Name</th>
                         <th>User Email</th>
-                        <th>User Status</th>
                         <th>User Refer By</th>
+                        <th>User Type</th>
+                        <th>User Status</th>
                         <th>User Earning</th>
                     </tr>
                 </thead>
@@ -121,6 +181,7 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->refer_by_name($user->refer_by)}}</td>
+                        <td>{{$user->refer_type}}</td>
                         <td>
                         @if ($user->checkstatus() =='old')
                             <span class="badge badge-success">Active</span>                            

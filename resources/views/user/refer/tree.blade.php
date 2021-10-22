@@ -43,7 +43,7 @@
                                 {{@$user->refer_by_name(@$user->left_refferal)}}
                             </a>
                             <br>
-                            $ {{$user->left_amount}}
+                            Match Income $ {{$user->left_amount}}
                             @endif
                         </p>
 
@@ -75,7 +75,7 @@
                                 {{@$user->refer_by_name(@$user->right_refferal)}}
                             </a>
                             <br>
-                            $ {{$user->right_amount}}
+                            Match Income $ {{$user->right_amount}}
                             @endif
                         </p>
 

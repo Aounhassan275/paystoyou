@@ -22,7 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name','fname','phone', 'email', 'password','city','status','left','right','left_refferal',
         'right_refferal','left_amount','right_amount','refer_type','balance','refer_by','ad_view','cnic',
-        'address','r_earning','package_id', 'a_date','image', 'verification','main_owner'
+        'address','r_earning','package_id', 'a_date','image', 'verification','main_owner','top_referral'
     ];
 
     /**
@@ -58,6 +58,10 @@ class User extends Authenticatable
     public function active_refer()
     {
         return User::where('refer_by',$this->id)->orWhere('main_owner',$this->id)->where('status','active')->get();
+    }
+    public function pending_refer()
+    {
+        return User::where('refer_by',$this->id)->orWhere('main_owner',$this->id)->where('status','pending')->get();
     }
     public function all_refer()
     {

@@ -670,7 +670,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="inputEmail4">User Balance</label>
-                                    <input type="number" class="form-control" name="balance" id="inputEmail4" value="{{$user->balance}}" readonly>
+                                    <input type="number" class="form-control" name="balance" id="inputEmail4" value="{{$user->balance}}" >
                                 </div>   
                             </div>
                             @endif

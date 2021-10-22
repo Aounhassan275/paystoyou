@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ad;
 use App\Models\User;
 use App\Models\Earning;
+use App\Models\CompanyAccount;
 use App\Models\Play;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,10 @@ class AdController extends Controller
         "user_id" => $user->id,
         "price" => $package->day/$package->ads,
         "type" => 'ad_earning'
+      ]);
+      $company_account= CompanyAccount::find(1);
+      $company_account->update([
+        'balance' => $company_account->balance -= $package->day/$package->ads,
       ]);
       $play = Play::create([
         "user_id" => $user->id,

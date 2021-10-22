@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Withdraw;
+use App\Models\CompanyAccount;
 use Illuminate\Http\Request;
 
 class WithdrawController extends Controller
@@ -35,6 +36,10 @@ class WithdrawController extends Controller
         $withdraw->update([
             'status' => 'Completed',
         ]);     
+        $company_account= CompanyAccount::find(1);
+        $company_account->update([
+          'balance' => $company_account->balance -= $withdraw->payment,
+        ]);
         toastr()->success('Withdraw is Completed Now');
 
         return redirect()->back();
