@@ -231,7 +231,7 @@ class DepositController extends Controller
                             'left_amount' => $matching_income,
                         ]);
                         $user->update([
-                            'top_referral' => 'Left',
+                            'top_referral' => $owner_left_refer->refer_type,
     
                         ]);
                         Earning::create([
@@ -347,8 +347,7 @@ class DepositController extends Controller
                             'right_amount' => $matching_income,
                         ]);
                         $user->update([
-                            'top_referral' => 'Right',
-
+                            'top_referral' => $owner_right_refer->refer_type,
                         ]);
                         Earning::create([
                             "user_id" => $refer_by->id,
