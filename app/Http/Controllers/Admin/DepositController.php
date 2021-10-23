@@ -79,7 +79,7 @@ class DepositController extends Controller
                         }
                     }
                 }else{
-                    $owner_left_refer = User::where('left_refferal',null)->where('main_owner',$refer_by->id)->where('top_referral','Left')->where('refer_type','Left')->first();
+                    $owner_left_refer = User::where('left_refferal',null)->where('refer_by',$refer_by->id)->orWhere('main_owner',$refer_by->id)->where('top_referral','Left')->where('refer_type','Left')->first();
                     if($user->id == $owner_left_refer->id)
                     {
                         toastr()->error('Something Went Wrong');
@@ -191,8 +191,10 @@ class DepositController extends Controller
                         }
                     }
                 }else{
-                    $owner_right_refer = User::where('right_refferal',null)->where('main_owner',$refer_by->id)
+                    $owner_right_refer = User::where('right_refferal',null)
                     ->where( 'top_referral','Right')
+                    ->where('refer_by',$refer_by->id)
+                    ->orhere('main_owner',$refer_by->id)
                     ->where('refer_type','Right')->first();
                     if($user->id == $owner_right_refer->id)
                     {
