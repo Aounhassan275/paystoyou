@@ -121,6 +121,11 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::view('video', 'user.video.index')->name('video.index');
     /*******************Balance Transfer ROUTES*************/
     Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
+     /*******************Referral ROUTES*************/
+    // Route::get('referral', 'ReferralController@index')->name('referral.index');
+    Route::get('referral_tree/{id}','ReferralController@showTree')->name('referral_tree.index');
+    Route::get('left_refferal/{id}','ReferralController@leftReferral')->name('left_refferal.index');
+    Route::get('right_refferal/{id}','ReferralController@RightReferral')->name('right_refferal.index');
     /******************TRANSCATIONS  ROUTES****************/
     Route::resource('transcation', 'TranscationController'); 
 });

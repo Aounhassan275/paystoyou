@@ -215,67 +215,9 @@ class DepositController extends Controller
                         }
                     }
                 }else{
-                    $owner_left_refer = User::where('left_refferal',null)->where('status','active')
-                    ->where('refer_by',$refer_by->id)->orWhere('main_owner',$refer_by->id)->where( 'top_referral','Left')->where('refer_type','Left')->first();
-                    if($user->id == $owner_left_refer->id)
-                    {
-                        toastr()->error('Something Went Wrong');
-                        return redirect()->back();
-                    }
-                    else{
-                        $refer_by->update([
-                            'balance' => $refer_by->balance += $direct_income,
-                            'r_earning' => $refer_by->r_earning += $direct_income,
-                        ]);
-                        $owner_left_refer->update([
-                            'left_refferal' => $user->id,
-                            'left_amount' => $matching_income,
-                        ]);
-                        $user->update([
-                            'top_referral' => $owner_left_refer->refer_type,
-    
-                        ]);
-                        Earning::create([
-                            "user_id" => $refer_by->id,
-                            "price" => $direct_income,
-                            "type" => 'direct_income'
-                        ]);
-                        $company_account->update([
-                            'balance' => $company_account->balance -= $direct_income,
-                        ]);
-                        if($owner_left_refer->left_refferal != null &&  $owner_left_refer->right_refferal != null )
-                        {
-                            if($owner_left_refer->left_amount > $owner_left_refer->right_amount)
-                            {
-                                $owner_left_refer->update([
-                                    'balance' => $owner_left_refer->balance += $owner_left_refer->right_amount*2,
-                                    'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->right_amount*2,
-                                ]);
-                                Earning::create([
-                                    "user_id" => $owner_left_refer->id,
-                                    "price" => $owner_left_refer->right_amount*2,
-                                    "type" => 'matching_income'
-                                ]);
-                                $company_account->update([
-                                    'balance' => $company_account->balance -= $owner_left_refer->right_amount*2,
-                                ]);
-                            }else{
-                                $owner_left_refer->update([
-                                    'balance' => $owner_left_refer->balance += $owner_left_refer->left_amount*2,
-                                    'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->left_amount*2,
-                                ]);
-                                Earning::create([
-                                    "user_id" => $owner_left_refer->id,
-                                    "price" => $owner_left_refer->left_amount*2,
-                                    "type" => 'matching_income'
-                                ]);
-                                $company_account->update([
-                                    'balance' => $company_account->balance -= $owner_left_refer->left_amount*2,
-                                ]);
-                            }
-                        }
-                    }
-                    
+                    $user->update([
+                        'top_referral' => 'Pending',
+                    ]);
                 }
             }else{
                 if($refer_by->right_refferal == null)
@@ -330,70 +272,9 @@ class DepositController extends Controller
                         }
                     }
                 }else{
-                    $owner_right_refer = User::where('right_refferal',null)
-                    ->where( 'top_referral','Right')
-                    ->where('refer_by',$refer_by->id)
-                    ->orWhere('main_owner',$refer_by->id)
-                    ->where('status','active')
-                    ->where('refer_type','Right')->first();
-                    if($user->id == $owner_right_refer->id)
-                    {
-                        toastr()->error('Something Went Wrong');
-                        return redirect()->back();
-                    }
-                    else{
-                        $refer_by->update([
-                            'balance' => $refer_by->balance += $direct_income,
-                            'r_earning' => $refer_by->r_earning += $direct_income,
-                        ]);
-                        $owner_right_refer->update([
-                            'right_refferal' => $user->id,
-                            'right_amount' => $matching_income,
-                        ]);
-                        $user->update([
-                            'top_referral' => $owner_right_refer->refer_type,
-                        ]);
-                        Earning::create([
-                            "user_id" => $refer_by->id,
-                            "price" => $direct_income,
-                            "type" => 'direct_income'
-                        ]);
-                        $company_account->update([
-                            'balance' => $company_account->balance -= $direct_income,
-                        ]);
-                        if($owner_right_refer->left_refferal != null &&  $owner_right_refer->right_refferal != null )
-                        {
-                            if($owner_right_refer->left_amount > $owner_right_refer->right_amount)
-                            {
-                                $owner_right_refer->update([
-                                    'balance' => $owner_right_refer->balance += $owner_right_refer->right_amount*2,
-                                    'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->right_amount*2,
-                                ]);
-                                Earning::create([
-                                    "user_id" => $owner_right_refer->id,
-                                    "price" => $owner_right_refer->right_amount*2,
-                                    "type" => 'matching_income'
-                                ]);
-                                $company_account->update([
-                                    'balance' => $company_account->balance -= $owner_right_refer->right_amount*2,
-                                ]);
-                            }else{
-                                $owner_right_refer->update([
-                                    'balance' => $owner_right_refer->balance += $owner_right_refer->left_amount*2,
-                                    'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->left_amount*2,
-                                ]);
-                                Earning::create([
-                                    "user_id" => $owner_right_refer->id,
-                                    "price" => $owner_right_refer->left_amount*2,
-                                    "type" => 'matching_income'
-                                ]);
-                                $company_account->update([
-                                    'balance' => $company_account->balance -= $owner_right_refer->left_amount*2,
-                                ]);
-                            }
-                        }
-                    }
-                    
+                    $user->update([
+                        'top_referral' => 'Pending',
+                    ]);
                 }
             }
             $main_owner = User::find($user->main_owner);
@@ -479,6 +360,7 @@ class DepositController extends Controller
                
                 
             }
+           
         }
         // dd($deposit);
         $user->update([

@@ -95,6 +95,11 @@ class UserController extends Controller
     public function showTree($id)
     {
         $user = User::find($id);
+        if($user->id != Auth::user()->id)
+        {
+            toastr()->warning('You are Not Authorize To See this');
+        return redirect()->back();
+        }
         $left = null;
         $right = null;
         if($user->left_refferal)

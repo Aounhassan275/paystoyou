@@ -52,7 +52,36 @@
     </div>
 
 </div>
+@if(Auth::user()->top_referral == 'Pending')
+<div class="row">  
 
+    <div class="col-md-12 text-center">
+
+    <a href="{{route('user.referral_tree.index',Auth::user()->refer_by)}}">
+        
+
+            <div class="card bg-info py-2 py-md-3 border">
+
+                <div class="card-body blink_me">
+
+                    <h1 class="blink_me" style="color:white">   
+
+                        {{-- <i class="align-middle mr-2 fas fa-fw fa-eye"></i> --}}
+
+                        Add Yourself In Tree
+
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+@endif
 <div class="row">
 
     <div class="col-12 col-sm-6 col-xl  d-xxl-flex">
@@ -86,6 +115,7 @@
     </div>
 
 </div>
+
 
 
 

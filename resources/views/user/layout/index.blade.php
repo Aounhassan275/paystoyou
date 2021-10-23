@@ -44,6 +44,7 @@
 
 	</style>
 
+	@yield('style')
 
 	<!-- END SETTINGS -->
 
