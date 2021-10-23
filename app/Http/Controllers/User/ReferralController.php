@@ -191,7 +191,7 @@ class ReferralController extends Controller
         $company_account= CompanyAccount::find(1);
         $owner_right_refer = User::find($id);
         $refer_by = User::find($user->refer_by);
-        $deposit = Deposit::where('user_id',$user->id)->last();
+        $deposit = Deposit::where('user_id',$user->id)->where('package_id',$user->package_id)->first();
         $direct_income = $deposit->amount/100 * 10;
         $matching_income = $deposit->amount/100 * 5;
         $refer_by->update([
