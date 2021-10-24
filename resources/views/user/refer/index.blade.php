@@ -44,6 +44,7 @@
         </div>
     </div>
 </div>
+@if(Auth::user()->main_owner)
 <div class="row">
 
     <div class="col-12 col-sm-6 col-xl d-flex">
@@ -61,7 +62,7 @@
                     </div>
 
                     <div class="media-body">
-
+                        
                         <h3 class="mb-2">{{Auth::user()->refer_by_name(Auth::user()->main_owner)}}</h3>
 
                         <div class="mb-0">Parent</div>
@@ -106,6 +107,7 @@
 
     </div>
 </div>
+@endif
 <div class="row">
 
     <div class="col-12 col-sm-6 col-xl d-flex">
