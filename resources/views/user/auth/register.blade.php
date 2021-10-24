@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Password</label>
-                                    <input id="pwd" minlength="8" class="form-control" onkeyup="validatePassword(this.value);" type="password" name="password" placeholder="Enter password" required>
+                                    <input id="pwd" minlength="4" class="form-control" onkeyup="validatePassword(this.value);" type="password" name="password" placeholder="Enter password" required>
                                     <span id="msg"></span>
                                 </div>
                                 <div class="form-group">
