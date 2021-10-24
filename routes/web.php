@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /*******************Logout ROUTES*************/       
     Route::get('logout','AuthController@logout')->name('logout');
     /*******************Dashoard ROUTES*************/
-    Route::view('dashboard', 'admin.dashboard.index')->name('dashboard.index');
+    Route::get('dashboard', 'AdminController@dashboard')->name('dashboard.index');
     Route::view('messages', 'admin.message.index')->name('messages.index');
     /******************ADMIN ROUTES****************/
       Route::resource('admin', 'AdminController');    
