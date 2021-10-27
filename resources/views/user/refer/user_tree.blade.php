@@ -41,6 +41,7 @@
                     <div class="media-body">
 
                         <p class="mb-2">
+                            Left
                             <i class="feather-lg text-warning" data-feather="user"></i>
                             <br>
                             @if($user->left_refferal)
@@ -73,6 +74,7 @@
                     <div class="media-body">
 
                         <p class="mb-2">
+                            Right
                             <i class="feather-lg text-warning" data-feather="user"></i>
                             <br>
                             @if($user->right_refferal != null)
