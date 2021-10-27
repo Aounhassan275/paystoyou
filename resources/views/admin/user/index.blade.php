@@ -17,6 +17,7 @@
                     <th style="width:auto;">#</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email </th>
+                    <th style="width:auto;">User Balance </th>
                     <th style="width:auto;">User Package </th>
                     <th style="width:auto;">Package Date</th>
                     <th style="width:auto;">Package Expire Date</th>
@@ -30,6 +31,7 @@
                     <td>{{$key+1}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->balance}}</td>
                     @if ($user->package)
                     <td>{{$user->package->name}}</td>    
                     <td>{{$user->a_date->format('d M,Y')}}</td>

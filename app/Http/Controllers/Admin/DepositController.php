@@ -242,7 +242,7 @@ class DepositController extends Controller
             'balance' => $admin->balance += $admin_amount
         ]);
         $employee->update([
-            'balance' => $admin->balance += $admin_amount
+            'balance' => $employee->balance += $admin_amount
         ]);
         $company_account->update([
             'balance' => $company_account->balance += $company_amount,

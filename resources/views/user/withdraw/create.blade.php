@@ -6,6 +6,7 @@
     <h3>Withdraw | PAYS TO YOU</h3>
     </div>
 </div>
+@if(Auth::user()->all_refer()->where('status','active')->count() > 0)
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -52,4 +53,25 @@
         </div>
     </div>
 </div>
+@else 
+<div class="row">  
+
+    <div class="col-md-12 text-center">
+        <div class="card bg-info py-2 py-md-3 border">
+
+            <div class="card-body blink_me">
+
+                <h1 class="blink_me" style="color:white">   
+                    Withdraw Required One Referral Member
+                </h1>
+
+            </div>
+
+            </div>
+
+
+    </div>
+
+</div>
+@endif
 @endsection
