@@ -212,4 +212,40 @@ class User extends Authenticatable
     {
         return $this->hasMany(Earning::class,'user_id');
     }
+    public function getOrginalLeft()
+    {
+        $all_left = [];
+        $left = User::find($this->left_refferal);
+        $all_left[] = $left;
+        for($i = 0; $i < 100; $i++)
+        {
+            if($left->left_refferal == null)
+            {
+                $i = 100;
+            }else{
+                $left = User::find($left->left_refferal);
+                $all_left[] = $left;
+            }
+            
+        } 
+        return $all_left;
+    }
+    public function getOrginalRight()
+    {
+        $all_right = [];
+        $right = User::find($this->right_refferal);
+        $all_right[] = $right;
+        for($i = 0; $i < 100; $i++)
+        {
+            if($right->right_refferal == null)
+            {
+                $i = 100;
+            }else{
+                $right = User::find($right->right_refferal);
+                $all_right[] = $right;
+            }
+            
+            } 
+        return $all_right;
+    }
 }

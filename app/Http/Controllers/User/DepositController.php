@@ -372,16 +372,16 @@ class DepositController extends Controller
         $deposit->update([
             'status' => 'old'
         ]);
-        $employee = Admin::where('email','admin@pty.com')->first();
-        $admin = Admin::where('email','admin1@mail.com')->first();
         $admin_amount = $deposit->amount/100 * 10; 
-        $company_amount = $deposit->amount/100 * 80; 
-        $admin->update([
-            'balance' => $admin->balance += $admin_amount
-        ]);
+        $employee = Admin::where('email','adminr@pty.com')->first();
         $employee->update([
             'balance' => $employee->balance += $admin_amount
         ]);
+        $admin = Admin::where('email','admin1@mail.com')->first();
+        $admin->update([
+            'balance' => $admin->balance += $admin_amount
+        ]);
+        $company_amount = $deposit->amount/100 * 80; 
         $company_account->update([
             'balance' => $company_account->balance += $company_amount,
         ]);

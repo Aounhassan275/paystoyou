@@ -21,7 +21,6 @@
                         <div class="form-group col-6">
                             <label class="form-label">Your Name</label>
                             <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}" required>
-                            <input type="hidden" name="type" class="form-control" value="2" required>
                         </div>
                         <div class="form-group col-6">
                             <label class="form-label">Your Email Address</label>

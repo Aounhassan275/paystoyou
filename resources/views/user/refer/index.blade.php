@@ -187,7 +187,7 @@
 
                         <h3 class="mb-2">{{Auth::user()->pending_refer()->where('status','pending')->where('refer_type','Left')->count()}}</h3>
 
-                        <div class="mb-0">Refer By</div>
+                        <div class="mb-0">Left Referral Pending</div>
 
                     </div>
 
@@ -228,6 +228,69 @@
         </div>
 
     </div>
+</div>
+<div class="row">
+    @if($user->left_refferal)
+    <div class="col-12 col-sm-6 col-xl d-flex">
+            <div class="card flex-fill">
+
+                <div class="card-body py-4">
+
+                    <div class="media">
+
+                        <div class="d-inline-block mt-2 mr-3">
+
+                            <i class="feather-lg text-warning" data-feather="package"></i>
+
+                        </div>
+
+                        <div class="media-body">
+                            <a href="{{route('user.left_refferal_tree.index')}}">
+                                <h3 class="mb-2">{{count(@$user->getOrginalLeft())}}</h3>
+
+                                <div class="mb-0">Left Referral </div>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    </div>
+    @endif
+    @if($user->right_refferal)
+    <div class="col-12 col-sm-6 col-xl d-flex">
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-success" data-feather="airplay"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        <a href="{{route('user.right_refferal_tree.index')}}">
+                            <h3 class="mb-2">{{count(@$user->getOrginalRight())}}</h3>
+
+                            <div class="mb-0">Right Referral </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    @endif
 </div>
 <div class="row">
 
@@ -282,6 +345,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
+                        <th class="text-center">Date</th>
                         <th class="text-center">Earn Amount</th>
                     </tr>
                 </thead>
@@ -289,10 +353,12 @@
                     @foreach (Auth::user()->earnings()->where('type','direct_income')->get() as $key => $earning)
                     <tr> 
                         <td class="text-center">{{$key + 1}}</td>
+                        <td class="text-center">{{$earning->created_at->format('M d,Y h:i A')}}</td>
                         <td class="text-center">$ {{$earning->price}}</td>
                     </tr>
                     @endforeach
                     <tr> 
+                        <td class="text-center"></td>
                         <td class="text-center">Total Direct Income:</td>
                         <td class="text-center">$ {{Auth::user()->earnings()->where('type','direct_income')->sum('price')}}</td>
                     </tr>
@@ -311,6 +377,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
+                        <th class="text-center">Date</th>
                         <th class="text-center">Earn Amount</th>
                     </tr>
                 </thead>
@@ -318,10 +385,12 @@
                     @foreach (Auth::user()->earnings()->where('type','matching_income')->get() as $key => $earning)
                     <tr> 
                         <td class="text-center">{{$key + 1}}</td>
+                        <td class="text-center">{{$earning->created_at->format('M d,Y h:i A')}}</td>
                         <td class="text-center">$ {{$earning->price}}</td>
                     </tr>
                     @endforeach
                     <tr> 
+                        <td class="text-center"></td>
                         <td class="text-center">Total Matching Income:</td>
                         <td class="text-center">$ {{Auth::user()->earnings()->where('type','matching_income')->sum('price')}}</td>
                     </tr>
