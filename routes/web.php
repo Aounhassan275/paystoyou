@@ -157,4 +157,10 @@ Route::get('/migrate', function() {
     Artisan::call('migrate');
     return 'Migration done';
 });
+Route::get('/cache_clear', function() {
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('cache:clear');
+    return 'Cache Clear DOne';
+});
 

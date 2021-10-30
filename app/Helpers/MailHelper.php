@@ -9,7 +9,7 @@ class MailHelper
     public static function sendVerification($user){
         $data = ['code' => $user->verification];
         Mail::send('mail.index', $data, function ($message) use ($user){
-            $message->from('support@payoncash.com', 'Pay on Cash');
+            $message->from('info@paystoyou.online', 'Pays To You');
             $message->to($user->email, $user->name)
             ->subject('Email Verification');
         });

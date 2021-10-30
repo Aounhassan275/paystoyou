@@ -80,9 +80,20 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request,$id)
     {
-        $admin->update($request->all());
+        $admin = Admin::find($id);
+        if($request->password)
+        {
+            $admin->update([
+                'password' => $request->password
+            ]);
+        }else{
+            $admin->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+        }
         toastr()->success('Employee Informations Updated successfully');
         return redirect()->back();
     }

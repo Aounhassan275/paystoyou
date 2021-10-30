@@ -40,7 +40,13 @@ class UserController extends Controller
   public function update(Request $request)
   {
       $user = User::find($request->id);
-      $user->update($request->all());
+      if($request->password)
+      {
+          $user->update([
+              'password' => $request->password
+          ]);
+      }
+      $user->update($request->except('password'));
       toastr()->success('User is Updated Successfully');
       return redirect()->back();
   }

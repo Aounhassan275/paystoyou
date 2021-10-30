@@ -148,12 +148,7 @@ class AuthController extends Controller
         }
         $user->verification = uniqid();
         $user->save();
-        // Message::send($user->phone,'AOA! Welcome to Pay Earn Cash '
-        // .$user->verification.
-        //     ' Your Verification Code
-        //     NOW RESET YOUR PASSWORD AND START EARNING NOW
-        //     PAY EARN CASH 
-        //     ');        
+        MailHelper::sendVerification($user);
         return redirect()->route('user.reset');
     }
 

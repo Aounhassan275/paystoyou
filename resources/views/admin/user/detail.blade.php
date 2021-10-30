@@ -187,7 +187,7 @@
                                 </div>   
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Password</label>
-                                    <input type="password" class="form-control" name="password" id="inputEmail4" value="{{$user->password}}">
+                                    <input type="password" class="form-control" name="password" id="inputEmail4">
                                 </div>
                             </div>
                             <div class="form-row">
