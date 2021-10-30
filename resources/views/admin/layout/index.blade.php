@@ -90,6 +90,11 @@
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Message</span>
 						</a>
 					</li>	
+					<li class="sidebar-item {{Request::is('admin.email.index')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.email.index')}}">
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Emails</span>
+						</a>
+					</li>	
 					<li class="sidebar-item {{Request::is('admin.ticker.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.ticker.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Ticker Message</span>

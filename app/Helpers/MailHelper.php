@@ -15,10 +15,14 @@ class MailHelper
         });
     }
     
-    public static function send($Message){
-        $data = ['text' => $Message->message];
-        Mail::send('admin.mail.index', $data, function ($message) use ($Message){
-            $message->from('support@royalunitedtrader', 'Royal United Traders');
+    public static function send($Message,$email){
+        $data['text'] = $email->message;
+        $data['name'] = $Message->name;
+        $data['email'] = $Message->email;
+        $data['subject'] = $Message->subject;
+        $data['message'] = $Message->message;
+        Mail::send('admin.mail.index', ['data' => $data], function ($message) use ($Message){
+            $message->from('info@paystoyou.online', 'Pays To You');
             $message->to($Message->email, $Message->name)
             ->subject('Reply from Support');
         });

@@ -19,6 +19,7 @@
                     <th style="width:auto;">Sender Email</th>
                     <th style="width:auto;">Subject</th>
                     <th style="width:auto;">Message</th>
+                    <th style="width:auto;">Reply</th>
                     <th style="width:auto;">Action</th>
                 </tr>
             </thead>
@@ -30,6 +31,10 @@
                     <td>{{$message->email}}</td>
                     <td>{{$message->subject}}</td>
                     <td>{{$message->message}}</td>
+                    <td>
+                        <a href="{{route('admin.email.show',$message->id)}}" class="dropdown-item edit-btn">
+                        <button class="btn btn-success">Reply</button></a>
+                    </td>
                     <td class="table-action">
                         {{-- <a href="{{url('poll/delete',$package->id)}}"><i class="align-middle" data-feather="trash"></i></a> --}}
                         <form action="{{route('admin.message.destroy',$message->id)}}" method="POST">

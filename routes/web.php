@@ -44,6 +44,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::resource('review', 'ReviewController'); 
     /******************Video ROUTES****************/
     Route::resource('video', 'VideoController'); 
+    /******************Email ROUTES****************/
+    Route::resource('email', 'EmailController');
     /******************User ROUTES****************/
     Route::view('user', 'admin.user.index')->name('user.index');  
     Route::view('user/actives', 'admin.user.active')->name('user.actives');  
