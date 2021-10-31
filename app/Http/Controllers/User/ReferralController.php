@@ -184,6 +184,16 @@ class ReferralController extends Controller
         // dd($user);
         return view('user.refer.user_tree')->with('user',$user)->with('left',$left)->with('right',$right);
    
+    }    
+    public function showRightLeg($id)
+    {
+        $user = User::find($id);
+        return view('user.refer.right_refferal')->with('user',$user);
+    }
+    public function showLeftLeg($id)
+    {
+        $user = User::find($id);
+        return view('user.refer.left_refferal')->with('user',$user);
     }
     public function RightReferral($id)
     {

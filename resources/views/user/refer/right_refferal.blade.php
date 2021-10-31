@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Auth::user()->getOrginalRight() as $key => $user)
+                    @foreach ($user->getOrginalRight() as $key => $user)
                     <tr> 
                         <td>{{$key + 1}}</td>
                         <td>{{$user->name}}</td>

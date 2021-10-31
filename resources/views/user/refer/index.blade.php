@@ -245,7 +245,7 @@
                         </div>
 
                         <div class="media-body">
-                            <a href="{{route('user.left_refferal_tree.index')}}">
+                            <a href="{{route('user.left_refferal_tree.index',$user->id)}}">
                                 <h3 class="mb-2">{{count(@$user->getOrginalLeft())}}</h3>
 
                                 <div class="mb-0">Left Referral </div>
@@ -276,7 +276,7 @@
                     </div>
 
                     <div class="media-body">
-                        <a href="{{route('user.right_refferal_tree.index')}}">
+                        <a href="{{route('user.right_refferal_tree.index',$user->id)}}">
                             <h3 class="mb-2">{{count(@$user->getOrginalRight())}}</h3>
 
                             <div class="mb-0">Right Referral </div>

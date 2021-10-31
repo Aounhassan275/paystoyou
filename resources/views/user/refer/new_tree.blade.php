@@ -11,7 +11,7 @@
                 <div class="row d-flex align-items-center mb-4">
                     <div class="col-4 text-center">
                         @if(@$user->left_refferal)
-                        <a href="{{route('user.left_refferal_tree.index')}}">L :<span class="text-muted">{{count(@$user->getOrginalLeft())}}</span></a>
+                        <a href="{{route('user.left_refferal_tree.index',$user->id)}}">L :<span class="text-muted">{{count(@$user->getOrginalLeft())}}</span></a>
                         @endif
                     </div>
                     <div class="col-4 text-center">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-4 text-center">
                         @if(@$user->right_refferal)
-                        <a href="{{route('user.right_refferal_tree.index')}}">R :<span class="text-muted">{{count(@$user->getOrginalRight())}}</span></a>
+                        <a href="{{route('user.right_refferal_tree.index',$user->id)}}">R :<span class="text-muted">{{count(@$user->getOrginalRight())}}</span></a>
                         @endif
                     </div>
                 </div>
@@ -49,12 +49,12 @@
                 <div class="row d-flex align-items-center mb-4">
                     <div class="col-6 text-center">
                         @if(@$left->left_refferal)
-                        <a href="{{route('user.left_refferal_tree.index')}}"><span class="text-muted">{{count(@$left->getOrginalLeft())}}</span><i class="align-middle mr-2" data-feather="corner-down-left"></i></a>
+                        <a href="{{route('user.left_refferal_tree.index',$left->id)}}"><span class="text-muted">{{count(@$left->getOrginalLeft())}}</span><i class="align-middle mr-2" data-feather="corner-down-left"></i></a>
                         @endif
                     </div>
                     <div class="col-6 text-center">
                         @if(@$left->right_refferal)
-                        <a href="{{route('user.right_refferal_tree.index')}}"><i class="align-middle mr-2" data-feather="corner-down-right"></i><span class="text-muted">{{count(@$left->getOrginalRight())}}</span></a>
+                        <a href="{{route('user.right_refferal_tree.index',$left->id)}}"><i class="align-middle mr-2" data-feather="corner-down-right"></i><span class="text-muted">{{count(@$left->getOrginalRight())}}</span></a>
                         @endif
                     </div>
                 </div>
@@ -84,12 +84,12 @@
                 <div class="row d-flex align-items-center mb-4">
                     <div class="col-6 text-center">
                         @if(@$right->left_refferal)
-                        <a href="{{route('user.left_refferal_tree.index')}}"><span class="text-muted">{{count(@$right->getOrginalLeft())}}</span><i class="align-middle mr-2" data-feather="corner-down-left"></i></a>
+                        <a href="{{route('user.left_refferal_tree.index',$right->id)}}"><span class="text-muted">{{count(@$right->getOrginalLeft())}}</span><i class="align-middle mr-2" data-feather="corner-down-left"></i></a>
                         @endif
                     </div>
                     <div class="col-6 text-center">
                         @if(@$right->right_refferal)
-                        <a href="{{route('user.right_refferal_tree.index')}}"><i class="align-middle mr-2" data-feather="corner-down-right"></i><span class="text-muted">{{count(@$right->getOrginalRight())}}</span></a>
+                        <a href="{{route('user.right_refferal_tree.index',$right->id)}}"><i class="align-middle mr-2" data-feather="corner-down-right"></i><span class="text-muted">{{count(@$right->getOrginalRight())}}</span></a>
                         @endif
                     </div>
                 </div>

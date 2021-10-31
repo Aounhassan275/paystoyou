@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Auth::user()->getOrginalLeft() as $key => $user)
+                    @foreach ($user->getOrginalLeft() as $key => $user)
                     <tr> 
                         <td>{{$key + 1}}</td>
                         <td>{{$user->name}}</td>
