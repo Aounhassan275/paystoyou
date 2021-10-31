@@ -11,7 +11,7 @@
         <div class="card-header">
             <h5 class="card-title">View Messages</h5>
         </div>
-        <table class="table">
+        <table id="datatables-buttons" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width:auto;">Sr#</th>
@@ -50,4 +50,17 @@
     </div>
 </div>
 
+@endsection
+@section('scripts')
+<script>
+    $(function() {
+        // Datatables with Buttons
+        var datatablesButtons = $("#datatables-buttons").DataTable({
+            responsive: true,
+            lengthChange: !1,
+            buttons: ["copy", "print"]
+        });
+        datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");
+    });
+</script>
 @endsection
