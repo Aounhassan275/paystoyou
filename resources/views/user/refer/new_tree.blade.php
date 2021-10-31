@@ -156,7 +156,7 @@
             </div>
         </div>
     </div>
-    <div class="col-3 col-sm-3 col-xl  d-flex">
+    <div class="col-3 col-sm-3 col-xl  d-flex text-center">
         <div class="card flex-fill">
             <div class="card-header">
                 {{-- <span class="badge badge-success"> --}}
