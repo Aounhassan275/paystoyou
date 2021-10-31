@@ -40,7 +40,7 @@ class PinUsedController extends Controller
     {
         $user = Auth::user();
         $pin = Pin::where('name',$request->name)->first();
-        $pins= PinUsed::where('pin_id',$pin->id)->get();
+        $pins= PinUsed::where('pin_id',$pin->id)->first();
         if($pins)
         {
             toastr()->error('Pin Already Used.');
