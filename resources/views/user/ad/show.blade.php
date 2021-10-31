@@ -28,9 +28,9 @@
 			opacity: 0;
 		}
          .ytplayer {
-pointer-events: none;
-position: absolute;
-}
+            /* pointer-events: none; */
+            position: absolute;
+            }
 	.blink_me {
 		animation: blinker 1s linear infinite;
 		}
@@ -40,18 +40,6 @@ position: absolute;
 		}
 		}
 	</style>
-	<script src="{{asset('js\settings.js')}}"></script>
-    <!-- END SETTINGS -->
-    <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1685936,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
     	@toastr_css
 </head>
 
@@ -69,12 +57,13 @@ position: absolute;
                                 </button>
                             </form>
                         </legend>
+                        @foreach($ads as $ad)
                         <div class="card-body pt-0">
                             <div class="embed-responsive embed-responsive-21by9">
-                                <iframe class="ytplayer" width="100%" height="400" src="{!! $ad->link !!}?autoplay=1&controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                            
+                                <iframe class="ytplayer" width="100%" height="400" src="https://www.youtube.com/embed/{!! $ad->link !!}" frameborder="0" allowfullscreen></iframe>                            
                             </div>
                         </div>
-                      
+                        @endforeach
                     </div>
                 </div>
             </div>

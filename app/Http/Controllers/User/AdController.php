@@ -17,8 +17,8 @@ class AdController extends Controller
     {
       $user = Auth::user();   
       if($user->isEligible()){
-        $ad = $user->nextAd();
-        return view('user.ad.show')->with('ad', $ad);
+        $ads = Ad::all();
+        return view('user.ad.show')->with('ads', $ads);
       } 
       else {
         return redirect(route('user.dashboard.index'));
