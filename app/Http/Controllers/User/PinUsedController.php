@@ -40,6 +40,12 @@ class PinUsedController extends Controller
     {
         $user = Auth::user();
         $pin = Pin::where('name',$request->name)->first();
+        $pins= PinUsed::where('pin_id',$pin->id)->get();
+        if($pins)
+        {
+            toastr()->error('Pin Already Used.');
+            return redirect()->back();
+        }
         if(!$pin)
         {
             toastr()->error('Pin Not Found.');
