@@ -117,7 +117,7 @@ class UserController extends Controller
             $right = User::find($user->right_refferal);
         }
         // dd($user);
-        return view('user.refer.tree')->with('user',$user)->with('left',$left)->with('right',$right);
+        return view('user.refer.new_tree')->with('user',$user)->with('left',$left)->with('right',$right);
     }
     
 }

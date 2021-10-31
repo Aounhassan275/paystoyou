@@ -97,6 +97,23 @@
 						</a>
 
 					</li>
+					<li class="sidebar-item">
+
+						<a href="{{url('#pins')}}" data-toggle="collapse" class="sidebar-link collapsed">
+
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Pin</span>
+
+						</a>
+
+						<ul id="pins" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.index')}}">Create Your Pin</a></li>
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.used')}}">Pin You Used </a></li>
+
+						</ul>
+
+					</li>
 
 					<li class="sidebar-item">
 
@@ -186,7 +203,23 @@
 						</a>
 
 					</li>
+					<li class="sidebar-item">
 
+						<a href="{{url('#pins')}}" data-toggle="collapse" class="sidebar-link collapsed">
+
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Pin</span>
+
+						</a>
+
+						<ul id="pins" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.index')}}">Create Your Pin</a></li>
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.used')}}">Pin You Used </a></li>
+
+						</ul>
+
+					</li>
 					<li class="sidebar-item {{Request::is('user.package.-*')?'active':''}}">
 
                         <a class="sidebar-link" href="{{route('user.package.index')}}">
@@ -235,6 +268,23 @@
 							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Dashboard</span>
 
 						</a>
+
+					</li>
+					<li class="sidebar-item">
+
+						<a href="{{url('#pins')}}" data-toggle="collapse" class="sidebar-link collapsed">
+
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Pin</span>
+
+						</a>
+
+						<ul id="pins" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.index')}}">Create Your Pin</a></li>
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.used')}}">Pin You Used </a></li>
+
+						</ul>
 
 					</li>
 					<li class="sidebar-item {{Request::is('user.package.-*')?'active':''}}">
@@ -314,7 +364,23 @@
 						</a>
 
 					</li>
+					<li class="sidebar-item">
 
+						<a href="{{url('#pins')}}" data-toggle="collapse" class="sidebar-link collapsed">
+
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Pin</span>
+
+						</a>
+
+						<ul id="pins" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.index')}}">Create Your Pin</a></li>
+
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('user.pin.used')}}">Pin You Used </a></li>
+
+						</ul>
+
+					</li>
 					<li class="sidebar-item">
 
 						<a href="{{url('#layouts')}}" data-toggle="collapse" class="sidebar-link collapsed">

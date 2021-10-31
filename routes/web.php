@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /******************TRANSCATIONS  ROUTES****************/
     Route::get('transcation/all', 'TranscationController@allTranscations')->name('transcation.all');
     Route::resource('transcation', 'TranscationController'); 
+    /******************PIN  ROUTES****************/
+    Route::view('pin_history', 'admin.transcation.pin')->name('transcation.pin_history');
 });
 });
 /******************USER PANELS ROUTES****************/
@@ -132,6 +134,10 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('right_refferal/{id}','ReferralController@RightReferral')->name('right_refferal.index');
     /******************TRANSCATIONS  ROUTES****************/
     Route::resource('transcation', 'TranscationController'); 
+    /******************PIN  ROUTES****************/
+    Route::view('pin/used', 'user.pin.used')->name('pin.used');
+    Route::resource('pin', 'PinController'); 
+    Route::resource('pin_used', 'PinUsedController'); 
 });
 
 
@@ -150,8 +156,8 @@ Route::view('terms_&_condition', 'front.term.index');
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('/cd', function() {
     Artisan::call('config:cache');
-    Artisan::call('migrate:refresh');
-    Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
+    // Artisan::call('migrate:refresh');
+    // Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
     Artisan::call('view:clear');
     return 'DONE';
 });

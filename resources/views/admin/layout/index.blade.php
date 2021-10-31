@@ -157,6 +157,7 @@
 						<ul id="transcation" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.index')}}">Your Transcations</a></li>
 							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.all')}}">All User Trancations</a></li>
+							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.pin_history')}}">All Pin History</a></li>
 						</ul>
 					</li>		
 

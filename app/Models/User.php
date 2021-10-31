@@ -204,6 +204,11 @@ class User extends Authenticatable
         $user = User::find($id);
         return $user->name;
     }
+    public function refer_by_user($id)
+    {
+        $user = User::find($id);
+        return $user;
+    }
     public function transcations()
     {
         return $this->hasMany('App\Models\Transcation');
@@ -247,5 +252,13 @@ class User extends Authenticatable
             
             } 
         return $all_right;
+    }
+    public function pins()
+    {
+        return $this->hasMany(Pin::class,'user_id');
+    }
+    public function pin_used()
+    {
+        return $this->hasMany(PinUsed::class,'user_id');
     }
 }
