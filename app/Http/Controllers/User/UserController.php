@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyAccount;
+use App\Models\Earning;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -101,11 +103,72 @@ class UserController extends Controller
     public function showTree($id)
     {
         $user = User::find($id);
+        $company_account= CompanyAccount::find(1);
         // if($user->main_owner != Auth::user()->id)
         // {
         //     toastr()->warning('You are Not Authorize To See this');
         // return redirect()->back();
         // }
+        if($user->left_amount > $user->right_amount)
+        {
+            $amount = $user->right_amount;
+            if($amount > 0)
+            {
+                $user->update([
+                    'right_amount' => 0, 
+                    'left_amount' => $user->left_amount -= $amount, 
+                    'balance' => $user->balance += $amount,
+                    'r_earning' => $user->r_earning += $amount,
+                ]);
+                Earning::create([
+                    "user_id" => $user->id,
+                    "price" => $amount,
+                    "type" => 'matching_income'
+                ]);
+                $company_account->update([
+                    'balance' => $company_account->balance -= $amount,
+                ]);
+            }
+        }else if($user->right_amount > $user->left_amount)
+        {
+            $amount = $user->left_amount;
+            if($amount > 0)
+            {
+                $user->update([
+                    'right_amount' => $user->right_amount -= $amount, 
+                    'left_amount' => 0, 
+                    'balance' => $user->balance += $amount,
+                    'r_earning' => $user->r_earning += $amount,
+                ]);
+                Earning::create([
+                    "user_id" => $user->id,
+                    "price" => $amount,
+                    "type" => 'matching_income'
+                ]);
+                $company_account->update([
+                    'balance' => $company_account->balance -= $amount,
+                ]);
+            }
+        }else{
+            $amount = $user->left_amount;
+            if($amount > 0)
+            {
+                $user->update([
+                    'right_amount' => 0, 
+                    'left_amount' => 0, 
+                    'balance' => $user->balance += $amount,
+                    'r_earning' => $user->r_earning += $amount,
+                ]);
+                Earning::create([
+                    "user_id" => $user->id,
+                    "price" => $amount,
+                    "type" => 'matching_income'
+                ]);
+                $company_account->update([
+                    'balance' => $company_account->balance -= $amount,
+                ]);
+            }
+        }
         $left = null;
         $right = null;
         if($user->left_refferal)

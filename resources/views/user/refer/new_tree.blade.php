@@ -8,6 +8,22 @@
                 <h1 class="card-title mb-0 text-center" >{{@$user->name}}</h1>
             </div>
             <div class="card-body my-2">
+                
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-4 text-center">
+                        @if(@$user->left_refferal)
+                        <a href="{{route('user.left_refferal_tree.index',$user->id)}}"><span class="badge badge-success">${{@$user->left_amount}}</span></a>
+                        @endif
+                    </div>
+                    <div class="col-4 text-center">
+                        {{-- <i class="align-middle mr-2" data-feather="arrow-up-circle"></i><span class="text-muted">$ {{@$user->earnings()->where('type','direct_income')->sum('price')}}</span> --}}
+                    </div>
+                    <div class="col-4 text-center">
+                        @if(@$user->right_refferal)
+                        <a href="{{route('user.right_refferal_tree.index',$user->id)}}"><span class="badge badge-info">${{@$user->right_amount}}</span></a>
+                        @endif
+                    </div>
+                </div>
                 <div class="row d-flex align-items-center mb-4">
                     <div class="col-4 text-center">
                         @if(@$user->left_refferal)

@@ -33,7 +33,7 @@ class ReferralController extends Controller
         ]);
         $owner_left_refer->update([
             'left_refferal' => $user->id,
-            'left_amount' => $matching_income,
+            'left_amount' =>  $matching_income,
         ]);
         $user->update([
             'top_referral' => 'Done',
@@ -46,131 +46,150 @@ class ReferralController extends Controller
         $company_account->update([
             'balance' => $company_account->balance -= $direct_income,
         ]);
-        if($owner_left_refer->left_refferal != null &&  $owner_left_refer->right_refferal != null )
+        $chain = $owner_left_refer;
+        for($i = 0;$i < 1000;$i++)
         {
-            if($owner_left_refer->left_amount > $owner_left_refer->right_amount)
+            $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+            if($referrral_chain->id == $user->main_owner)
             {
-                $owner_left_refer->update([
-                    'balance' => $owner_left_refer->balance += $owner_left_refer->right_amount*2,
-                    'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->right_amount*2,
-                ]);
-                Earning::create([
-                    "user_id" => $owner_left_refer->id,
-                    "price" => $owner_left_refer->right_amount*2,
-                    "type" => 'matching_income'
-                ]);
-                $company_account->update([
-                    'balance' => $company_account->balance -= $owner_left_refer->right_amount*2,
-                ]);
+                $i = 1000;
             }else{
-                $owner_left_refer->update([
-                    'balance' => $owner_left_refer->balance += $owner_left_refer->left_amount*2,
-                    'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->left_amount*2,
-                ]);
-                Earning::create([
-                    "user_id" => $owner_left_refer->id,
-                    "price" => $owner_left_refer->left_amount*2,
-                    "type" => 'matching_income'
-                ]);
-                $company_account->update([
-                    'balance' => $company_account->balance -= $owner_left_refer->left_amount*2,
-                ]);
+                if($referrral_chain->left_refferal == $chain->id)
+                {
+                    $referrral_chain->update([
+                        'left_amount' =>   $referrral_chain->left_amount += $matching_income,
+                    ]);
+                }else{
+                    $referrral_chain->update([
+                        'right_amount' =>   $referrral_chain->right_amount += $matching_income,
+                    ]);
+                }
+                $chain = $referrral_chain;
             }
         }
-        $main_owner = User::find($user->main_owner);
-        if($main_owner->main_owner_referral->count() > 0 && $user->refer_by != $main_owner->id)
-        {
-            $total_left = $main_owner->main_owner_referral->where('refer_type','Left')->count();
-            $total_right = $main_owner->main_owner_referral->where('refer_type','Right')->count();
-            if($total_left == $total_right)
-            {
-                $last_left_refferal = $main_owner->main_owner_referral->where('refer_type','Left')->last();
-                if($last_left_refferal->left_amount > $last_left_refferal->right_amount)
-                {
-                    $referral_left_amount = $last_left_refferal->right_amount; 
-                }else{
-                    $referral_left_amount = $last_left_refferal->left_amount; 
-                }
-                $last_right_refferal = $main_owner->main_owner_referral->where('refer_type','Right')->last();
-                if($last_right_refferal->left_amount > $last_right_refferal->right_amount)
-                {
-                    $referral_right_amount = $last_right_refferal->right_amount; 
-                }else{
-                    $referral_right_amount = $last_right_refferal->left_amount; 
-                }
-                if($referral_right_amount > $referral_left_amount)
-                {
-                    $total_amount = $referral_left_amount; 
-                }else{
-                    $total_amount = $referral_right_amount; 
-                }
-                $main_owner->update([
-                    'balance' => $main_owner->balance += $total_amount*2,
-                    'r_earning' => $main_owner->r_earning += $total_amount*2,
-                ]);
-                Earning::create([
-                    "user_id" => $main_owner->id,
-                    "price" => $total_amount*2,
-                    "type" => 'matching_income'
-                ]);
-                $company_account->update([
-                    'balance' => $company_account->balance -= $total_amount*2,
-                ]);
-            }
-        }
-        if($main_owner->main_owner_left->where('refer_type','Left')->count() == $main_owner->main_owner_right->where('refer_type','Right')->count())
-        {
-            $last_left_ = $main_owner->main_owner_left->where('refer_type','Left')->last();
-            $last_right= $main_owner->main_owner_right->where('refer_type','Right')->last();
-            if($last_left_ != null && $last_right == null)
-            {
-                $logs = ReferralLog::where('leftUser',$last_left_->id)->where('rightUser',$last_right)
-                ->where('main_owner',$main_owner)->first();
-                if($logs == null)
-                {
-                    if($last_left_->left_amount > $last_right->right_amount)
-                    {
-                        $total_amounts = $last_right->right_amount; 
-                    }else{
-                        $total_amounts = $last_left_->left_amount; 
-                    }
-                    $main_owner->update([
-                        'balance' => $main_owner->balance += $total_amounts*2,
-                        'r_earning' => $main_owner->r_earning += $total_amounts*2,
-                    ]);
-                    Earning::create([
-                        "user_id" => $main_owner->id,
-                        "price" => $total_amounts*2,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $total_amount*2,
-                    ]);
-                    ReferralLog::create([
-                        "main_owner" => $main_owner->id,
-                        "leftUser" => $last_left_->id,
-                        "rightUser" => $last_right->id,
-                        "amount" => $total_amounts*2,
-                        "countLeft" => $main_owner->main_owner_left->where('refer_type','Left')->count(),
-                        "countRight" => $main_owner->main_owner_right->where('refer_type','Right')->count(),
-                        "type" => 'matching_income'
-                    ]);
-                }
-            }
-           
-            
-        }
+        // if($owner_left_refer->left_refferal != null &&  $owner_left_refer->right_refferal != null )
+        // {
+        //     if($owner_left_refer->left_amount > $owner_left_refer->right_amount)
+        //     {
+        //         $owner_left_refer->update([
+        //             'balance' => $owner_left_refer->balance += $owner_left_refer->right_amount*2,
+        //             'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->right_amount*2,
+        //         ]);
+        //         Earning::create([
+        //             "user_id" => $owner_left_refer->id,
+        //             "price" => $owner_left_refer->right_amount*2,
+        //             "type" => 'matching_income'
+        //         ]);
+        //         $company_account->update([
+        //             'balance' => $company_account->balance -= $owner_left_refer->right_amount*2,
+        //         ]);
+        //     }else{
+        //         $owner_left_refer->update([
+        //             'balance' => $owner_left_refer->balance += $owner_left_refer->left_amount*2,
+        //             'r_earning' => $owner_left_refer->r_earning += $owner_left_refer->left_amount*2,
+        //         ]);
+        //         Earning::create([
+        //             "user_id" => $owner_left_refer->id,
+        //             "price" => $owner_left_refer->left_amount*2,
+        //             "type" => 'matching_income'
+        //         ]);
+        //         $company_account->update([
+        //             'balance' => $company_account->balance -= $owner_left_refer->left_amount*2,
+        //         ]);
+        //     }
+        // }
+        // $main_owner = User::find($user->main_owner);
+        // if($main_owner->main_owner_referral->count() > 0 && $user->refer_by != $main_owner->id)
+        // {
+        //     $total_left = $main_owner->main_owner_referral->where('refer_type','Left')->count();
+        //     $total_right = $main_owner->main_owner_referral->where('refer_type','Right')->count();
+        //     if($total_left == $total_right)
+        //     {
+        //         $last_left_refferal = $main_owner->main_owner_referral->where('refer_type','Left')->last();
+        //         if($last_left_refferal->left_amount > $last_left_refferal->right_amount)
+        //         {
+        //             $referral_left_amount = $last_left_refferal->right_amount; 
+        //         }else{
+        //             $referral_left_amount = $last_left_refferal->left_amount; 
+        //         }
+        //         $last_right_refferal = $main_owner->main_owner_referral->where('refer_type','Right')->last();
+        //         if($last_right_refferal->left_amount > $last_right_refferal->right_amount)
+        //         {
+        //             $referral_right_amount = $last_right_refferal->right_amount; 
+        //         }else{
+        //             $referral_right_amount = $last_right_refferal->left_amount; 
+        //         }
+        //         if($referral_right_amount > $referral_left_amount)
+        //         {
+        //             $total_amount = $referral_left_amount; 
+        //         }else{
+        //             $total_amount = $referral_right_amount; 
+        //         }
+        //         $main_owner->update([
+        //             'balance' => $main_owner->balance += $total_amount*2,
+        //             'r_earning' => $main_owner->r_earning += $total_amount*2,
+        //         ]);
+        //         Earning::create([
+        //             "user_id" => $main_owner->id,
+        //             "price" => $total_amount*2,
+        //             "type" => 'matching_income'
+        //         ]);
+        //         $company_account->update([
+        //             'balance' => $company_account->balance -= $total_amount*2,
+        //         ]);
+        //     }
+        // }
+        // if($main_owner->main_owner_left->where('refer_type','Left')->count() == $main_owner->main_owner_right->where('refer_type','Right')->count())
+        // {
+        //     $last_left_ = $main_owner->main_owner_left->where('refer_type','Left')->last();
+        //     $last_right= $main_owner->main_owner_right->where('refer_type','Right')->last();
+        //     if($last_left_ != null && $last_right == null)
+        //     {
+        //         $logs = ReferralLog::where('leftUser',$last_left_->id)->where('rightUser',$last_right)
+        //         ->where('main_owner',$main_owner)->first();
+        //         if($logs == null)
+        //         {
+        //             if($last_left_->left_amount > $last_right->right_amount)
+        //             {
+        //                 $total_amounts = $last_right->right_amount; 
+        //             }else{
+        //                 $total_amounts = $last_left_->left_amount; 
+        //             }
+        //             $main_owner->update([
+        //                 'balance' => $main_owner->balance += $total_amounts*2,
+        //                 'r_earning' => $main_owner->r_earning += $total_amounts*2,
+        //             ]);
+        //             Earning::create([
+        //                 "user_id" => $main_owner->id,
+        //                 "price" => $total_amounts*2,
+        //                 "type" => 'matching_income'
+        //             ]);
+        //             $company_account->update([
+        //                 'balance' => $company_account->balance -= $total_amount*2,
+        //             ]);
+        //             ReferralLog::create([
+        //                 "main_owner" => $main_owner->id,
+        //                 "leftUser" => $last_left_->id,
+        //                 "rightUser" => $last_right->id,
+        //                 "amount" => $total_amounts*2,
+        //                 "countLeft" => $main_owner->main_owner_left->where('refer_type','Left')->count(),
+        //                 "countRight" => $main_owner->main_owner_right->where('refer_type','Right')->count(),
+        //                 "type" => 'matching_income'
+        //             ]);
+        //         }
+        //     }            
+        // }
         toastr()->success('You Added In Tree Successfully.');
         return redirect()->back();
     }
     public function showTree($id)
     {
         $user = User::find($id);
-        if($user->main_owner != Auth::user()->main_owner)
-        {
-            toastr()->warning('You are Not Authorize To See this');
-        return redirect()->back();
-        }
+        // if($user->main_owner != Auth::user()->main_owner)
+        // {
+        //     toastr()->warning('You are Not Authorize To See this');
+        // return redirect()->back();
+        // }
         $left = null;
         $right = null;
         if($user->left_refferal)
@@ -210,7 +229,6 @@ class ReferralController extends Controller
         ]);
         $owner_right_refer->update([
             'right_refferal' => $user->id,
-            'right_amount' => $matching_income,
         ]);
         $user->update([
             'top_referral' => 'Done',
@@ -223,120 +241,141 @@ class ReferralController extends Controller
         $company_account->update([
             'balance' => $company_account->balance -= $direct_income,
         ]);
-        if($owner_right_refer->left_refferal != null &&  $owner_right_refer->right_refferal != null )
+        $chain = $owner_right_refer;
+        for($i = 0;$i < 1000;$i++)
         {
-            if($owner_right_refer->left_amount > $owner_right_refer->right_amount)
+            $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+            if($referrral_chain->id == $user->main_owner)
             {
-                $owner_right_refer->update([
-                    'balance' => $owner_right_refer->balance += $owner_right_refer->right_amount*2,
-                    'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->right_amount*2,
-                ]);
-                Earning::create([
-                    "user_id" => $owner_right_refer->id,
-                    "price" => $owner_right_refer->right_amount*2,
-                    "type" => 'matching_income'
-                ]);
-                $company_account->update([
-                    'balance' => $company_account->balance -= $owner_right_refer->right_amount*2,
-                ]);
+                $i = 1000;
             }else{
-                $owner_right_refer->update([
-                    'balance' => $owner_right_refer->balance += $owner_right_refer->left_amount*2,
-                    'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->left_amount*2,
-                ]);
-                Earning::create([
-                    "user_id" => $owner_right_refer->id,
-                    "price" => $owner_right_refer->left_amount*2,
-                    "type" => 'matching_income'
-                ]);
-                $company_account->update([
-                    'balance' => $company_account->balance -= $owner_right_refer->left_amount*2,
-                ]);
+                if($referrral_chain->left_refferal == $chain->id)
+                {
+                    $referrral_chain->update([
+                        'left_amount' =>   $referrral_chain->left_amount += $matching_income,
+                    ]);
+                }else{
+                    $referrral_chain->update([
+                        'right_amount' =>   $referrral_chain->right_amount += $matching_income,
+                    ]);
+                }
+                $chain = $referrral_chain;
             }
         }
-        $main_owner = User::find($user->main_owner);
-        if($main_owner->main_owner_referral->count() > 0 && $user->refer_by != $main_owner->id)
-        {
-            $total_left = $main_owner->main_owner_referral->where('refer_type','Left')->count();
-            $total_right = $main_owner->main_owner_referral->where('refer_type','Right')->count();
-            if($total_left == $total_right)
-            {
-                $last_left_refferal = $main_owner->main_owner_referral->where('refer_type','Left')->last();
-                if($last_left_refferal->left_amount > $last_left_refferal->right_amount)
-                {
-                    $referral_left_amount = $last_left_refferal->right_amount; 
-                }else{
-                    $referral_left_amount = $last_left_refferal->left_amount; 
-                }
-                $last_right_refferal = $main_owner->main_owner_referral->where('refer_type','Right')->last();
-                if($last_right_refferal->left_amount > $last_right_refferal->right_amount)
-                {
-                    $referral_right_amount = $last_right_refferal->right_amount; 
-                }else{
-                    $referral_right_amount = $last_right_refferal->left_amount; 
-                }
-                if($referral_right_amount > $referral_left_amount)
-                {
-                    $total_amount = $referral_left_amount; 
-                }else{
-                    $total_amount = $referral_right_amount; 
-                }
-                $main_owner->update([
-                    'balance' => $main_owner->balance += $total_amount*2,
-                    'r_earning' => $main_owner->r_earning += $total_amount*2,
-                ]);
-                Earning::create([
-                    "user_id" => $main_owner->id,
-                    "price" => $total_amount*2,
-                    "type" => 'matching_income'
-                ]);
-                $company_account->update([
-                    'balance' => $company_account->balance -= $total_amount*2,
-                ]);
-            }
-        }
-        if($main_owner->main_owner_left->where('refer_type','Left')->count() == $main_owner->main_owner_right->where('refer_type','Right')->count())
-        {
-            $last_left_ = $main_owner->main_owner_left->where('refer_type','Left')->last();
-            $last_right= $main_owner->main_owner_right->where('refer_type','Right')->last();
-            if($last_left_ != null && $last_right == null)
-            {
-                $logs = ReferralLog::where('leftUser',$last_left_->id)->where('rightUser',$last_right)
-                ->where('main_owner',$main_owner)->first();
-                if($logs == null)
-                {
-                    if($last_left_->left_amount > $last_right->right_amount)
-                    {
-                        $total_amounts = $last_right->right_amount; 
-                    }else{
-                        $total_amounts = $last_left_->left_amount; 
-                    }
-                    $main_owner->update([
-                        'balance' => $main_owner->balance += $total_amounts*2,
-                        'r_earning' => $main_owner->r_earning += $total_amounts*2,
-                    ]);
-                    Earning::create([
-                        "user_id" => $main_owner->id,
-                        "price" => $total_amounts*2,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $total_amount*2,
-                    ]);
-                    ReferralLog::create([
-                        "main_owner" => $main_owner->id,
-                        "leftUser" => $last_left_->id,
-                        "rightUser" => $last_right->id,
-                        "amount" => $total_amounts*2,
-                        "countLeft" => $main_owner->main_owner_left->where('refer_type','Left')->count(),
-                        "countRight" => $main_owner->main_owner_right->where('refer_type','Right')->count(),
-                        "type" => 'matching_income'
-                    ]);
-                }
-            }
+        // if($owner_right_refer->left_refferal != null &&  $owner_right_refer->right_refferal != null )
+        // {
+        //     if($owner_right_refer->left_amount > $owner_right_refer->right_amount)
+        //     {
+        //         $owner_right_refer->update([
+        //             'balance' => $owner_right_refer->balance += $owner_right_refer->right_amount*2,
+        //             'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->right_amount*2,
+        //         ]);
+        //         Earning::create([
+        //             "user_id" => $owner_right_refer->id,
+        //             "price" => $owner_right_refer->right_amount*2,
+        //             "type" => 'matching_income'
+        //         ]);
+        //         $company_account->update([
+        //             'balance' => $company_account->balance -= $owner_right_refer->right_amount*2,
+        //         ]);
+        //     }else{
+        //         $owner_right_refer->update([
+        //             'balance' => $owner_right_refer->balance += $owner_right_refer->left_amount*2,
+        //             'r_earning' => $owner_right_refer->r_earning += $owner_right_refer->left_amount*2,
+        //         ]);
+        //         Earning::create([
+        //             "user_id" => $owner_right_refer->id,
+        //             "price" => $owner_right_refer->left_amount*2,
+        //             "type" => 'matching_income'
+        //         ]);
+        //         $company_account->update([
+        //             'balance' => $company_account->balance -= $owner_right_refer->left_amount*2,
+        //         ]);
+        //     }
+        // }
+        // $main_owner = User::find($user->main_owner);
+        // if($main_owner->main_owner_referral->count() > 0 && $user->refer_by != $main_owner->id)
+        // {
+        //     $total_left = $main_owner->main_owner_referral->where('refer_type','Left')->count();
+        //     $total_right = $main_owner->main_owner_referral->where('refer_type','Right')->count();
+        //     if($total_left == $total_right)
+        //     {
+        //         $last_left_refferal = $main_owner->main_owner_referral->where('refer_type','Left')->last();
+        //         if($last_left_refferal->left_amount > $last_left_refferal->right_amount)
+        //         {
+        //             $referral_left_amount = $last_left_refferal->right_amount; 
+        //         }else{
+        //             $referral_left_amount = $last_left_refferal->left_amount; 
+        //         }
+        //         $last_right_refferal = $main_owner->main_owner_referral->where('refer_type','Right')->last();
+        //         if($last_right_refferal->left_amount > $last_right_refferal->right_amount)
+        //         {
+        //             $referral_right_amount = $last_right_refferal->right_amount; 
+        //         }else{
+        //             $referral_right_amount = $last_right_refferal->left_amount; 
+        //         }
+        //         if($referral_right_amount > $referral_left_amount)
+        //         {
+        //             $total_amount = $referral_left_amount; 
+        //         }else{
+        //             $total_amount = $referral_right_amount; 
+        //         }
+        //         $main_owner->update([
+        //             'balance' => $main_owner->balance += $total_amount*2,
+        //             'r_earning' => $main_owner->r_earning += $total_amount*2,
+        //         ]);
+        //         Earning::create([
+        //             "user_id" => $main_owner->id,
+        //             "price" => $total_amount*2,
+        //             "type" => 'matching_income'
+        //         ]);
+        //         $company_account->update([
+        //             'balance' => $company_account->balance -= $total_amount*2,
+        //         ]);
+        //     }
+        // }
+        // if($main_owner->main_owner_left->where('refer_type','Left')->count() == $main_owner->main_owner_right->where('refer_type','Right')->count())
+        // {
+        //     $last_left_ = $main_owner->main_owner_left->where('refer_type','Left')->last();
+        //     $last_right= $main_owner->main_owner_right->where('refer_type','Right')->last();
+        //     if($last_left_ != null && $last_right == null)
+        //     {
+        //         $logs = ReferralLog::where('leftUser',$last_left_->id)->where('rightUser',$last_right)
+        //         ->where('main_owner',$main_owner)->first();
+        //         if($logs == null)
+        //         {
+        //             if($last_left_->left_amount > $last_right->right_amount)
+        //             {
+        //                 $total_amounts = $last_right->right_amount; 
+        //             }else{
+        //                 $total_amounts = $last_left_->left_amount; 
+        //             }
+        //             $main_owner->update([
+        //                 'balance' => $main_owner->balance += $total_amounts*2,
+        //                 'r_earning' => $main_owner->r_earning += $total_amounts*2,
+        //             ]);
+        //             Earning::create([
+        //                 "user_id" => $main_owner->id,
+        //                 "price" => $total_amounts*2,
+        //                 "type" => 'matching_income'
+        //             ]);
+        //             $company_account->update([
+        //                 'balance' => $company_account->balance -= $total_amount*2,
+        //             ]);
+        //             ReferralLog::create([
+        //                 "main_owner" => $main_owner->id,
+        //                 "leftUser" => $last_left_->id,
+        //                 "rightUser" => $last_right->id,
+        //                 "amount" => $total_amounts*2,
+        //                 "countLeft" => $main_owner->main_owner_left->where('refer_type','Left')->count(),
+        //                 "countRight" => $main_owner->main_owner_right->where('refer_type','Right')->count(),
+        //                 "type" => 'matching_income'
+        //             ]);
+        //         }
+        //     }
            
             
-        }
+        // }
         toastr()->success('You Added In Tree Successfully.');
         return redirect()->back();
     }

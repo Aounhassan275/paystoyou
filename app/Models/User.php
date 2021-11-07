@@ -221,18 +221,21 @@ class User extends Authenticatable
     {
         $all_left = [];
         $left = User::find($this->left_refferal);
-        $all_left[] = $left;
-        for($i = 0; $i < 100; $i++)
+        if($left)
         {
-            if($left->left_refferal == null)
+            $all_left[] = $left;
+            for($i = 0; $i < 100; $i++)
             {
-                $i = 100;
-            }else{
-                $left = User::find($left->left_refferal);
-                $all_left[] = $left;
-            }
-            
-        } 
+                if($left->left_refferal == null)
+                {
+                    $i = 100;
+                }else{
+                    $left = User::find($left->left_refferal);
+                }
+                
+            } 
+        }
+        
         return $all_left;
     }
     public function getOrginalRight()
@@ -261,4 +264,36 @@ class User extends Authenticatable
     {
         return $this->hasMany(PinUsed::class,'user_id');
     }
+    
+    public function getRightPrice()
+    {
+        $price = 0;
+        $rights =  $this->getOrginalRight();
+        foreach($rights as $right)
+        {
+            $price = $price + $right->right_amount;
+        }
+        return $price;
+    }
+    public function getLeftPrice()
+    {
+        $price = 0;
+        $lefts =  $this->getOrginalLeft();
+        foreach($lefts as $left)
+        {
+            $price = $price + $left->left_amount;
+        }
+        return $price;
+    }
+    public function ManageMatchingEarning()
+    {
+        $price = 0;
+        $lefts =  $this->getOrginalLeft();
+        foreach($lefts as $left)
+        {
+            $price = $price + $left->left_amount;
+        }
+        return $price;
+    }
+ 
 }
