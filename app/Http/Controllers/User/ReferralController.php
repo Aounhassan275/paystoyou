@@ -50,22 +50,21 @@ class ReferralController extends Controller
         for($i = 0;$i < 1000;$i++)
         {
             $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+            if($referrral_chain->left_refferal == $chain->id)
+            {
+                $referrral_chain->update([
+                    'left_amount' =>   $referrral_chain->left_amount += $matching_income,
+                ]);
+            }else{
+                $referrral_chain->update([
+                    'right_amount' =>   $referrral_chain->right_amount += $matching_income,
+                ]);
+            }
             if($referrral_chain->id == $user->main_owner)
             {
                 $i = 1000;
-            }else{
-                if($referrral_chain->left_refferal == $chain->id)
-                {
-                    $referrral_chain->update([
-                        'left_amount' =>   $referrral_chain->left_amount += $matching_income,
-                    ]);
-                }else{
-                    $referrral_chain->update([
-                        'right_amount' =>   $referrral_chain->right_amount += $matching_income,
-                    ]);
-                }
-                $chain = $referrral_chain;
             }
+            $chain = $referrral_chain;
         }
         // if($owner_left_refer->left_refferal != null &&  $owner_left_refer->right_refferal != null )
         // {
@@ -229,6 +228,7 @@ class ReferralController extends Controller
         ]);
         $owner_right_refer->update([
             'right_refferal' => $user->id,
+            'right_amount' =>  $matching_income,
         ]);
         $user->update([
             'top_referral' => 'Done',
@@ -245,21 +245,20 @@ class ReferralController extends Controller
         for($i = 0;$i < 1000;$i++)
         {
             $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+            if($referrral_chain->left_refferal == $chain->id)
+            {
+                $referrral_chain->update([
+                    'left_amount' =>   $referrral_chain->left_amount += $matching_income,
+                ]);
+            }else{
+                $referrral_chain->update([
+                    'right_amount' =>   $referrral_chain->right_amount += $matching_income,
+                ]);
+            }
+            $chain = $referrral_chain;
             if($referrral_chain->id == $user->main_owner)
             {
                 $i = 1000;
-            }else{
-                if($referrral_chain->left_refferal == $chain->id)
-                {
-                    $referrral_chain->update([
-                        'left_amount' =>   $referrral_chain->left_amount += $matching_income,
-                    ]);
-                }else{
-                    $referrral_chain->update([
-                        'right_amount' =>   $referrral_chain->right_amount += $matching_income,
-                    ]);
-                }
-                $chain = $referrral_chain;
             }
         }
         // if($owner_right_refer->left_refferal != null &&  $owner_right_refer->right_refferal != null )

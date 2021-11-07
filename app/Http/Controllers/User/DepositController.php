@@ -182,26 +182,25 @@ class DepositController extends Controller
                     $company_account->update([
                         'balance' => $company_account->balance -= $direct_income,
                     ]);
-                    $chain = $user;
+                    $chain = $refer_by;
                     for($i = 0;$i < 1000;$i++)
                     {
                         $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+                        if($referrral_chain->left_refferal == $chain->id)
+                        {
+                            $referrral_chain->update([
+                                'left_amount' =>   $referrral_chain->left_amount + $matching_income,
+                            ]);
+                        }else{
+                            $referrral_chain->update([
+                                'right_amount' =>   $referrral_chain->right_amount + $matching_income,
+                            ]);
+                        }
                         if($referrral_chain->id == $user->main_owner)
                         {
                             $i = 1000;
-                        }else{
-                            if($referrral_chain->left_refferal == $chain->id)
-                            {
-                                $referrral_chain->update([
-                                    'left_amount' =>   $referrral_chain->left_amount + $matching_income,
-                                ]);
-                            }else{
-                                $referrral_chain->update([
-                                    'right_amount' =>   $referrral_chain->right_amount + $matching_income,
-                                ]);
-                            }
-                            $chain = $referrral_chain;
                         }
+                        $chain = $referrral_chain;
                     }
                     // if($refer_by->left_refferal != null &&  $refer_by->right_refferal != null )
                     // {
@@ -260,26 +259,25 @@ class DepositController extends Controller
                     $company_account->update([
                         'balance' => $company_account->balance -= $direct_income,
                     ]);
-                    $chain = $user;
+                    $chain = $refer_by;
                     for($i = 0;$i < 1000;$i++)
                     {
                         $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+                        if($referrral_chain->left_refferal == $chain->id)
+                        {
+                            $referrral_chain->update([
+                                'left_amount' =>   $referrral_chain->left_amount += $matching_income,
+                            ]);
+                        }else{
+                            $referrral_chain->update([
+                                'right_amount' =>   $referrral_chain->right_amount += $matching_income,
+                            ]);
+                        }
                         if($referrral_chain->id == $user->main_owner)
                         {
                             $i = 1000;
-                        }else{
-                            if($referrral_chain->left_refferal == $chain->id)
-                            {
-                                $referrral_chain->update([
-                                    'left_amount' =>   $referrral_chain->left_amount += $matching_income,
-                                ]);
-                            }else{
-                                $referrral_chain->update([
-                                    'right_amount' =>   $referrral_chain->right_amount += $matching_income,
-                                ]);
-                            }
-                            $chain = $referrral_chain;
                         }
+                        $chain = $referrral_chain;
                     }
                     // if($refer_by->left_refferal != null &&  $refer_by->right_refferal != null )
                     // {
