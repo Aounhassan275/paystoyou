@@ -111,7 +111,7 @@ class UserController extends Controller
         // }
         if($user->left_amount > $user->right_amount)
         {
-            $amount = $user->right_amount;
+            $amount = $user->right_amount*2;
             if($amount > 0)
             {
                 $user->update([
@@ -131,7 +131,7 @@ class UserController extends Controller
             }
         }else if($user->right_amount > $user->left_amount)
         {
-            $amount = $user->left_amount;
+            $amount = $user->left_amount*2;
             if($amount > 0)
             {
                 $user->update([
@@ -150,7 +150,7 @@ class UserController extends Controller
                 ]);
             }
         }else{
-            $amount = $user->left_amount;
+            $amount = $user->left_amount*2;
             if($amount > 0)
             {
                 $user->update([
