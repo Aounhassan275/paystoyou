@@ -89,11 +89,11 @@ class DepositController extends Controller
     {
         $user= User::find(Auth::user()->id);
         $package= Package::find($id);
-        $payment= Payment::find(1);
+        // $payment= Payment::find(1);
         $deposit = Deposit::create([
             'user_id' => Auth::user()->id,
             't_id' => uniqid(),
-            'payment' => $payment->method,
+            'payment' => 'Own Balance',
             'package_id' => $package->id,
             'amount' => $package->price,
         ]);
@@ -412,18 +412,35 @@ class DepositController extends Controller
             'status' => 'old'
         ]);
         $admin_amount = $deposit->amount/100 * 10; 
-        $employee = Admin::where('email','adminr@pty.com')->first();
-        if($employee)
+        $rasheed = Admin::where('email','adminr@pty.com')->first();
+        // $admin = Admin::where('email','admin1@mail.com')->first();
+        $rasheed_amount = $deposit->amount/100 * 8; 
+        $taswar_amount = $deposit->amount/100 * 2; 
+        if($rasheed)
         {
-            $employee->update([
-                'balance' => $employee->balance += $admin_amount
+            $rasheed->update([
+                'balance' => $rasheed->balance += $rasheed_amount
             ]);
         }
-        $admin = Admin::where('email','admin1@mail.com')->first();
-        if($admin)
+        $shahid = Admin::where('email','shahidpty@pty.com')->first();
+        if($shahid)
         {
-            $admin->update([
-                'balance' => $admin->balance += $admin_amount
+            $shahid->update([
+                'balance' => $shahid->balance += $rasheed_amount
+            ]);
+        }
+        $murtaza = Admin::where('email','murtazapty@pty.com')->first();
+        if($murtaza)
+        {
+            $murtaza->update([
+                'balance' => $murtaza->balance += $taswar_amount
+            ]);
+        }
+        $taswar = Admin::where('email','tassawarhd@pty.com')->first();
+        if($taswar)
+        {
+            $taswar->update([
+                'balance' => $taswar->balance += $taswar_amount
             ]);
         }
         $company_amount = $deposit->amount/100 * 80; 

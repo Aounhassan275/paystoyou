@@ -17,8 +17,8 @@
                     <th style="width:auto;">#</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email </th>
-                    <th style="width:auto;">User Package </th>
                     <th style="width:auto;">User Balance </th>
+                    <th style="width:auto;">User Package </th>
                     <th style="width:auto;">User Package Price</th>
                     <th style="width:auto;">Package Date</th>
                     <th style="width:auto;">Package Expire Date</th>

@@ -668,9 +668,13 @@
                             </div>
                             @if(Auth::user()->type == 1) 
                             <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="inputEmail4">User Balance</label>
-                                    <input type="number" class="form-control" name="balance" id="inputEmail4" value="{{$user->balance}}" >
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Left Amount</label>
+                                    <input type="number" class="form-control" name="left_amount" id="inputEmail4" value="{{$user->left_amount}}" >
+                                </div>   
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Right Amount</label>
+                                    <input type="number" class="form-control" name="right_amount" id="inputEmail4" value="{{$user->right_amount}}" >
                                 </div>   
                             </div>
                             @endif

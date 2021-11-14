@@ -60,6 +60,10 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /******************Deposit ROUTES****************/
     Route::view('deposit', 'admin.deposit.index')->name('deposit.index');
     Route::view('deposit/show', 'admin.deposit.show')->name('deposit.show');
+    Route::view('deposit/perfect_money', 'admin.deposit.perfect_money')->name('deposit.PerfectMoney');
+    Route::view('deposit/today_perfect_money', 'admin.deposit.today_perfect_money')->name('deposit.TodayPerfectMoney');
+    Route::view('deposit/own_balance', 'admin.deposit.own_balance')->name('deposit.ownBalance');
+    Route::view('deposit/today_own_balance', 'admin.deposit.today_own_balance')->name('deposit.TodayownBalance');
     Route::get('user/active/{id}', 'DepositController@active')->name('user.active');   
     // Route::get('mactching_income', 'DepositController@ManageMatchingEarning')->name('user.matchinf');   
     Route::get('deposit/delete/{id}', 'DepositController@delete')->name('deposit.delete');   

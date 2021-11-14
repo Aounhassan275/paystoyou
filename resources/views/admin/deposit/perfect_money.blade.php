@@ -9,7 +9,7 @@
 <div class="col-12 ">
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title">View Deposit History</h5>
+            <h5 class="card-title">View Deposit History Created Through Perfect Money</h5>
         </div>
         <table id="datatables-buttons" class="table table-striped">
             <thead>
@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (App\Models\Deposit::old() as $key => $deposit)
+                @foreach (App\Models\Deposit::PerfectMoney() as $key => $deposit)
                 <tr> 
                 <td>{{$key+1}}</td>
                 <td>{{$deposit->user->name}}</td>

@@ -216,12 +216,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <a href="{{route('admin.deposit.show')}}">
                         <div class="card flex-fill">
                             <div class="card-header">
-                                <span class="badge badge-info float-right">All</span>
-                                <h5 class="card-title mb-0">Total Earning</h5>
+                                <span class="badge badge-info float-right">{{App\Models\Deposit::count()}}</span>
+                                <h5 class="card-title mb-0">Total Deposit</h5>
                             </div>
                             <div class="card-body my-2">
                                 <div class="row d-flex align-items-center mb-4">
@@ -238,18 +238,108 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
+                    <a href="{{route('admin.deposit.PerfectMoney')}}">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <span class="badge badge-info float-right">{{App\Models\Deposit::PerfectMoney()->count()}}</span>
+                                <h5 class="card-title mb-0">By Perfect Money</h5>
+                            </div>
+                            <div class="card-body my-2">
+                                <div class="row d-flex align-items-center mb-4">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
+                                            <h3 class="mb-0">{{App\Models\Deposit::PerfectMoney()->sum('amount')}}</h3>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm shadow-sm mb-1">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="{{route('admin.deposit.ownBalance')}}">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <span class="badge badge-info float-right">{{App\Models\Deposit::ownBalance()->count()}}</span>
+                                <h5 class="card-title mb-0">By Balance</h5>
+                            </div>
+                            <div class="card-body my-2">
+                                <div class="row d-flex align-items-center mb-4">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
+                                            <h3 class="mb-0">{{App\Models\Deposit::ownBalance()->sum('amount')}}</h3>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm shadow-sm mb-1">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3">
                     <a href="{{route('admin.deposit.index')}}">
                         <div class="card flex-fill">
                             <div class="card-header">
-                                <span class="badge badge-info float-right">All</span>
+                                <span class="badge badge-info float-right">{{App\Models\Deposit::new()->count()}}</span>
                                 <h5 class="card-title mb-0">Total Deposit Pending</h5>
                             </div>
                             <div class="card-body my-2">
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0 font-weight-light">
-                                            <h3 class="mb-0">{{App\Models\Deposit::new()->count()}}</h3>
+                                            <h3 class="mb-0">{{App\Models\Deposit::new()->sum('amount')}}</h3>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm shadow-sm mb-1">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="{{route('admin.deposit.TodayPerfectMoney')}}">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <span class="badge badge-info float-right">{{App\Models\Deposit::TodayPerfectMoney()->count()}}</span>
+                                <h5 class="card-title mb-0">Today Deposit By Perfect Money</h5>
+                            </div>
+                            <div class="card-body my-2">
+                                <div class="row d-flex align-items-center mb-4">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
+                                            <h3 class="mb-0">{{App\Models\Deposit::TodayPerfectMoney()->sum('amount')}}</h3>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm shadow-sm mb-1">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{route('admin.deposit.TodayownBalance')}}">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <span class="badge badge-info float-right">{{App\Models\Deposit::TodayownBalance()->count()}}</span>
+                                <h5 class="card-title mb-0">Today Deposit By Balance</h5>
+                            </div>
+                            <div class="card-body my-2">
+                                <div class="row d-flex align-items-center mb-4">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
+                                            <h3 class="mb-0">{{App\Models\Deposit::TodayownBalance()->sum('amount')}}</h3>
                                         </h2>
                                     </div>
                                 </div>

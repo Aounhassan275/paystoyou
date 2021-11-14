@@ -11,7 +11,7 @@
         <div class="card-header">
             <h5 class="card-title">View Transcations </h5>
         </div>
-        <table class="table" id="datatables-reponsive">
+        <table id="datatables-buttons" class="table table-striped">
             <thead>
                 <tr>
                     <th>Sr No.</th>
@@ -38,10 +38,13 @@
 @section('scripts')
 <script>
     $(function() {
-        // Datatables Responsive
-        $("#datatables-reponsive").DataTable({
-            responsive: true
+        // Datatables with Buttons
+        var datatablesButtons = $("#datatables-buttons").DataTable({
+            responsive: true,
+            lengthChange: !1,
+            buttons: ["copy", "print"]
         });
+        datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");
     });
 </script>
 @endsection

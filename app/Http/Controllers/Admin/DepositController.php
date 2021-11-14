@@ -274,20 +274,42 @@ class DepositController extends Controller
         $deposit->update([
             'status' => 'old'
         ]);
-        $employee = Admin::where('email','adminr@pty.com')->first();
-        $admin = Admin::where('email','admin1@mail.com')->first();
-        $admin_amount = $deposit->amount/100 * 10; 
+        $rasheed = Admin::where('email','adminr@pty.com')->first();
+        $shahid = Admin::where('email','shahidpty@pty.com')->first();
+        $murtaza = Admin::where('email','murtazapty@pty.com')->first();
+        $taswar = Admin::where('email','tassawarhd@pty.com')->first();
+        // $admin = Admin::where('email','admin1@mail.com')->first();
+        $rasheed_amount = $deposit->amount/100 * 8; 
+        $taswar_amount = $deposit->amount/100 * 2; 
         $company_amount = $deposit->amount/100 * 80; 
-        if($admin)
+        // if($admin)
+        // {
+        //     $admin->update([
+        //         'balance' => $admin->balance += $admin_amount
+        //     ]);
+        // }
+        if($rasheed)
         {
-            $admin->update([
-                'balance' => $admin->balance += $admin_amount
+            $rasheed->update([
+                'balance' => $rasheed->balance += $rasheed_amount
             ]);
-        }
-        if($employee)
+        }  
+        if($shahid)
         {
-            $employee->update([
-                'balance' => $employee->balance += $admin_amount
+            $shahid->update([
+                'balance' => $shahid->balance += $rasheed_amount
+            ]);
+        }  
+        if($murtaza)
+        {
+            $murtaza->update([
+                'balance' => $murtaza->balance += $taswar_amount
+            ]);
+        }  
+        if($taswar)
+        {
+            $taswar->update([
+                'balance' => $taswar->balance += $taswar_amount
             ]);
         }
         $company_account->update([

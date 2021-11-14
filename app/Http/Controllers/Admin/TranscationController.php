@@ -59,14 +59,18 @@ class TranscationController extends Controller
             toastr()->error('Must Fill All Fields');
             return redirect()->back();
         }
-        if($user->balance < $request->amount)
+        if(Auth::user()->type != 1) 
         {
-            toastr()->error('Insufficient Balance.');
-            return redirect()->back();
+            if($user->balance < $request->amount)
+            {
+                toastr()->error('Insufficient Balance.');
+                return redirect()->back();
+            }
+            $user->update([
+                'balance' => $user->balance - $request->amount
+            ]);
         }
-        $user->update([
-            'balance' => $user->balance - $request->amount
-        ]);
+
         $receiver = User::find($request->receiver_id);
         $receiver->update([
             'balance' => $receiver->balance += $request->amount
