@@ -670,11 +670,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Left Amount</label>
-                                    <input type="number" class="form-control" name="left_amount" id="inputEmail4" value="{{$user->left_amount}}" >
+                                    <input type="text" class="form-control" name="left_amount"  value="{{$user->left_amount}}" >
                                 </div>   
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Right Amount</label>
-                                    <input type="number" class="form-control" name="right_amount" id="inputEmail4" value="{{$user->right_amount}}" >
+                                    <input type="text" class="form-control" name="right_amount" value="{{$user->right_amount}}" >
                                 </div>   
                             </div>
                             @endif

@@ -107,6 +107,38 @@
 
     </div>
 </div>
+<div class="row">
+
+    <div class="col-12 col-sm-12 col-xl d-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-warning" data-feather="package"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        
+                        <h3 class="mb-2">{{Auth::user()->placement()}}</h3>
+
+                        <div class="mb-0">Placement</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
 @endif
 <div class="row">
 
@@ -306,6 +338,7 @@
                         <th>User Name</th>
                         <th>User Email</th>
                         <th>User Refer By</th>
+                        <th>User Placement</th>
                         <th>User Type</th>
                         <th>User Status</th>
                         <th>User Earning</th>
@@ -318,6 +351,7 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->refer_by_name($user->refer_by)}}</td>
+                        <td>{{$user->placement()}}</td>
                         <td>{{$user->refer_type}}</td>
                         <td>
                         @if ($user->checkstatus() =='old')

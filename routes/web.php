@@ -106,7 +106,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     /*******************Dashoard ROUTES*************/
     Route::view('dashboard', 'user.dashboard.index')->name('dashboard.index');
     /******************PACKAGE ROUTES****************/
-    Route::view('package', 'user.package.index')->name('package.index');
+    Route::get('package', 'PackageController@index')->name('package.index');
     Route::get('select_payment/{id}', 'PackageController@payment')->name('package.payment');
     Route::get('{payment}/deposit/{package}', 'DepositController@deposit')->name('deposits.index');    
     Route::get('package/direct_deposit/{package}', 'DepositController@directDeposit')->name('package.direct_deposit');    
@@ -176,4 +176,5 @@ Route::get('/cache_clear', function() {
     Artisan::call('cache:clear');
     return 'Cache Clear DOne';
 });
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 

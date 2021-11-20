@@ -87,6 +87,11 @@ class DepositController extends Controller
     }
     public function directDeposit($id)
     {
+        if(Auth::user()->balance <= 0)
+        {
+            toastr()->success('Insufficiant Balance.');
+            return redirect(route('user.dashboard.index'));
+        }
         $user= User::find(Auth::user()->id);
         $package= Package::find($id);
         // $payment= Payment::find(1);

@@ -204,6 +204,16 @@ class User extends Authenticatable
         $user = User::find($id);
         return $user->name;
     }
+	public function placement()
+    {
+        $user = User::where('left_refferal',$this->id)->orWhere('right_refferal',$this->id)->first();
+        if($user)
+        {
+            return $user->name;
+        }
+        return '';
+        
+    }
     public function refer_by_user($id)
     {
         $user = User::find($id);

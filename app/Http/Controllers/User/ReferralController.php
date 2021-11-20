@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ReferralController extends Controller
 {
@@ -50,6 +51,7 @@ class ReferralController extends Controller
         for($i = 0;$i < 1000;$i++)
         {
             $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+            Log::info('Matching Earning to ' . $referrral_chain->name);
             if($referrral_chain->left_refferal == $chain->id)
             {
                 $referrral_chain->update([
@@ -616,6 +618,6 @@ class ReferralController extends Controller
             
         // }
         toastr()->success('You Added In Tree Successfully.');
-        return redirect()->back();
+        return redirect()->route('user.refer.index');
     }
 }

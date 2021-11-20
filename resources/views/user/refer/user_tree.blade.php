@@ -14,10 +14,10 @@
 
                         <p class="mb-2">{{$user->name}}</p>
                         @if(Auth::user()->refer_type == 'Left' && $user->left_refferal == null && Auth::user()->top_referral == 'Pending')
-                            <a href="{{route('user.left_refferal.index',$user->id)}}"><span class="badge badge-success">Make Left Refferal</span></a>
+                            <a href="{{route('user.left_refferal.index',$user->id)}}"><button onclick="$('.btn').text('Please Wait!!!').attr('disabled',true)" class="btn btn-success">Make Left Refferal</button></a>
                         @endif                        
                         @if(Auth::user()->refer_type == 'Right' && $user->right_refferal == null  && Auth::user()->top_referral == 'Pending')
-                            <a href="{{route('user.right_refferal.index',$user->id)}}"><span class="badge badge-success">Make Right Refferal</span></a>
+                            <a href="{{route('user.right_refferal.index',$user->id)}}"><button onclick="$('.btn').text('Please Wait!!!').attr('disabled',true)" class="btn btn-success">Make Right Refferal</button></a>
                         @endif
                         {{-- <div class="mb-0">{{$user->name}}</div> --}}
 
