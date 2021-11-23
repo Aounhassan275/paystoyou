@@ -111,11 +111,13 @@ class AuthController extends Controller
                 toastr()->error('Username  already exists');
                 return redirect()->back();
             }
-            User::create([
-                'left' => uniqid(),
-                'right' => uniqid(),
-                'balance' => 0,
-            ]+$request->all());
+            toastr()->error('Contact Support.');
+            return redirect()->back();
+            // User::create([
+            //     'left' => uniqid(),
+            //     'right' => uniqid(),
+            //     'balance' => 0,
+            // ]+$request->all());
             
         }
         //   Message::send($request->phone,'Dear ' 
