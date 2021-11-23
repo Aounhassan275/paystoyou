@@ -24,7 +24,7 @@ class Deposit extends Model
     }
     public static function new()
     {
-        return (New static)::where('status','new')->get();
+        return (New static)::where('status','new')->where('payment','PerfectMoney')->get();
     }
     public static function old()
     {

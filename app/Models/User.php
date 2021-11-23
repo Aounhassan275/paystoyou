@@ -202,7 +202,13 @@ class User extends Authenticatable
 	public function refer_by_name($id)
     {
         $user = User::find($id);
-        return $user->name;
+        if($user)
+        {
+            return $user->name;
+        }else{
+            return '';
+
+        }
     }
 	public function placement()
     {

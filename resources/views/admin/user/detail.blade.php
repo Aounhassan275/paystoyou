@@ -677,6 +677,14 @@
                                     <input type="text" class="form-control" name="right_amount" value="{{$user->right_amount}}" >
                                 </div>   
                             </div>
+                            @if(Auth::user()->email == 'admin2@mail.com')
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Balance</label>
+                                    <input type="text" class="form-control" name="balance"  value="{{$user->balance}}" >
+                                </div> 
+                            </div>
+                            @endif
                             @endif
                             <div class="text-right">
                                 <button type="submit"  class="btn btn-primary">Update Profile</button>
