@@ -176,5 +176,5 @@ Route::get('/cache_clear', function() {
     Artisan::call('cache:clear');
     return 'Cache Clear DOne';
 });
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+// Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 

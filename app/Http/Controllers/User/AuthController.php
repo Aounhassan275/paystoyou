@@ -88,6 +88,7 @@ class AuthController extends Controller
                         'refer_by' => $user->id,
                         'refer_type' => 'Left',
                         'main_owner' => $request->main_owner,
+                        'balance' => 0,
                     ]+$request->all());
                 }else{
                     User::create([
@@ -96,6 +97,7 @@ class AuthController extends Controller
                         'refer_by' => $user->id,
                         'refer_type' => 'Right',
                         'main_owner' => $request->main_owner,
+                        'balance' => 0,
                     ]+$request->all());
                 }
                 
@@ -112,6 +114,7 @@ class AuthController extends Controller
             User::create([
                 'left' => uniqid(),
                 'right' => uniqid(),
+                'balance' => 0,
             ]+$request->all());
             
         }
