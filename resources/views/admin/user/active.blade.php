@@ -11,54 +11,60 @@
         <div class="card-header">
             <h5 class="card-title">View User Table</h5>
         </div>
-        <table id="datatables-buttons" class="table table-striped">
-            <thead>
-                <tr>
-                    <th style="width:auto;">#</th>
-                    <th style="width:auto;">User Name</th>
-                    <th style="width:auto;">User Email </th>
-                    <th style="width:auto;">User Balance </th>
-                    <th style="width:auto;">User Package </th>
-                    <th style="width:auto;">User Package Price</th>
-                    <th style="width:auto;">Package Date</th>
-                    <th style="width:auto;">Package Expire Date</th>
-                    <th style="width:auto;">Status</th>
-                    <th style="width:auto;">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (App\Models\User::active() as $key => $user)
-                <tr> 
-                    <td>{{$key+1}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->balance}}</td>
-                    @if ($user->package)
-                    <td>{{$user->package->name}}</td>    
-                    <td>{{$user->package->price}}</td>    
-                    <td>{{$user->a_date->format('d M,Y')}}</td>
-                    <td>{{$user->packageExpires()->format('d M,Y')}}</td>
-                    @else
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    @endif
-                       <td>
-					@if ($user->checkstatus() =='old')
-                        <span class="badge badge-success">Active</span>                            
-                        @elseif($user->checkstatus() =='expired')
-                        <span class="badge badge-primary">Expired</span>  
+        <div class="table-responsive">
+            <table id="datatables-buttons" class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th style="width:auto;">#</th>
+                        <th style="width:auto;">User Name</th>
+                        <th style="width:auto;">User Email </th>
+                        <th style="width:auto;">User Balance </th>
+                        <th style="width:auto;">User Refer By </th>
+                        <th style="width:auto;">User Placement </th>
+                        <th style="width:auto;">User Package </th>
+                        <th style="width:auto;">User Package Price</th>
+                        <th style="width:auto;">Package Date</th>
+                        <th style="width:auto;">Package Expire Date</th>
+                        <th style="width:auto;">Status</th>
+                        <th style="width:auto;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (App\Models\User::active() as $key => $user)
+                    <tr> 
+                        <td>{{$key+1}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->balance}}</td>
+                        <td>{{$user->refer_by_name($user->refer_by)}}</td>
+                        <td>{{$user->placement()}}</td>
+                        @if ($user->package)
+                        <td>{{$user->package->name}}</td>    
+                        <td>{{$user->package->price}}</td>    
+                        <td>{{$user->a_date->format('d M,Y')}}</td>
+                        <td>{{$user->packageExpires()->format('d M,Y')}}</td>
                         @else
-                                                <span class="badge badge-danger">Pending</span>                                                      
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         @endif
-                        </td>
-                  
+                        <td>
+                        @if ($user->checkstatus() =='old')
+                            <span class="badge badge-success">Active</span>                            
+                            @elseif($user->checkstatus() =='expired')
+                            <span class="badge badge-primary">Expired</span>  
+                            @else
+                                                    <span class="badge badge-danger">Pending</span>                                                      
+                            @endif
+                            </td>
+                    
 
-                        <td> <a href="{{route('admin.user.detail',$user->id)}}" class="button"><button class="btn btn-primary"> Detail</button></a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                            <td> <a href="{{route('admin.user.detail',$user->id)}}" class="button"><button class="btn btn-primary"> Detail</button></a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
