@@ -350,7 +350,12 @@
                         <td>{{$key + 1}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->refer_by_name($user->refer_by)}}</td>
+                        
+                        <td>
+                            @if($user->refer_by)
+                            {{$user->refer_by_name($user->refer_by)}}
+                            @endif
+                        </td>
                         <td>{{$user->placement()}}</td>
                         <td>{{$user->refer_type}}</td>
                         <td>
