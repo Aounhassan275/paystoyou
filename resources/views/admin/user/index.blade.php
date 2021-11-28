@@ -21,6 +21,9 @@
                         <th style="width:auto;">User Balance </th>
                         <th style="width:auto;">User Refer By </th>
                         <th style="width:auto;">User Placement </th>
+                        <th style="width:auto;">Total Placement </th>
+                        <th style="width:auto;">Left Balance </th>
+                        <th style="width:auto;">Right Balance </th>
                         <th style="width:auto;">User Package </th>
                         <th style="width:auto;">Package Date</th>
                         <th style="width:auto;">Package Expire Date</th>
@@ -37,6 +40,9 @@
                         <td>{{$user->balance}}</td>
                         <td>{{$user->refer_by_name($user->refer_by)}}</td>
                         <td>{{$user->placement()}}</td>
+                        <td>{{App\Models\User::where('left_refferal',$user->id)->orWhere('right_refferal',$user->id)->count()}}</td>
+                        <td>{{$user->left_amount}}</td>
+                        <td>{{$user->right_amount}}</td>
                         @if ($user->package)
                         <td>{{$user->package->name}}</td>    
                         <td>{{$user->a_date->format('d M,Y')}}</td>

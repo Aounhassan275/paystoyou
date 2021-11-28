@@ -51,11 +51,13 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::view('user/actives', 'admin.user.active')->name('user.actives');  
     Route::view('user/pendings', 'admin.user.pending')->name('user.pendings');  
 
-    Route::get('admin/user/detail/{id}','UserController@showDetail')->name('user.detail');
-    Route::get('admin/user/activation/{id}','UserController@activation')->name('user.activation');
-    Route::get('admin/user/delete/{id}','UserController@delete')->name('user.delete');
-    Route::get('admin/user/block/{id}','UserController@block')->name('user.block');
-    Route::post('admin/user/update','UserController@update')->name('user.update');
+    Route::get('user/detail/{id}','UserController@showDetail')->name('user.detail');
+    Route::get('user/tree/{id}','UserController@showTree')->name('user.show_tree');
+    Route::get('user/activation/{id}','UserController@activation')->name('user.activation');
+    Route::get('user/delete/{id}','UserController@delete')->name('user.delete');
+    Route::get('user/block/{id}','UserController@block')->name('user.block');
+    Route::post('user/update','UserController@update')->name('user.update');
+    Route::post('change_placement','UserController@changePlacement')->name('change.placement');
     Route::get('user/{user}/fake/login', 'UserController@fakeLogin')->name('login.fake');
     /******************Deposit ROUTES****************/
     Route::view('deposit', 'admin.deposit.index')->name('deposit.index');
@@ -176,5 +178,5 @@ Route::get('/cache_clear', function() {
     Artisan::call('cache:clear');
     return 'Cache Clear DOne';
 });
-// Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 

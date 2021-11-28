@@ -12,7 +12,8 @@ class UserController extends Controller
     public function showDetail($id)
     {
       $user = User::find($id);
-      return view('admin.user.detail',compact('user'));
+      $placement = User::where('left_refferal',$user->id)->orWhere('right_refferal',$user->id)->get();
+      return view('admin.user.detail',compact('user','placement'));
     }
     public function delete($id){
       User::find($id)->delete();
@@ -50,10 +51,70 @@ class UserController extends Controller
       toastr()->success('User is Updated Successfully');
       return redirect()->back();
   }
+  public function changePlacement(Request $request)
+  {
+    $user = User::where('name',$request->username)->first();
+    if(!$user)
+    {
+        toastr()->warning('User is Not Found');
+        return back();
+    }
+    if($user->refer_type != $request->placement)
+    {
+        toastr()->warning('User Placement is Not Correct');
+        return back();
+    }
+    $main_parent = User::find($request->user_id);
+    $parents = User::where('left_refferal',$user->id)->orWhere('right_refferal',$user->id)->get();
+    foreach($parents as $parent)
+    {
+        if($parent->left_refferal == $user->id)
+        {
+            $parent->update([
+                'left_refferal' => null
+            ]);
+        }
+        else if($parent->right_refferal == $user->id){
+            $parent->update([
+                'right_refferal' => null
+            ]);
+        }
+    }
+    // $user = User::find($request->id);
+    if($request->placement == 'Left')
+    {
+        $main_parent->update([
+            'left_refferal' => $user->id
+        ]);
+    }else if($request->placement == 'Right')
+    {
+        $main_parent->update([
+            'right_refferal' => $user->id
+        ]);
+    }
+    toastr()->success('User is Placement Occurred Successfully');
+    return redirect()->back();
+  }
   public function fakeLogin(User $user)
     {
         // Auth::logout();
         Auth::guard('user')->login($user);
         return redirect()->route('user.dashboard.index');
     }
+    public function showTree($id)
+    {
+        $user = User::find($id);
+        $left = null;
+        $right = null;
+        if($user->left_refferal)
+        {
+            $left = User::find($user->left_refferal);
+        }
+        if($user->right_refferal)
+        {
+            $right = User::find($user->right_refferal);
+        }        
+        return view('admin.user.user_tree')->with('user',$user)->with('left',$left)->with('right',$right);
+   
+    }  
 }

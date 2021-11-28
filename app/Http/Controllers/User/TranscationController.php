@@ -24,7 +24,7 @@ class TranscationController extends Controller
     }
     public function balance_transfer()
     {
-        $users = User::where('id','!=',Auth::user()->id)->get();
+        $users = User::where('id','!=',Auth::user()->id)->orderBy('name')->get();
         return view('user.balance_transfer.index')->with('users',$users);
     }
 
