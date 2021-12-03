@@ -25,6 +25,7 @@
                     <th style="width:auto;">Action</th>
                     <th style="width:auto;">Action</th>
                     <th style="width:auto;">Action</th>
+                    <th style="width:auto;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +49,8 @@
                     <td> <a href="{{route('admin.withdraw.hold',$withdraw->id)}}" class="button"><button class="btn btn-primary"> Hold</button></a></td>
                     <td> <a href="{{route('admin.withdraw.completed',$withdraw->id)}}" class="button"><button class="btn btn-success">Completed</button></a></td>
                     <td> <a href="{{route('admin.withdraw.delete',$withdraw->id)}}" class="button"><button class="btn btn-danger">Delete</button></a></td>   
-                    </tr>
+                    <td> <a href="{{route('admin.user.detail',$withdraw->user_id)}}" class="button"><button class="btn btn-primary"> Detail</button></a></td>    
+                </tr>
                 @endforeach
             </tbody>
         </table>

@@ -5,13 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Withdraw;
 use App\Models\CompanyAccount;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WithdrawController extends Controller
 {
     
     public function delete($id){
-        Withdraw::find($id)->forceDelete();
+        $withdraw =  Withdraw::find($id);
+        $user = User::find($withdraw->user_id);
+        $user->update([
+            'balance' => $user->balance + $withdraw->payment 
+        ]);
+        $withdraw->forceDelete();
         toastr()->success('Withdraw Request is Deleted Successfully');
         return redirect()->back();
     }
