@@ -21,7 +21,7 @@ class DepositController extends Controller
         $user = $deposit->user; 
         $package = Package::find($deposit->package_id);
         $company_account= CompanyAccount::find(1);
-        if($user->refer_by)
+        if($user->refer_by && $user->checkStatus() == 'fresh')
         {
             $refer_by = User::find($user->refer_by);
             $direct_income = $deposit->amount/100 * 10;

@@ -109,6 +109,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::view('dashboard', 'user.dashboard.index')->name('dashboard.index');
     /******************PACKAGE ROUTES****************/
     Route::get('package', 'PackageController@index')->name('package.index');
+    Route::get('package/upgrade', 'PackageController@upgrade')->name('package.upgrade');
     Route::get('select_payment/{id}', 'PackageController@payment')->name('package.payment');
     Route::get('{payment}/deposit/{package}', 'DepositController@deposit')->name('deposits.index');    
     Route::get('package/direct_deposit/{package}', 'DepositController@directDeposit')->name('package.direct_deposit');    

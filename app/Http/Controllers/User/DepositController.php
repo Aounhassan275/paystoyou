@@ -102,8 +102,12 @@ class DepositController extends Controller
             'package_id' => $package->id,
             'amount' => $package->price,
         ]);
-
-        $success = $this->active($deposit->id);
+        if($user->a_date)
+        {
+            $this->upgrade($deposit->id);
+        }else{
+           $this->active($deposit->id);
+        }
         Auth::user()->update([
             'balance' => $user->balance -= $package->price,    
         ]);
@@ -646,6 +650,59 @@ class DepositController extends Controller
             // }
            
         }
+        // dd($deposit);
+        $user->update([
+            'status' => 'active',
+            'a_date' => Carbon::today(),
+            // 'balance' => $user->balance += $deposit->amount,
+            'package_id' => $deposit->package_id
+        ]);
+        $deposit->update([
+            'status' => 'old'
+        ]);
+        $admin_amount = $deposit->amount/100 * 10; 
+        $rasheed = Admin::where('email','adminr@pty.com')->first();
+        // $admin = Admin::where('email','admin1@mail.com')->first();
+        $rasheed_amount = $deposit->amount/100 * 8; 
+        $taswar_amount = $deposit->amount/100 * 2; 
+        if($rasheed)
+        {
+            $rasheed->update([
+                'balance' => $rasheed->balance += $rasheed_amount
+            ]);
+        }
+        $shahid = Admin::where('email','shahidpty@pty.com')->first();
+        if($shahid)
+        {
+            $shahid->update([
+                'balance' => $shahid->balance += $rasheed_amount
+            ]);
+        }
+        $murtaza = Admin::where('email','murtazapty@pty.com')->first();
+        if($murtaza)
+        {
+            $murtaza->update([
+                'balance' => $murtaza->balance += $taswar_amount
+            ]);
+        }
+        $taswar = Admin::where('email','tassawarhd@pty.com')->first();
+        if($taswar)
+        {
+            $taswar->update([
+                'balance' => $taswar->balance += $taswar_amount
+            ]);
+        }
+        $company_amount = $deposit->amount/100 * 80; 
+        $company_account->update([
+            'balance' => $company_account->balance += $company_amount,
+        ]);
+        return 'true';
+    }
+    public function upgrade($id)
+    {
+        $deposit = Deposit::find($id);
+        $user = Auth::user(); 
+        $company_account= CompanyAccount::find(1);
         // dd($deposit);
         $user->update([
             'status' => 'active',

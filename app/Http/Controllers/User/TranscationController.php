@@ -24,6 +24,11 @@ class TranscationController extends Controller
     }
     public function balance_transfer()
     {
+        if(Auth::user()->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         $users = User::where('id','!=',Auth::user()->id)->orderBy('name')->get();
         return view('user.balance_transfer.index')->with('users',$users);
     }

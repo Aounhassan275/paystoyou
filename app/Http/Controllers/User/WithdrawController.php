@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Withdraw;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,7 +45,15 @@ class WithdrawController extends Controller
               toastr()->error('Not enough balance');
               return redirect()->back();
           }
-          
+        $limit = $user->package->price/$user->package->package_validity * Carbon::today()->diffInDays($user->a_date);
+        
+        $total_withdraw = Withdraw::where('user_id',$user->id)->where('status','Completed')->sum('payment');
+        $total_withdraw = $total_withdraw + $limit;
+        if($request->payment > $limit || $total_withdraw > $limit)
+        {
+            toastr()->error('Your Withdraw Limit is Exceeded.');
+            return redirect()->back();
+        }
           Withdraw::create([
               'user_id' => $user->id
           ]+$request->all());

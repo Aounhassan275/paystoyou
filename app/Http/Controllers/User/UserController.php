@@ -98,11 +98,21 @@ class UserController extends Controller
     public function refer()
     {
         $user = Auth::user();
+        if($user->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         return view('user.refer.index')->with('user',$user);
     }
     public function showTree($id)
     {
         $user = User::find($id);
+        if($user->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         $company_account= CompanyAccount::find(1);
         // if($user->main_owner != Auth::user()->id)
         // {

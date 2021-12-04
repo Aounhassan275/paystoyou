@@ -183,6 +183,19 @@ class User extends Authenticatable
             return 'old';
         }
     }
+    public function checkWithdrawStatus(){
+        if($this->package)
+        {
+            $limit = $this->package->price/$this->package->package_validity * Carbon::today()->diffInDays($this->a_date);
+            $total_withdraw = Withdraw::where('user_id',$this->id)->where('status','Completed')->sum('payment');
+            $total_withdraw = $total_withdraw + $limit;
+            if($total_withdraw > $limit)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 	public function mrefers()
     {
         return $this->hasMany('App\Models\User','refer_by');

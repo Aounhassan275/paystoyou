@@ -15,7 +15,12 @@ class AdController extends Controller
 {
     public function show()
     {
-      $user = Auth::user();   
+      $user = Auth::user();
+      if($user->checkStatus() == 'expired')   
+      {
+        toastr()->success('Your Package is Expire');
+         return redirect(route('user.dashboard.index'));
+      }
       if($user->isEligible()){
         $ads = Ad::all();
         return view('user.ad.show')->with('ads', $ads);
@@ -28,6 +33,11 @@ class AdController extends Controller
     {
       $package=Auth::user()->package;
        $user = Auth::user();
+       if($user->checkStatus() == 'expired')   
+       {
+         toastr()->success('Your Package is Expire');
+          return redirect(route('user.dashboard.index'));
+       }
        if(!$user->isEligible()){
           toastr()->success('You reached Dashboard Successfully,Dont try to cheat us');
          return redirect(route('user.dashboard.index'));

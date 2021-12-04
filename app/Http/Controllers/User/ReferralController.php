@@ -306,6 +306,11 @@ class ReferralController extends Controller
     public function showTree($id)
     {
         $user = User::find($id);
+        if($user->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         // if($user->main_owner != Auth::user()->main_owner)
         // {
         //     toastr()->warning('You are Not Authorize To See this');
@@ -328,16 +333,31 @@ class ReferralController extends Controller
     public function showRightLeg($id)
     {
         $user = User::find($id);
+        if($user->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         return view('user.refer.right_refferal')->with('user',$user);
     }
     public function showLeftLeg($id)
     {
         $user = User::find($id);
+        if($user->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         return view('user.refer.left_refferal')->with('user',$user);
     }
     public function RightReferral($id)
     {
         $user = Auth::user(); 
+        if($user->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         $company_account= CompanyAccount::find(1);
         $owner_right_refer = User::find($id);
         $refer_by = User::find($user->refer_by);

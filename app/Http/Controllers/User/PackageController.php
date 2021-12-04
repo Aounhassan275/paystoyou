@@ -22,4 +22,8 @@ class PackageController extends Controller
       } 
       return view('user.package.index');
     }
+    public function upgrade()
+    {
+      return view('user.package.upgrade');
+    }
 }

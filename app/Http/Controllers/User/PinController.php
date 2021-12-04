@@ -18,6 +18,11 @@ class PinController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         return view('user.pin.index');
     }
 
@@ -64,6 +69,11 @@ class PinController extends Controller
      */
     public function show($id)
     {
+        if(Auth::user()->checkStatus() == 'expired')   
+        {
+          toastr()->success('Your Package is Expire');
+           return redirect(route('user.dashboard.index'));
+        }
         $pins= PinUsed::where('pin_id',$id)->get();
         return view('user.pin.show',compact('pins'));
     }
