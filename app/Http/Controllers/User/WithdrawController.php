@@ -47,7 +47,7 @@ class WithdrawController extends Controller
           }
         $limit = $user->package->price/$user->package->package_validity * Carbon::today()->diffInDays($user->a_date);
         
-        $total_withdraw = Withdraw::where('user_id',$user->id)->where('status','Completed')->sum('payment');
+        $total_withdraw = Withdraw::where('user_id',$user->id)->where('status','Completed')->whereBetween('created_at',[$this->a_date,Carbon::today()])->sum('payment');
         $total_withdraw = $total_withdraw + $limit;
         if($request->payment > $limit || $total_withdraw > $limit)
         {

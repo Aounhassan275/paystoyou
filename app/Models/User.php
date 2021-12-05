@@ -183,11 +183,20 @@ class User extends Authenticatable
             return 'old';
         }
     }
+    public function packageLimit(){
+        $limit = $this->package->price/$this->package->package_validity * Carbon::today()->diffInDays($this->a_date);
+        return $limit;
+    }
+    public function withdrawLimit(){
+   
+        $total_withdraw = Withdraw::where('user_id',$this->id)->where('status','Completed')->whereBetween('created_at',[$this->a_date,Carbon::today()])->sum('payment');
+        return $total_withdraw;
+    }
     public function checkWithdrawStatus(){
         if($this->package)
         {
-            $limit = $this->package->price/$this->package->package_validity * Carbon::today()->diffInDays($this->a_date);
-            $total_withdraw = Withdraw::where('user_id',$this->id)->where('status','Completed')->sum('payment');
+            $limit = $this->packageLimit();
+            $total_withdraw = $this->withdrawLimit();
             $total_withdraw = $total_withdraw + $limit;
             if($total_withdraw > $limit)
             {

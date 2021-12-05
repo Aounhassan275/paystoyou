@@ -96,4 +96,196 @@
 
 </div>
 @endif
+@if(Auth::user()->package)
+<div class="row">
+
+    <div class="col-12 col-sm-6 col-xl d-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-primary" data-feather="activity"></i>
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">{{Auth::user()->package->name}}</h3>
+
+                        <div class="mb-0">Package Subcription</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl d-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-warning" data-feather="calendar"></i>
+
+
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">{{Auth::user()->packageExpires()->format('d M,Y')}}</h3>
+
+                        <div class="mb-0">Package Expire</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-info" data-feather="aperture"></i>
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">{{Carbon\Carbon::today()->diffInDays(Auth::user()->a_date)}}</h3>
+
+                        <div class="mb-0">Packages Days</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-12 col-sm-6 col-xl d-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-primary" data-feather="slash"></i>
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">$ {{round(Auth::user()->packageLimit(),2)}}</h3>
+
+                        <div class="mb-0">Package Withdraw Limit</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl d-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-warning" data-feather="credit-card"></i>
+
+
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2">$ {{Auth::user()->withdrawLimit()}}</h3>
+
+                        <div class="mb-0">Your Withdraw Amount</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+
+                        <h3 class="mb-2"> $ {{Auth::user()->package->price}}</h3>
+
+                        <div class="mb-0">Packages Price</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@endif
 @endsection
