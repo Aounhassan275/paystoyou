@@ -100,6 +100,11 @@
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Ticker Message</span>
 						</a>
 					</li>	
+					<li class="sidebar-item {{Request::is('admin.source.index')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.source.index')}}">
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Source</span>
+						</a>
+					</li>
 					<li class="sidebar-item {{Request::is('admin.payment.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.payment.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Payment Way</span>

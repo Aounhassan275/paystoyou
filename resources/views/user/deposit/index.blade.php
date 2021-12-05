@@ -6,7 +6,14 @@
     <h3>Deposit | PAYS TO YOU</h3>
     </div>
 </div>
+@if(@$payment->image)
 <div class="row">
+    <div class="col-12 text-center">
+        <img src="{{asset($payment->image)}}" width="250px;" height="250px;">
+    </div>
+</div>
+@endif
+<div class="row" style="margin-top:5px;">
     <div class="col-12">
         <div class="card">
             <div class="card-header">

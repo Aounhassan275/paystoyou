@@ -30,10 +30,9 @@
                             <label class="form-label">Payment Method</label>
                             <select name="method" class="form-control" id="" required>
                                 <option value="">Select</option>
-                                <option value="Bank Account">Bank Account</option>
-                                <option value="EasyPiasa">EasyPiasa</option>
-                                <option value="Jazzcash">Jazzcash</option>
-                                <option value="PerfectMoney">PerfectMoney</option>
+                                @foreach(App\Models\Source::all() as $source)
+                                <option value="{{$source->name}}">{{$source->name}}</option>
+                                @endforeach
                             </select>                    
                         </div>
                         <div class="form-group col-6">
@@ -45,6 +44,10 @@
                         <div class="form-group col-6">
                             <label class="form-label">Receiver Number</label>
                             <input type="number" name="bnumber" class="form-control" placeholder="Enter Receiver Number">
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="form-label">Image</label>
+                            <input type="file" name="image" class="form-control" >
                         </div>
                     </div>
                     <div class="text-right">
@@ -64,6 +67,7 @@
             <thead>
                 <tr>
                     <th style="width:auto;">Sr#</th>
+                    <th style="width:auto;">Image</th>
                     <th style="width:auto;">Account Holder Name</th>
                     <th style="width:auto;">Account Number</th>
                     <th style="width:auto;">Payment Method</th>
@@ -77,6 +81,11 @@
                 @foreach (App\Models\Payment::all() as $key => $payment)
                 <tr> 
                     <td>{{$key+1}}</td>
+                    <td>
+                        @if($payment->image)
+                        <img src="{{asset($payment->image)}}" width="50px;" height="50px;">
+                        @endif
+                    </td>
                     <td>{{$payment->name}}</td>
                     <td>{{$payment->number}}</td>
                     <td>{{$payment->method}}</td>
@@ -129,10 +138,9 @@
                         <label>Payment Method</label>
                         <select name="method" id="method" class="form-control">
                             <option value="">Select</option>
-                                <option value="Bank Account">Bank Account</option>
-                                <option value="EasyPiasa">EasyPiasa</option>
-                                <option value="Jazzcash">Jazzcash</option>
-                                <option value="Perfect Money">Perfect Money</option>
+                            @foreach(App\Models\Source::all() as $source)
+                            <option value="{{$source->name}}">{{$source->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
@@ -142,6 +150,10 @@
                     <div class="form-group">
                         <label class="form-label">Receiver Number</label>
                         <input type="number" name="bnumber" class="form-control" id="bnumber">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Image</label>
+                        <input type="file" name="image" class="form-control" >
                     </div>
                 </div>
                 <div class="modal-footer">

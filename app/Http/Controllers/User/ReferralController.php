@@ -300,8 +300,9 @@ class ReferralController extends Controller
         //         }
         //     }            
         // }
+        Auth::logout();
         toastr()->success('You Added In Tree Successfully.');
-        return redirect()->back();
+        return redirect('user/login');
     }
     public function showTree($id)
     {
@@ -637,7 +638,8 @@ class ReferralController extends Controller
            
             
         // }
+        Auth::logout();
         toastr()->success('You Added In Tree Successfully.');
-        return redirect()->route('user.refer.index');
+        return redirect('user/login');
     }
 }

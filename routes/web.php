@@ -36,6 +36,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::resource('package', 'PackageController');    
     /******************TICKER ROUTES****************/
     Route::resource('ticker', 'TickerController');   
+    /******************Source ROUTES****************/
+    Route::resource('source', 'SourceController');    
     /******************Payment Way ROUTES****************/
     Route::resource('payment', 'PaymentController');   
     /******************Ad ROUTES****************/
