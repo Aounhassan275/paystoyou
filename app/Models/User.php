@@ -189,7 +189,12 @@ class User extends Authenticatable
     }
     public function withdrawLimit(){
    
-        $total_withdraw = Withdraw::where('user_id',$this->id)->where('status','Completed')->whereBetween('created_at',[$this->a_date,Carbon::today()])->sum('payment');
+        $total_withdraw = Withdraw::where('user_id',$this->id)->where('status','Completed')->whereBetween('created_at',[$this->a_date,Carbon::tomorrow()])->sum('payment');
+        return $total_withdraw;
+    }
+    public function withdrawPending(){
+   
+        $total_withdraw = Withdraw::where('user_id',$this->id)->where('status','in process')->whereBetween('created_at',[$this->a_date,Carbon::tomorrow()])->sum('payment');
         return $total_withdraw;
     }
     public function checkWithdrawStatus(){
@@ -197,7 +202,8 @@ class User extends Authenticatable
         {
             $limit = $this->packageLimit();
             $total_withdraw = $this->withdrawLimit();
-            $total_withdraw = $total_withdraw + $limit;
+            $pending_withdraw = $this->withdrawPending();
+            $total_withdraw = $total_withdraw + $pending_withdraw;
             if($total_withdraw > $limit)
             {
                 return true;

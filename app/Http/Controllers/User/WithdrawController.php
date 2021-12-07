@@ -47,8 +47,9 @@ class WithdrawController extends Controller
           }
         $limit = $user->package->price/$user->package->package_validity * Carbon::today()->diffInDays($user->a_date);
         
-        $total_withdraw = Withdraw::where('user_id',$user->id)->where('status','Completed')->whereBetween('created_at',[$user->a_date,Carbon::today()])->sum('payment');
-        $total_withdraw = $total_withdraw + $limit;
+        $total_withdraw = Withdraw::where('user_id',$user->id)->where('status','Completed')->whereBetween('created_at',[$user->a_date,Carbon::tomorrow()])->sum('payment');
+        $pending_withdraw = Withdraw::where('user_id',$user->id)->where('status','in process')->whereBetween('created_at',[$user->a_date,Carbon::tomorrow()])->sum('payment');
+        $total_withdraw = $total_withdraw + $limit + $pending_withdraw;
         if($request->payment > $limit || $total_withdraw > $limit)
         {
             toastr()->error('Your Withdraw Limit is Exceeded.');
