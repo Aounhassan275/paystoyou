@@ -28,103 +28,42 @@ class ReferralController extends Controller
         $deposit = Deposit::where('user_id',$user->id)->where('package_id',$user->package_id)->first();
         $direct_income = $deposit->amount/100 * 10;
         $matching_income = $deposit->amount/100 * 5;
-        $refer_by->update([
-            'balance' => $refer_by->balance += $direct_income,
-            'r_earning' => $refer_by->r_earning += $direct_income,
-        ]);
-        $owner_left_refer->update([
-            'left_refferal' => $user->id,
-            'left_amount' =>  $matching_income,
-        ]);
-        $user->update([
-            'top_referral' => 'Done',
-        ]);
-        Earning::create([
-            "user_id" => $refer_by->id,
-            "price" => $direct_income,
-            "type" => 'direct_income'
-        ]);
-        $company_account->update([
-            'balance' => $company_account->balance -= $direct_income,
-        ]);
-        $chain = $owner_left_refer;
-        for($i = 0;$i < 1000;$i++)
+        if($owner_left_refer->left_refferal == null)
         {
-            $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
-            Log::info('Matching Earning to ' . $referrral_chain->name);
-            if($referrral_chain->left_refferal == $chain->id)
+            $refer_by->update([
+                'balance' => $refer_by->balance += $direct_income,
+                'r_earning' => $refer_by->r_earning += $direct_income,
+            ]);
+            $owner_left_refer->update([
+                'left_refferal' => $user->id,
+                'left_amount' =>  $matching_income,
+            ]);
+            $user->update([
+                'top_referral' => 'Done',
+            ]);
+            Earning::create([
+                "user_id" => $refer_by->id,
+                "price" => $direct_income,
+                "type" => 'direct_income'
+            ]);
+            $company_account->update([
+                'balance' => $company_account->balance -= $direct_income,
+            ]);
+            $chain = $owner_left_refer;
+            for($i = 0;$i < 1000;$i++)
             {
-                $referrral_chain->update([
-                    'left_amount' =>   $referrral_chain->left_amount += $matching_income,
-                ]);
-            }else{
-                $referrral_chain->update([
-                    'right_amount' =>   $referrral_chain->right_amount += $matching_income,
-                ]);
-            }
-            if($chain->left_amount > $chain->right_amount)
-            {
-                $amount = $chain->right_amount*2;
-                if($amount > 0)
+                $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+                Log::info('Matching Earning to ' . $referrral_chain->name);
+                if($referrral_chain->left_refferal == $chain->id)
                 {
-                    $chain->update([
-                        'right_amount' => 0, 
-                        'left_amount' => $chain->left_amount -= $amount, 
-                        'balance' => $chain->balance += $amount,
-                        'r_earning' => $chain->r_earning += $amount,
+                    $referrral_chain->update([
+                        'left_amount' =>   $referrral_chain->left_amount += $matching_income,
                     ]);
-                    Earning::create([
-                        "user_id" => $chain->id,
-                        "price" => $amount,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $amount,
+                }else{
+                    $referrral_chain->update([
+                        'right_amount' =>   $referrral_chain->right_amount += $matching_income,
                     ]);
                 }
-            }else if($chain->right_amount > $chain->left_amount)
-            {
-                $amount = $chain->left_amount*2;
-                if($amount > 0)
-                {
-                    $chain->update([
-                        'right_amount' => $chain->right_amount -= $amount, 
-                        'left_amount' => 0, 
-                        'balance' => $chain->balance += $amount,
-                        'r_earning' => $chain->r_earning += $amount,
-                    ]);
-                    Earning::create([
-                        "user_id" => $chain->id,
-                        "price" => $amount,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $amount,
-                    ]);
-                }
-            }else{
-                $amount = $chain->left_amount*2;
-                if($amount > 0)
-                {
-                    $chain->update([
-                        'right_amount' => 0, 
-                        'left_amount' => 0, 
-                        'balance' => $chain->balance += $amount,
-                        'r_earning' => $chain->r_earning += $amount,
-                    ]);
-                    Earning::create([
-                        "user_id" => $chain->id,
-                        "price" => $amount,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $amount,
-                    ]);
-                }
-            }
-            $chain = $referrral_chain;
-            if($referrral_chain->id == $user->main_owner)
-            {
                 if($chain->left_amount > $chain->right_amount)
                 {
                     $amount = $chain->right_amount*2;
@@ -185,9 +124,74 @@ class ReferralController extends Controller
                         ]);
                     }
                 }
-                $i = 1000;
+                $chain = $referrral_chain;
+                if($referrral_chain->id == $user->main_owner)
+                {
+                    if($chain->left_amount > $chain->right_amount)
+                    {
+                        $amount = $chain->right_amount*2;
+                        if($amount > 0)
+                        {
+                            $chain->update([
+                                'right_amount' => 0, 
+                                'left_amount' => $chain->left_amount -= $amount, 
+                                'balance' => $chain->balance += $amount,
+                                'r_earning' => $chain->r_earning += $amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $chain->id,
+                                "price" => $amount,
+                                "type" => 'matching_income'
+                            ]);
+                            $company_account->update([
+                                'balance' => $company_account->balance -= $amount,
+                            ]);
+                        }
+                    }else if($chain->right_amount > $chain->left_amount)
+                    {
+                        $amount = $chain->left_amount*2;
+                        if($amount > 0)
+                        {
+                            $chain->update([
+                                'right_amount' => $chain->right_amount -= $amount, 
+                                'left_amount' => 0, 
+                                'balance' => $chain->balance += $amount,
+                                'r_earning' => $chain->r_earning += $amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $chain->id,
+                                "price" => $amount,
+                                "type" => 'matching_income'
+                            ]);
+                            $company_account->update([
+                                'balance' => $company_account->balance -= $amount,
+                            ]);
+                        }
+                    }else{
+                        $amount = $chain->left_amount*2;
+                        if($amount > 0)
+                        {
+                            $chain->update([
+                                'right_amount' => 0, 
+                                'left_amount' => 0, 
+                                'balance' => $chain->balance += $amount,
+                                'r_earning' => $chain->r_earning += $amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $chain->id,
+                                "price" => $amount,
+                                "type" => 'matching_income'
+                            ]);
+                            $company_account->update([
+                                'balance' => $company_account->balance -= $amount,
+                            ]);
+                        }
+                    }
+                    $i = 1000;
+                }
             }
         }
+       
         // if($owner_left_refer->left_refferal != null &&  $owner_left_refer->right_refferal != null )
         // {
         //     if($owner_left_refer->left_amount > $owner_left_refer->right_amount)
@@ -300,9 +304,9 @@ class ReferralController extends Controller
         //         }
         //     }            
         // }
-        Auth::logout();
+        // Auth::logout();
         toastr()->success('You Added In Tree Successfully.');
-        return redirect('user/login');
+        return redirect('user/dashboard');
     }
     public function showTree($id)
     {
@@ -365,102 +369,41 @@ class ReferralController extends Controller
         $deposit = Deposit::where('user_id',$user->id)->where('package_id',$user->package_id)->first();
         $direct_income = $deposit->amount/100 * 10;
         $matching_income = $deposit->amount/100 * 5;
-        $refer_by->update([
-            'balance' => $refer_by->balance += $direct_income,
-            'r_earning' => $refer_by->r_earning += $direct_income,
-        ]);
-        $owner_right_refer->update([
-            'right_refferal' => $user->id,
-            'right_amount' =>  $matching_income,
-        ]);
-        $user->update([
-            'top_referral' => 'Done',
-        ]);
-        Earning::create([
-            "user_id" => $refer_by->id,
-            "price" => $direct_income,
-            "type" => 'direct_income'
-        ]);
-        $company_account->update([
-            'balance' => $company_account->balance -= $direct_income,
-        ]);
-        $chain = $owner_right_refer;
-        for($i = 0;$i < 1000;$i++)
+        if($owner_right_refer->right_refferal == null)
         {
-            $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
-            if($referrral_chain->left_refferal == $chain->id)
+            $refer_by->update([
+                'balance' => $refer_by->balance += $direct_income,
+                'r_earning' => $refer_by->r_earning += $direct_income,
+            ]);
+            $owner_right_refer->update([
+                'right_refferal' => $user->id,
+                'right_amount' =>  $matching_income,
+            ]);
+            $user->update([
+                'top_referral' => 'Done',
+            ]);
+            Earning::create([
+                "user_id" => $refer_by->id,
+                "price" => $direct_income,
+                "type" => 'direct_income'
+            ]);
+            $company_account->update([
+                'balance' => $company_account->balance -= $direct_income,
+            ]);
+            $chain = $owner_right_refer;
+            for($i = 0;$i < 1000;$i++)
             {
-                $referrral_chain->update([
-                    'left_amount' =>   $referrral_chain->left_amount += $matching_income,
-                ]);
-            }else{
-                $referrral_chain->update([
-                    'right_amount' =>   $referrral_chain->right_amount += $matching_income,
-                ]);
-            }
-            if($chain->left_amount > $chain->right_amount)
-            {
-                $amount = $chain->right_amount*2;
-                if($amount > 0)
+                $referrral_chain = User::where('left_refferal',$chain->id)->orWhere('right_refferal',$chain->id)->first();
+                if($referrral_chain->left_refferal == $chain->id)
                 {
-                    $chain->update([
-                        'right_amount' => 0, 
-                        'left_amount' => $chain->left_amount -= $amount, 
-                        'balance' => $chain->balance += $amount,
-                        'r_earning' => $chain->r_earning += $amount,
+                    $referrral_chain->update([
+                        'left_amount' =>   $referrral_chain->left_amount += $matching_income,
                     ]);
-                    Earning::create([
-                        "user_id" => $chain->id,
-                        "price" => $amount,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $amount,
+                }else{
+                    $referrral_chain->update([
+                        'right_amount' =>   $referrral_chain->right_amount += $matching_income,
                     ]);
                 }
-            }else if($chain->right_amount > $chain->left_amount)
-            {
-                $amount = $chain->left_amount*2;
-                if($amount > 0)
-                {
-                    $chain->update([
-                        'right_amount' => $chain->right_amount -= $amount, 
-                        'left_amount' => 0, 
-                        'balance' => $chain->balance += $amount,
-                        'r_earning' => $chain->r_earning += $amount,
-                    ]);
-                    Earning::create([
-                        "user_id" => $chain->id,
-                        "price" => $amount,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $amount,
-                    ]);
-                }
-            }else{
-                $amount = $chain->left_amount*2;
-                if($amount > 0)
-                {
-                    $chain->update([
-                        'right_amount' => 0, 
-                        'left_amount' => 0, 
-                        'balance' => $chain->balance += $amount,
-                        'r_earning' => $chain->r_earning += $amount,
-                    ]);
-                    Earning::create([
-                        "user_id" => $chain->id,
-                        "price" => $amount,
-                        "type" => 'matching_income'
-                    ]);
-                    $company_account->update([
-                        'balance' => $company_account->balance -= $amount,
-                    ]);
-                }
-            }
-            $chain = $referrral_chain;
-            if($referrral_chain->id == $user->main_owner)
-            {
                 if($chain->left_amount > $chain->right_amount)
                 {
                     $amount = $chain->right_amount*2;
@@ -521,9 +464,74 @@ class ReferralController extends Controller
                         ]);
                     }
                 }
-                $i = 1000;
+                $chain = $referrral_chain;
+                if($referrral_chain->id == $user->main_owner)
+                {
+                    if($chain->left_amount > $chain->right_amount)
+                    {
+                        $amount = $chain->right_amount*2;
+                        if($amount > 0)
+                        {
+                            $chain->update([
+                                'right_amount' => 0, 
+                                'left_amount' => $chain->left_amount -= $amount, 
+                                'balance' => $chain->balance += $amount,
+                                'r_earning' => $chain->r_earning += $amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $chain->id,
+                                "price" => $amount,
+                                "type" => 'matching_income'
+                            ]);
+                            $company_account->update([
+                                'balance' => $company_account->balance -= $amount,
+                            ]);
+                        }
+                    }else if($chain->right_amount > $chain->left_amount)
+                    {
+                        $amount = $chain->left_amount*2;
+                        if($amount > 0)
+                        {
+                            $chain->update([
+                                'right_amount' => $chain->right_amount -= $amount, 
+                                'left_amount' => 0, 
+                                'balance' => $chain->balance += $amount,
+                                'r_earning' => $chain->r_earning += $amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $chain->id,
+                                "price" => $amount,
+                                "type" => 'matching_income'
+                            ]);
+                            $company_account->update([
+                                'balance' => $company_account->balance -= $amount,
+                            ]);
+                        }
+                    }else{
+                        $amount = $chain->left_amount*2;
+                        if($amount > 0)
+                        {
+                            $chain->update([
+                                'right_amount' => 0, 
+                                'left_amount' => 0, 
+                                'balance' => $chain->balance += $amount,
+                                'r_earning' => $chain->r_earning += $amount,
+                            ]);
+                            Earning::create([
+                                "user_id" => $chain->id,
+                                "price" => $amount,
+                                "type" => 'matching_income'
+                            ]);
+                            $company_account->update([
+                                'balance' => $company_account->balance -= $amount,
+                            ]);
+                        }
+                    }
+                    $i = 1000;
+                }
             }
         }
+        
         // if($owner_right_refer->left_refferal != null &&  $owner_right_refer->right_refferal != null )
         // {
         //     if($owner_right_refer->left_amount > $owner_right_refer->right_amount)
@@ -638,8 +646,8 @@ class ReferralController extends Controller
            
             
         // }
-        Auth::logout();
+        // Auth::logout();
         toastr()->success('You Added In Tree Successfully.');
-        return redirect('user/login');
+        return redirect('user/dashboard');
     }
 }
