@@ -118,6 +118,7 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.index')}}">All User</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.actives')}}">Active User</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.pendings')}}">Pending User</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.blocks')}}">Block User</a></li>
 
 						</ul>
 					</li>

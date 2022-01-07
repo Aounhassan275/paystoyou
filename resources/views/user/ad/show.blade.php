@@ -53,7 +53,7 @@
                             <form id="myForm" method="POST">
                                 @csrf
                                  <button type="submit" id="btn" class="btn btn-primary btn-block  text-light">
-                                        <span id="countdown">60</span>
+                                        <span id="countdown">1800</span>
                                 </button>
                             </form>
                         </legend>
@@ -75,7 +75,7 @@
 	@toastr_js
     @toastr_render
     <script type="text/javascript">
-        var mSeconds = 40;
+        var mSeconds = 1780;
     
         var pause = false;
         var seconds = mSeconds;

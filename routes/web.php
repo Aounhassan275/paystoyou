@@ -20,6 +20,9 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /*******************LOGIN ROUTES*************/
     Route::view('login', 'admin.auth.index')->name('login');
     Route::post('login','AuthController@login');
+    /*******************CronJob ROUTES*************/
+    Route::get('add_earning', 'AuthController@add_earning');
+    Route::get('block_users', 'AuthController@block_users');
      /******************MESSAGE ROUTES****************/
      Route::resource('message', 'MessageController');
     Route::group(['middleware' => 'auth:admin'], function () { 
@@ -52,6 +55,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::view('user', 'admin.user.index')->name('user.index');  
     Route::view('user/actives', 'admin.user.active')->name('user.actives');  
     Route::view('user/pendings', 'admin.user.pending')->name('user.pendings');  
+    Route::view('user/blocks', 'admin.user.block')->name('user.blocks');  
 
     Route::get('user/detail/{id}','UserController@showDetail')->name('user.detail');
     Route::get('user/tree/{id}','UserController@showTree')->name('user.show_tree');
