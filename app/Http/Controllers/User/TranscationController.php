@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyAccount;
 use App\Models\Transcation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -66,12 +67,18 @@ class TranscationController extends Controller
             toastr()->error('Insufficient Balance.');
             return redirect()->back();
         }
+        $company_account= CompanyAccount::find(1);
+        $user_amount = $request->amount / 100 * 90;
+        $company_amount = $request->amount / 100 * 10;
         $user->update([
             'balance' => $user->balance - $request->amount
         ]);
+        $company_account->update([
+            'balance' => $company_account->balance += $company_amount,
+        ]);
         $receiver = User::find($request->receiver_id);
         $receiver->update([
-            'balance' => $receiver->balance += $request->amount
+            'balance' => $receiver->balance += $user_amount
         ]);
         Transcation::create([
             'detail' => 'Amount Transfer from '.$user->name.' to '.$receiver->name.' account.'
