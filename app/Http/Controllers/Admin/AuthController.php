@@ -86,6 +86,7 @@ class AuthController extends Controller
                 {
                     info("Ads Earning CRONJOB Don't have earning");
                     $user->status = 'block';
+                    $user->balance = 0;
                     $user->save();    
                 }
             }
